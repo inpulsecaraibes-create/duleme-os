@@ -1,0 +1,18 @@
+{
+  "name": "duleme-os",
+  "private": true,
+  "packageManager": "pnpm@10.34.4",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "site": "pnpm --filter @duleme/site dev"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.3"
+  }
+}

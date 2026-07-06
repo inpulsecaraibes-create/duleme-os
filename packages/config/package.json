@@ -1,0 +1,9 @@
+{
+  "name": "@duleme/config",
+  "version": "0.0.0",
+  "private": true,
+  "main": "tailwind-preset.cjs",
+  "exports": {
+    "./tailwind-preset": "./tailwind-preset.cjs"
+  }
+}

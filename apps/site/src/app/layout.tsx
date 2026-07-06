@@ -1,0 +1,60 @@
+import type { Metadata } from "next";
+import { Newsreader, Inter } from "next/font/google";
+import "./globals.css";
+
+const serif = Newsreader({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+  display: "swap",
+  adjustFontFallback: false,
+});
+
+const sans = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://duleme.com"),
+  title: {
+    default: "DULEME AND CIE — Cabinet de la décision stratégique",
+    template: "%s — DULEME AND CIE",
+  },
+  description:
+    "DULEME AND CIE aide les dirigeants à sécuriser les décisions qui engagent durablement leur entreprise. Vous prenez peut-être les bonnes décisions — à partir du mauvais problème.",
+  applicationName: "DULEME AND CIE",
+  authors: [{ name: "DULEME AND CIE" }],
+  keywords: [
+    "décision stratégique",
+    "dirigeant",
+    "PME",
+    "gouvernance",
+    "arbitrage",
+    "Faux Dilemme",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    siteName: "DULEME AND CIE",
+    title: "DULEME AND CIE — Cabinet de la décision stratégique",
+    description:
+      "Nous aidons les dirigeants à sécuriser les décisions qui engagent durablement leur entreprise. Un autre regard, jamais un jugement.",
+  },
+  robots: { index: true, follow: true },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="fr" className={`${serif.variable} ${sans.variable}`}>
+      <body>{children}</body>
+    </html>
+  );
+}

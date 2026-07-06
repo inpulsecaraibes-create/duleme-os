@@ -5,6 +5,7 @@ import type { Config } from "tailwindcss";
 const preset = require("@duleme/config/tailwind-preset");
 
 const config: Config = {
+  darkMode: "class",
   presets: [preset],
   content: [
     "./src/**/*.{ts,tsx,mdx}",

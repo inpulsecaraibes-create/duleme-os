@@ -3,6 +3,43 @@
 @tailwind utilities;
 
 @layer base {
+  /* Tokens de couleur — triplets RGB (Palette « Pierre & Bordeaux ») */
+  :root {
+    --paper: 242 237 228;
+    --paper2: 248 244 236;
+    --card: 251 248 242;
+    --ink: 36 29 24;
+    --mut: 125 112 98;
+    --line: 224 217 204;
+    --bord: 90 30 45;
+    --bord-deep: 61 20 32;
+    --brass: 176 137 76;
+    --glow: 246 227 200;
+    --accent: 90 30 45;
+    --ok: 63 125 90;
+    --warn: 169 128 63;
+    --alert: 164 64 47;
+    color-scheme: light;
+  }
+
+  .dark {
+    --paper: 26 20 17;
+    --paper2: 34 26 22;
+    --card: 40 31 26;
+    --ink: 240 232 222;
+    --mut: 168 152 137;
+    --line: 61 48 40;
+    --bord: 122 47 63;
+    --bord-deep: 74 22 34;
+    --brass: 199 162 102;
+    --glow: 74 34 26;
+    --accent: 214 140 158;
+    --ok: 106 173 133;
+    --warn: 200 160 96;
+    --alert: 199 108 92;
+    color-scheme: dark;
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
@@ -20,11 +57,10 @@
     letter-spacing: -0.01em;
   }
   ::selection {
-    background: #5a1e2d;
-    color: #f6efe6;
+    @apply bg-bord text-paper;
   }
   :focus-visible {
-    outline: 2px solid #b0894c;
+    outline: 2px solid rgb(var(--brass));
     outline-offset: 2px;
   }
 }

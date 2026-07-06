@@ -1,28 +1,34 @@
 /**
  * Design System DULEME — tokens partagés (Palette « Pierre & Bordeaux »).
- * Source de vérité des couleurs, typographies, rayons et ombres du produit.
- * Consommé par les apps via `presets: [require('@duleme/config/tailwind-preset')]`.
+ * Les couleurs sont exposées en variables CSS (triplets RGB) pour permettre
+ * le dark mode et la modulation d'opacité (`bg-paper/85`). Valeurs définies
+ * dans les apps via `:root` (clair) et `.dark` (sombre).
  */
+const c = (name) => `rgb(var(${name}) / <alpha-value>)`;
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        paper: "#f2ede4",
-        paper2: "#f8f4ec",
-        ink: "#241d18",
-        mut: "#7d7062",
-        line: "#e0d9cc",
+        paper: c("--paper"),
+        paper2: c("--paper2"),
+        card: c("--card"),
+        ink: c("--ink"),
+        mut: c("--mut"),
+        line: c("--line"),
         bord: {
-          DEFAULT: "#5a1e2d",
-          deep: "#3d1420",
+          DEFAULT: c("--bord"),
+          deep: c("--bord-deep"),
         },
-        brass: "#b0894c",
-        glow: "#f6e3c8",
-        // couleurs sémantiques (distinctes de l'accent)
-        ok: "#3f7d5a",
-        warn: "#a9803f",
-        alert: "#a4402f",
+        brass: c("--brass"),
+        glow: c("--glow"),
+        accent: c("--accent"),
+        // sémantiques (distinctes de l'accent de marque)
+        ok: c("--ok"),
+        warn: c("--warn"),
+        alert: c("--alert"),
       },
       fontFamily: {
         serif: ["var(--font-serif)", "Georgia", "Times New Roman", "serif"],
@@ -48,6 +54,7 @@ module.exports = {
         lift: "0 30px 60px -34px rgba(90,30,45,.35)",
       },
       letterSpacing: {
+        eyebrow: "0.22em",
         wordmark: "0.2em",
       },
       maxWidth: {

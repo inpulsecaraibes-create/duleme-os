@@ -16,7 +16,7 @@ export function Contact() {
     >
       {sent ? (
         <div className="py-4 text-center">
-          <h3 className="font-serif text-2xl font-semibold text-bord">
+          <h3 className="font-serif text-2xl font-semibold text-accent">
             Merci. Votre message nous parvient directement.
           </h3>
           <p className="mx-auto mt-3 max-w-[46ch] text-mut">

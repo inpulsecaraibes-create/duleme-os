@@ -41,7 +41,7 @@ export function Stories() {
         >
           &ldquo;
         </div>
-        <h3 className="mt-2 font-serif text-2xl font-semibold leading-tight text-bord sm:text-[32px]">
+        <h3 className="mt-2 font-serif text-2xl font-semibold leading-tight text-accent sm:text-[32px]">
           {s.head}
         </h3>
         <p className="mt-4 text-[15px] leading-[1.7] text-ink/85 sm:text-[17px]">
@@ -72,7 +72,7 @@ export function Stories() {
               aria-label={`Témoignage ${idx + 1}`}
               aria-current={idx === i}
               className={`h-2.5 w-2.5 rounded-full transition-all ${
-                idx === i ? "scale-110 bg-bord" : "bg-line"
+                idx === i ? "scale-110 bg-accent" : "bg-line"
               }`}
             />
           ))}

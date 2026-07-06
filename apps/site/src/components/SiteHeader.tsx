@@ -17,6 +17,9 @@ export function SiteHeader() {
           <Link href="/le-faux-dilemme" className="hidden hover:text-accent sm:inline">
             Le Faux Dilemme™
           </Link>
+          <Link href="/a-propos" className="hidden hover:text-accent sm:inline">
+            À propos
+          </Link>
           <Link href="/#stories" className="hidden hover:text-accent sm:inline">
             Témoignages
           </Link>

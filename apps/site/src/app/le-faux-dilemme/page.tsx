@@ -4,6 +4,8 @@ import { ButtonLink, Container, Eyebrow, Heading } from "@duleme/ui";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Newsletter } from "@/components/Newsletter";
+import { JsonLd } from "@/components/JsonLd";
+import { blogLd, faqLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Le Faux Dilemme™ — Le média des décisions",
@@ -14,6 +16,7 @@ export const metadata: Metadata = {
     description:
       "Recruter ou attendre ? Grossir ou tenir ? La plupart des décisions difficiles cachent une fausse alternative. Le vrai choix est ailleurs.",
   },
+  alternates: { canonical: "/le-faux-dilemme" },
 };
 
 const EDITIONS: {
@@ -60,10 +63,31 @@ const EDITIONS: {
   },
 ];
 
+const FAQ = [
+  {
+    q: "Qu'est-ce qu'un faux dilemme ?",
+    a: "Une alternative apparente — « recruter ou attendre ? », « grossir ou tenir ? » — qui masque la vraie question. Presque toujours, la bonne décision se trouve ailleurs que dans le choix binaire posé au départ.",
+  },
+  {
+    q: "DULEME AND CIE fait-il du coaching ?",
+    a: "Non. DULEME ne fait ni coaching, ni développement personnel, ni recettes toutes faites. Le travail porte uniquement sur les décisions, les systèmes, les hypothèses et les arbitrages.",
+  },
+  {
+    q: "À qui s'adresse DULEME AND CIE ?",
+    a: "Aux dirigeants de PME qui portent seuls des décisions qui engagent durablement leur entreprise, et qui cherchent un regard extérieur rigoureux — pas un avis de plus.",
+  },
+  {
+    q: "Comment se déroule un premier échange ?",
+    a: "Un échange d'une heure pour poser la vraie question de votre situation. Vous en repartez avec une lecture plus claire, que nous travaillions ensemble ensuite ou non.",
+  },
+];
+
 export default function FauxDilemmePage() {
   return (
     <>
       <SiteHeader />
+      <JsonLd data={blogLd} />
+      <JsonLd data={faqLd(FAQ)} />
       <main>
         {/* HERO */}
         <section className="relative overflow-hidden">
@@ -242,6 +266,23 @@ export default function FauxDilemmePage() {
                 qui change la manière de voir. Directement par email.
               </p>
               <Newsletter />
+            </div>
+          </Container>
+        </section>
+
+        {/* FAQ */}
+        <section className="border-t border-line py-16">
+          <Container>
+            <Eyebrow>Questions fréquentes</Eyebrow>
+            <div className="mt-8 grid gap-x-10 gap-y-8 md:grid-cols-2">
+              {FAQ.map((f) => (
+                <div key={f.q}>
+                  <h3 className="font-serif text-lg font-semibold">{f.q}</h3>
+                  <p className="mt-2 text-[14.5px] leading-relaxed text-mut">
+                    {f.a}
+                  </p>
+                </div>
+              ))}
             </div>
           </Container>
         </section>

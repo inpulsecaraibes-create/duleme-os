@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Newsreader, Inter } from "next/font/google";
 import "./globals.css";
+import { JsonLd } from "@/components/JsonLd";
+import { organizationLd, websiteLd } from "@/lib/structured-data";
 
 const serif = Newsreader({
   subsets: ["latin"],
@@ -40,10 +42,28 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     siteName: "DULEME AND CIE",
+    url: "/",
     title: "DULEME AND CIE — Cabinet de la décision stratégique",
     description:
       "Nous aidons les dirigeants à sécuriser les décisions qui engagent durablement leur entreprise. Un autre regard, jamais un jugement.",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "DULEME AND CIE — Bien diriger est l'art de décider.",
+      },
+    ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "DULEME AND CIE — Cabinet de la décision stratégique",
+    description:
+      "Vous prenez peut-être les bonnes décisions — à partir du mauvais problème.",
+    images: ["/og.jpg"],
+  },
+  alternates: { canonical: "/" },
+  icons: { icon: "/logo-duleme.png" },
   robots: { index: true, follow: true },
 };
 
@@ -59,6 +79,8 @@ export default function RootLayout({
     <html lang="fr" className={`${serif.variable} ${sans.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+        <JsonLd data={organizationLd} />
+        <JsonLd data={websiteLd} />
       </head>
       <body>{children}</body>
     </html>

@@ -1,8 +1,8 @@
-import { ThemeToggle } from "@duleme/ui";
+/* eslint-disable @next/next/no-img-element */
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
 import { Stories } from "./components/Stories";
 import { Contact } from "./components/Contact";
-
-/* eslint-disable @next/next/no-img-element */
 
 const STATS = [
   { n: "1 000+", l: "entrepreneurs accompagnés" },
@@ -14,42 +14,13 @@ const STATS = [
 export default function Home() {
   return (
     <>
-      {/* NAV */}
-      <header className="sticky top-0 z-30 border-b border-line bg-paper/85 backdrop-blur">
-        <div className="mx-auto flex max-w-[1160px] items-center justify-between px-7 py-3.5">
-          <a href="#" aria-label="DULEME AND CIE — accueil" className="flex items-center">
-            <img
-              src="/logo-duleme.png"
-              alt="DULEME AND CIE"
-              className="h-9 w-auto"
-            />
-          </a>
-          <nav className="flex items-center gap-6 text-[13px] text-mut">
-            <a href="#" className="hidden hover:text-ink sm:inline">
-              Le Faux Dilemme™
-            </a>
-            <a href="#stories" className="hidden hover:text-ink sm:inline">
-              Témoignages
-            </a>
-            <a
-              href="#contact"
-              className="rounded-md bg-bord px-5 py-3 text-sm font-semibold text-paper transition-colors hover:bg-bord-deep"
-            >
-              Parlons de votre décision
-            </a>
-            <ThemeToggle />
-          </nav>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* 1 — POURQUOI RESTER */}
       <section className="relative overflow-hidden">
         <div
           className="pointer-events-none absolute -right-20 -top-28 h-[520px] w-[520px] rounded-full opacity-70"
-          style={{
-            background:
-              "radial-gradient(circle, rgb(var(--glow)), transparent 68%)",
-          }}
+          style={{ background: "radial-gradient(circle, rgb(var(--glow)), transparent 68%)" }}
           aria-hidden
         />
         <div className="relative mx-auto grid max-w-[1160px] grid-cols-1 items-center gap-11 px-7 py-16 md:grid-cols-[1.06fr_0.94fr]">
@@ -71,7 +42,7 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap items-center gap-6">
               <a
                 href="#contact"
-                className="rounded-md bg-bord px-6 py-3.5 text-sm font-semibold text-[#f6efe6] transition-colors hover:bg-bord-deep"
+                className="rounded-md bg-bord px-6 py-3.5 text-sm font-semibold text-paper transition-colors hover:bg-bord-deep"
               >
                 Parlons de votre décision →
               </a>
@@ -85,8 +56,8 @@ export default function Home() {
           </div>
           <div className="relative overflow-hidden rounded-lg border border-line shadow-lift">
             <img
-              src="/tefery.jpg"
-              alt="Téféry, fondatrice de DULEME AND CIE"
+              src="/photos/photo-5.webp"
+              alt="Téféry, fondatrice de DULEME AND CIE, en pleine réflexion"
               className="aspect-[5/6] w-full object-cover"
             />
           </div>
@@ -103,7 +74,7 @@ export default function Home() {
           <h2 className="mt-3 max-w-[20ch] font-serif text-[26px] font-semibold leading-tight sm:text-[40px]">
             Ils en parlent mieux que moi.
           </h2>
-          <p className="mt-4 max-w-prose text-base text-mut">
+          <p className="mt-4 max-w-[56ch] text-base text-mut">
             Des dirigeants qui avaient déjà beaucoup accompli. Il leur manquait,
             un instant, un autre regard sur leur situation.
           </p>
@@ -151,14 +122,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="bg-bord-deep text-[#c9b4a9]">
-        <div className="mx-auto flex max-w-[1160px] flex-wrap justify-between gap-3 px-7 py-7 font-sans text-[11.5px]">
-          <span>DULEME AND CIE</span>
-          <span>Bien diriger est l&apos;art de décider.</span>
-          <span>Mentions légales · Confidentialité</span>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

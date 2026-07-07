@@ -3,15 +3,35 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { client, contactRequest, eq, getDb, mission } from "@duleme/database";
+import { ensureClientTree, isGoogleConfigured } from "@duleme/connectors";
 
 function s(fd: FormData, k: string): string {
   return String(fd.get(k) ?? "").trim();
 }
 
+/**
+ * Automatisation « client créé → dossier Google Drive ».
+ * Dégradable : si Google n'est pas connecté, ne fait rien (aucun appel réseau).
+ */
+async function provisionDrive(clientId: string, name: string) {
+  if (!isGoogleConfigured()) return;
+  try {
+    const tree = await ensureClientTree(name);
+    if (tree) {
+      await getDb()
+        .update(client)
+        .set({ driveFolderUrl: tree.url, updatedAt: new Date() })
+        .where(eq(client.id, clientId));
+    }
+  } catch (e) {
+    console.error("[drive] création arborescence échouée (ignorée)", e);
+  }
+}
+
 export async function createClient(formData: FormData) {
   const name = s(formData, "name");
   if (!name) return;
-  await getDb()
+  const [created] = await getDb()
     .insert(client)
     .values({
       name,
@@ -19,7 +39,9 @@ export async function createClient(formData: FormData) {
       email: s(formData, "email") || null,
       phone: s(formData, "phone") || null,
       type: s(formData, "type") || "prospect",
-    });
+    })
+    .returning({ id: client.id });
+  if (created) await provisionDrive(created.id, name);
   revalidatePath("/clients");
 }
 
@@ -44,6 +66,7 @@ export async function createClientFromRequest(formData: FormData) {
       notes: req.message ? `Demande initiale : ${req.message}` : null,
     })
     .returning({ id: client.id });
+  if (created) await provisionDrive(created.id, req.name || "Prospect sans nom");
   revalidatePath("/clients");
   revalidatePath("/");
   if (created) redirect(`/clients/${created.id}`);

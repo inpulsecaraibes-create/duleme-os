@@ -347,10 +347,7 @@ export default function FauxDilemmePage() {
               Un premier échange d'une heure suffit souvent à déplacer la
               question.
             </p>
-            <ButtonLink
-              href="/#contact"
-              className="mt-7 bg-paper text-bord hover:bg-paper2"
-            >
+            <ButtonLink href="/#contact" variant="inverse" className="mt-7">
               Parlons de votre décision →
             </ButtonLink>
           </Container>

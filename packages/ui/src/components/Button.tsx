@@ -1,7 +1,7 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "../utils/cn";
 
-export type ButtonVariant = "primary" | "line" | "ghost";
+export type ButtonVariant = "primary" | "inverse" | "line" | "ghost";
 export type ButtonSize = "md" | "sm";
 
 const base =
@@ -14,6 +14,8 @@ const sizes: Record<ButtonSize, string> = {
 
 const variants: Record<ButtonVariant, string> = {
   primary: "rounded-md bg-bord text-paper hover:bg-bord-deep",
+  // fond clair + texte bordeaux : pour les CTA posés sur un fond sombre
+  inverse: "rounded-md bg-paper text-bord hover:bg-paper2",
   line: "rounded-md border border-bord text-accent hover:bg-bord/5",
   ghost:
     "border-b border-brass pb-1 text-ink hover:text-accent",

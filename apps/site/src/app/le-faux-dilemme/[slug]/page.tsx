@@ -103,10 +103,7 @@ export default function ArticlePage({
             <p className="mx-auto max-w-[24ch] font-serif text-[clamp(22px,3vw,32px)] font-medium leading-snug">
               Une décision importante approche&nbsp;?
             </p>
-            <ButtonLink
-              href="/#contact"
-              className="mt-6 bg-paper text-bord hover:bg-paper2"
-            >
+            <ButtonLink href="/#contact" variant="inverse" className="mt-6">
               Parlons de votre décision →
             </ButtonLink>
           </Container>

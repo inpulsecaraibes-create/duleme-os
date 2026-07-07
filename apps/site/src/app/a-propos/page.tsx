@@ -203,10 +203,7 @@ export default function AProposPage() {
               Un premier échange d'une heure. Vous en repartez avec une lecture
               plus claire de votre situation.
             </p>
-            <ButtonLink
-              href="/#contact"
-              className="mt-7 bg-paper text-bord hover:bg-paper2"
-            >
+            <ButtonLink href="/#contact" variant="inverse" className="mt-7">
               Parlons de votre décision →
             </ButtonLink>
           </Container>

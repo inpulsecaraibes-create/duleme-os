@@ -8,6 +8,9 @@
   "exports": {
     ".": "./src/index.ts"
   },
+  "dependencies": {
+    "tailwind-merge": "^2.5.4"
+  },
   "peerDependencies": {
     "react": "^18 || ^19"
   },

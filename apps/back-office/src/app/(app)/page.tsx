@@ -4,6 +4,7 @@ import {
   getDb,
   isDbConfigured,
 } from "@duleme/database";
+import { createClientFromRequest } from "./clients/actions";
 
 export const dynamic = "force-dynamic";
 
@@ -62,6 +63,7 @@ export default async function DashboardPage() {
                   <th className="px-4 py-3 font-semibold">Email</th>
                   <th className="px-4 py-3 font-semibold">Message</th>
                   <th className="px-4 py-3 font-semibold">Rappel</th>
+                  <th className="px-4 py-3 font-semibold"></th>
                 </tr>
               </thead>
               <tbody>
@@ -98,6 +100,17 @@ export default async function DashboardPage() {
                       ) : (
                         <span className="text-mut">—</span>
                       )}
+                    </td>
+                    <td className="whitespace-nowrap px-4 py-3">
+                      <form action={createClientFromRequest}>
+                        <input type="hidden" name="requestId" value={r.id} />
+                        <button
+                          type="submit"
+                          className="rounded-md border border-line px-3 py-1.5 text-[12px] font-medium text-accent transition-colors hover:border-bord"
+                        >
+                          → Créer le client
+                        </button>
+                      </form>
                     </td>
                   </tr>
                 ))}

@@ -1,8 +1,29 @@
 /* eslint-disable @next/next/no-img-element */
+import { asc, eq, getDb, isDbConfigured, testimonial } from "@duleme/database";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { Stories } from "./components/Stories";
+import { Stories, type Story } from "./components/Stories";
 import { Contact } from "./components/Contact";
+
+export const revalidate = 300;
+
+async function getStories(): Promise<Story[]> {
+  if (!isDbConfigured()) return [];
+  try {
+    const rows = await getDb()
+      .select()
+      .from(testimonial)
+      .where(eq(testimonial.published, true))
+      .orderBy(asc(testimonial.position), asc(testimonial.createdAt));
+    return rows.map((r) => ({
+      headline: r.headline,
+      body: r.body,
+      attribution: r.attribution,
+    }));
+  } catch {
+    return [];
+  }
+}
 
 const STATS = [
   { n: "1 000+", l: "entrepreneurs accompagnés" },
@@ -11,7 +32,8 @@ const STATS = [
   { n: "10 ans", l: "d'expérience" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const stories = await getStories();
   return (
     <>
       <SiteHeader />
@@ -79,7 +101,7 @@ export default function Home() {
             un instant, un autre regard sur leur situation.
           </p>
 
-          <Stories />
+          <Stories stories={stories} />
 
           <div className="mt-8 grid grid-cols-2 gap-6 md:grid-cols-4">
             {STATS.map((s) => (

@@ -8,6 +8,20 @@
       "when": 1783343971120,
       "tag": "0000_nebulous_norrin_radd",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1783431414594,
+      "tag": "0001_mute_jocasta",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1783436605364,
+      "tag": "0002_puzzling_sunspot",
+      "breakpoints": true
     }
   ]
 }

@@ -6,7 +6,7 @@ config({ path: "../../.env.local" });
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ["@duleme/ui", "@duleme/database"],
+  transpilePackages: ["@duleme/ui", "@duleme/database", "@duleme/connectors"],
 };
 
 export default nextConfig;

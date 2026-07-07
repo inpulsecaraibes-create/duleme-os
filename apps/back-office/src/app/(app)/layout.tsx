@@ -54,6 +54,12 @@ export default function AppLayout({
           >
             Témoignages
           </Link>
+          <Link
+            href="/connecteurs"
+            className="px-3 py-2 text-[13px] text-mut transition-colors hover:text-accent"
+          >
+            Connecteurs
+          </Link>
         </nav>
       </header>
       <main className="mx-auto max-w-[1160px] px-7 py-8">{children}</main>

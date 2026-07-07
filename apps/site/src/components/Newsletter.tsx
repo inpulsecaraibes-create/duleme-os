@@ -4,12 +4,24 @@ import { useState } from "react";
 
 export function Newsletter() {
   const [ok, setOk] = useState(false);
+  const [email, setEmail] = useState("");
+  const [busy, setBusy] = useState(false);
 
   return (
     <form
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
-        // Sprint connecteurs : brancher Brevo (une publication par mois).
+        setBusy(true);
+        try {
+          await fetch("/api/newsletter", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ email }),
+          });
+        } catch {
+          /* dégradable : on remercie quand même */
+        }
+        setBusy(false);
         setOk(true);
       }}
       className="mt-6"
@@ -23,15 +35,18 @@ export function Newsletter() {
           <input
             type="email"
             required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             aria-label="Votre email"
             placeholder="Votre email"
             className="w-full rounded border border-line bg-paper2 p-3 text-[15px] text-ink placeholder:text-mut/70 focus:border-bord focus:outline focus:outline-2 focus:outline-brass"
           />
           <button
             type="submit"
-            className="shrink-0 rounded-md bg-bord px-5 py-3 text-sm font-semibold text-paper transition-colors hover:bg-bord-deep"
+            disabled={busy}
+            className="shrink-0 rounded-md bg-bord px-5 py-3 text-sm font-semibold text-paper transition-colors hover:bg-bord-deep disabled:opacity-60"
           >
-            Recevoir Le Faux Dilemme™
+            {busy ? "Un instant…" : "Recevoir Le Faux Dilemme™"}
           </button>
         </div>
       )}

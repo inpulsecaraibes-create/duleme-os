@@ -12,6 +12,7 @@
   "dependencies": {
     "@duleme/auth": "workspace:*",
     "@duleme/config": "workspace:*",
+    "@duleme/connectors": "workspace:*",
     "@duleme/database": "workspace:*",
     "@duleme/ui": "workspace:*",
     "next": "^14.2.15",

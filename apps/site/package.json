@@ -13,6 +13,7 @@
     "@duleme/config": "workspace:*",
     "@duleme/database": "workspace:*",
     "@duleme/ui": "workspace:*",
+    "@duleme/connectors": "workspace:*",
     "@tailwindcss/typography": "^0.5.15",
     "next": "^14.2.15",
     "react": "^18.3.1",

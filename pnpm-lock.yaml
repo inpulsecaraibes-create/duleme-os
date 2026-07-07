@@ -23,6 +23,9 @@ importers:
       '@duleme/config':
         specifier: workspace:*
         version: link:../../packages/config
+      '@duleme/connectors':
+        specifier: workspace:*
+        version: link:../../packages/connectors
       '@duleme/database':
         specifier: workspace:*
         version: link:../../packages/database
@@ -78,6 +81,9 @@ importers:
       '@duleme/config':
         specifier: workspace:*
         version: link:../../packages/config
+      '@duleme/connectors':
+        specifier: workspace:*
+        version: link:../../packages/connectors
       '@duleme/database':
         specifier: workspace:*
         version: link:../../packages/database
@@ -151,6 +157,15 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.15
         version: 0.5.20(tailwindcss@3.4.19(tsx@4.23.0))
+
+  packages/connectors:
+    devDependencies:
+      '@types/node':
+        specifier: ^20.17.0
+        version: 20.19.43
+      typescript:
+        specifier: ^5.6.3
+        version: 5.9.3
 
   packages/database:
     dependencies:

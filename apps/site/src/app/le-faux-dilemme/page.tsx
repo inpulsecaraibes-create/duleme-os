@@ -1,11 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ButtonLink, Container, Eyebrow, Heading } from "@duleme/ui";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Newsletter } from "@/components/Newsletter";
 import { JsonLd } from "@/components/JsonLd";
 import { blogLd, faqLd } from "@/lib/structured-data";
+import { publishedArticles } from "@/content/faux-dilemme";
 
 export const metadata: Metadata = {
   title: "Le Faux Dilemme™ — Le média des décisions",
@@ -163,6 +165,54 @@ export default function FauxDilemmePage() {
           </Container>
         </section>
 
+        {/* À LA UNE */}
+        {publishedArticles.length > 0 && (
+          <section className="border-t border-line py-16">
+            <Container>
+              <Eyebrow>À la une</Eyebrow>
+              <div className="mt-8 flex flex-col gap-8">
+                {publishedArticles.map((a) => (
+                  <Link
+                    key={a.slug}
+                    href={`/le-faux-dilemme/${a.slug}`}
+                    className="group grid gap-6 rounded-lg border border-line bg-paper2 p-6 transition-colors hover:border-bord sm:grid-cols-[1fr_1.4fr] sm:p-8"
+                  >
+                    <div className="overflow-hidden rounded-lg">
+                      <img
+                        src={a.image}
+                        alt={a.imageAlt}
+                        className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="rounded-full bg-bord px-2.5 py-0.5 text-[11px] font-semibold text-paper">
+                          Publié
+                        </span>
+                        <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-brass">
+                          {a.axe}
+                        </span>
+                      </div>
+                      <h3 className="mt-3 font-serif text-[clamp(22px,2.6vw,30px)] font-semibold leading-snug group-hover:text-accent">
+                        {a.title}
+                      </h3>
+                      <p className="mt-3 text-[14.5px] leading-relaxed text-mut">
+                        {a.excerpt}
+                      </p>
+                      <div className="mt-4 font-sans text-[12px] text-mut">
+                        {a.readingMinutes} min de lecture · {a.publication}
+                      </div>
+                      <span className="mt-4 inline-block border-b border-brass pb-0.5 text-[13px] font-medium text-ink">
+                        Lire l&apos;article →
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </Container>
+          </section>
+        )}
+
         {/* ÉDITIONS */}
         <section id="sommaire" className="border-t border-line py-16">
           <Container>
@@ -172,7 +222,7 @@ export default function FauxDilemmePage() {
                 <Heading className="mt-3">Ce que le média explore.</Heading>
               </div>
               <span className="rounded-full border border-line px-3 py-1 font-sans text-[11px] uppercase tracking-wide text-mut">
-                Premières éditions à paraître
+                Prochaines éditions
               </span>
             </div>
             <div className="mt-10 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">

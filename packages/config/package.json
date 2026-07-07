@@ -5,5 +5,8 @@
   "main": "tailwind-preset.cjs",
   "exports": {
     "./tailwind-preset": "./tailwind-preset.cjs"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.15"
   }
 }

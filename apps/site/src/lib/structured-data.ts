@@ -58,3 +58,23 @@ export function faqLd(items: { q: string; a: string }[]) {
     })),
   };
 }
+
+export function articleLd(a: {
+  slug: string;
+  title: string;
+  metaDescription: string;
+  image: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: a.title,
+    description: a.metaDescription,
+    url: `${SITE_URL}/le-faux-dilemme/${a.slug}`,
+    image: `${SITE_URL}${a.image}`,
+    inLanguage: "fr-FR",
+    author: { "@type": "Person", name: "Téféry" },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    isPartOf: { "@id": `${SITE_URL}/le-faux-dilemme/#blog` },
+  };
+}

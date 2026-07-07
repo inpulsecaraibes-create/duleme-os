@@ -9,6 +9,7 @@ const c = (name) => `rgb(var(${name}) / <alpha-value>)`;
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
+  plugins: [require("@tailwindcss/typography")],
   theme: {
     extend: {
       colors: {

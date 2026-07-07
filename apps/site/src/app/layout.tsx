@@ -63,7 +63,6 @@ export const metadata: Metadata = {
     images: ["/og.jpg"],
   },
   alternates: { canonical: "/" },
-  icons: { icon: "/logo-duleme.png" },
   robots: { index: true, follow: true },
 };
 

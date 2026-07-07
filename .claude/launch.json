@@ -6,6 +6,12 @@
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["--filter", "@duleme/site", "dev"],
       "port": 3000
+    },
+    {
+      "name": "back-office",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@duleme/back-office", "dev"],
+      "port": 3001
     }
   ]
 }

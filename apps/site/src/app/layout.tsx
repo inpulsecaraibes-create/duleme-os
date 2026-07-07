@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Newsreader, Inter } from "next/font/google";
 import "./globals.css";
 import { JsonLd } from "@/components/JsonLd";
-import { organizationLd, websiteLd } from "@/lib/structured-data";
+import { organizationLd, websiteLd, SITE_URL } from "@/lib/structured-data";
 
 const serif = Newsreader({
   subsets: ["latin"],
@@ -21,7 +21,7 @@ const sans = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://duleme.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "DULEME AND CIE — Cabinet de la décision stratégique",
     template: "%s — DULEME AND CIE",

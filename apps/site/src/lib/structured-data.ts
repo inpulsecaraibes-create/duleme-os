@@ -1,6 +1,10 @@
 // Données structurées (Schema.org) — SEO + GEO (compréhension par les IA).
 
-export const SITE_URL = "https://duleme.com";
+// Domaine officiel — pilotable par variable d'environnement Vercel
+// (NEXT_PUBLIC_SITE_URL), sans www, sans slash final.
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+  "https://dulemeandcie.com";
 
 export const organizationLd = {
   "@context": "https://schema.org",

@@ -11,6 +11,10 @@ import { JsonLd } from "@/components/JsonLd";
 import { articleLd } from "@/lib/structured-data";
 import { getArticle, publishedArticles } from "@/content/faux-dilemme";
 
+// Les articles sont connus au build (contenu en fichier TS) : route 100 % statique.
+// Un slug inconnu renvoie 404 plutôt que d'exiger une fonction serverless.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return publishedArticles.map((a) => ({ slug: a.slug }));
 }

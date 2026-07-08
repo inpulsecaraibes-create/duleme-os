@@ -9,6 +9,7 @@ import {
   client,
   message,
   mission,
+  survey,
 } from "@duleme/database";
 import { createClientToken } from "@duleme/auth";
 import { ConfirmSubmit } from "@/components/ConfirmSubmit";
@@ -16,9 +17,16 @@ import { CopyField } from "@/components/CopyField";
 import {
   createMission,
   deleteClient,
+  publishSurveyAsTestimonial,
   replyToClient,
   updateClient,
 } from "../actions";
+
+const SURVEY_LABEL: Record<string, string> = {
+  t0: "Démarrage",
+  m1: "1 mois",
+  m3: "3 mois",
+};
 
 export const dynamic = "force-dynamic";
 
@@ -60,6 +68,12 @@ export default async function ClientDetailPage({
     .from(message)
     .where(eq(message.clientId, c.id))
     .orderBy(asc(message.createdAt));
+
+  const surveys = await getDb()
+    .select()
+    .from(survey)
+    .where(eq(survey.clientId, c.id))
+    .orderBy(asc(survey.dueAt));
 
   const espaceBase = process.env.CLIENT_APP_URL || "http://localhost:3002";
   const espaceUrl = `${espaceBase}/espace/${createClientToken(c.id)}`;
@@ -302,6 +316,87 @@ export default async function ClientDetailPage({
             Envoyer{c.email ? "" : " (⚠ pas d'email client)"}
           </button>
         </form>
+      </div>
+
+      {/* QUESTIONNAIRES DE TÉMOIGNAGE */}
+      <div className="mt-6 rounded-lg border border-line bg-card p-5 shadow-card">
+        <p className="font-serif text-lg font-semibold">
+          Questionnaires de témoignage
+        </p>
+        <p className="mt-1 text-[13px] text-mut">
+          Trois temps (démarrage · 1 mois · 3 mois), créés au démarrage de la
+          première mission. Les réponses avec accord peuvent devenir un
+          témoignage.
+        </p>
+        {surveys.length === 0 ? (
+          <p className="mt-3 text-[13px] text-mut">
+            Aucun questionnaire — ils se créent au démarrage d&apos;une mission.
+          </p>
+        ) : (
+          <div className="mt-4 flex flex-col gap-3">
+            {surveys.map((sv) => {
+              const answered = Boolean(sv.answeredAt);
+              let ans: { q: string; a: string }[] = [];
+              try {
+                ans = sv.answers ? JSON.parse(sv.answers) : [];
+              } catch {
+                ans = [];
+              }
+              return (
+                <div
+                  key={sv.id}
+                  className="rounded-lg border border-line bg-paper2 p-4"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-[13.5px] font-semibold">
+                      {SURVEY_LABEL[sv.phase] ?? sv.phase}
+                    </span>
+                    <span
+                      className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${
+                        answered ? "bg-ok/15 text-ok" : "bg-warn/15 text-warn"
+                      }`}
+                    >
+                      {answered ? "Répondu" : "En attente"}
+                    </span>
+                  </div>
+                  {answered ? (
+                    <div className="mt-2 space-y-2">
+                      {ans.map((x, i) => (
+                        <div key={i}>
+                          <p className="text-[12px] font-medium text-mut">
+                            {x.q}
+                          </p>
+                          <p className="whitespace-pre-wrap text-[13.5px]">
+                            {x.a || "—"}
+                          </p>
+                        </div>
+                      ))}
+                      <p className="text-[12px] text-mut">
+                        Accord de publication : {sv.consentPublish ? "oui" : "non"}
+                        {sv.attribution ? ` · ${sv.attribution}` : ""}
+                      </p>
+                      {sv.consentPublish && (
+                        <form action={publishSurveyAsTestimonial}>
+                          <input type="hidden" name="surveyId" value={sv.id} />
+                          <button
+                            type="submit"
+                            className="mt-1 rounded-md border border-line px-3 py-1.5 text-[12.5px] font-medium text-accent transition-colors hover:border-bord"
+                          >
+                            Publier comme témoignage (brouillon)
+                          </button>
+                        </form>
+                      )}
+                    </div>
+                  ) : (
+                    <p className="mt-1 text-[12.5px] text-mut">
+                      Disponible à partir du {fmtMsg(sv.dueAt)}
+                    </p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

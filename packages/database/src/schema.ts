@@ -140,3 +140,32 @@ export const message = pgTable("message", {
 
 export type Message = typeof message.$inferSelect;
 export type NewMessage = typeof message.$inferInsert;
+
+/**
+ * Survey — questionnaire de témoignage, en 3 temps sur le cycle de vie client :
+ *   t0 (démarrage) · m1 (+1 mois) · m3 (+3 mois).
+ * Capte le « avant » et le « après » pour un témoignage de transformation
+ * authentique. Le questionnaire apparaît dans l'espace client quand `dueAt`
+ * est atteint ; une relance email (Brevo) est envoyée par tâche planifiée.
+ * `answers` stocke [{q, a}] (auto-descriptif). `consentPublish` = accord de
+ * publication anonymisée → peut alimenter la rubrique Témoignages.
+ */
+export const survey = pgTable("survey", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  clientId: uuid("client_id")
+    .notNull()
+    .references(() => client.id, { onDelete: "cascade" }),
+  phase: text("phase").notNull(), // "t0" | "m1" | "m3"
+  dueAt: timestamp("due_at", { withTimezone: true }).notNull(),
+  answeredAt: timestamp("answered_at", { withTimezone: true }),
+  answers: text("answers"), // JSON: [{ q, a }]
+  consentPublish: boolean("consent_publish").notNull().default(false),
+  attribution: text("attribution"),
+  relancedAt: timestamp("relanced_at", { withTimezone: true }),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+});
+
+export type Survey = typeof survey.$inferSelect;
+export type NewSurvey = typeof survey.$inferInsert;

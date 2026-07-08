@@ -1,16 +1,22 @@
 import { notFound } from "next/navigation";
 import { verifyClientToken } from "@duleme/auth";
 import {
+  and,
   asc,
   client,
   desc,
   eq,
   getDb,
   isDbConfigured,
+  isNull,
+  lte,
   message,
   mission,
+  survey,
 } from "@duleme/database";
 import { MessageForm } from "./MessageForm";
+import { submitSurvey } from "./actions";
+import { SURVEY_META, SURVEY_QUESTIONS, isSurveyPhase } from "./surveys";
 
 export const dynamic = "force-dynamic";
 
@@ -65,6 +71,20 @@ export default async function EspacePage({
     .where(eq(message.clientId, clientId))
     .orderBy(asc(message.createdAt));
 
+  const dueSurveys = await getDb()
+    .select()
+    .from(survey)
+    .where(
+      and(
+        eq(survey.clientId, clientId),
+        isNull(survey.answeredAt),
+        lte(survey.dueAt, new Date()),
+      ),
+    )
+    .orderBy(asc(survey.dueAt));
+  const activeSurvey =
+    dueSurveys.find((s) => isSurveyPhase(s.phase)) ?? null;
+
   const requested = missions.flatMap((m) => lines(m.documentsRequested));
   const received = missions.flatMap((m) => lines(m.documentsReceived));
   const dossierUrl = missions.find((m) => m.dossierUrl)?.dossierUrl ?? null;
@@ -88,6 +108,58 @@ export default async function EspacePage({
           Votre espace privé pour suivre notre collaboration.
         </p>
       </header>
+
+      {/* Questionnaire de témoignage (si dû) */}
+      {activeSurvey && isSurveyPhase(activeSurvey.phase) && (
+        <section className="mt-6 rounded-lg border border-brass/40 bg-glow/25 p-6 shadow-card sm:p-7">
+          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-brass">
+            Votre regard
+          </p>
+          <h2 className="mt-1 font-serif text-lg font-semibold text-accent sm:text-xl">
+            {SURVEY_META[activeSurvey.phase].title}
+          </h2>
+          <p className="mt-2 text-[14px] leading-relaxed text-mut">
+            {SURVEY_META[activeSurvey.phase].intro}
+          </p>
+          <form action={submitSurvey} className="mt-5 flex flex-col gap-4">
+            <input type="hidden" name="token" value={params.token} />
+            <input type="hidden" name="surveyId" value={activeSurvey.id} />
+            <input type="hidden" name="phase" value={activeSurvey.phase} />
+            {SURVEY_QUESTIONS[activeSurvey.phase].map((q, i) => (
+              <div key={i}>
+                <label className="block text-[14px] font-medium text-ink">
+                  {q}
+                </label>
+                <textarea
+                  name={`a${i}`}
+                  rows={3}
+                  className="mt-1.5 w-full resize-y rounded border border-line bg-paper2 p-3 text-[14px] text-ink focus:border-bord focus:outline focus:outline-2 focus:outline-brass"
+                />
+              </div>
+            ))}
+            <label className="flex items-start gap-2 text-[13px] text-mut">
+              <input
+                type="checkbox"
+                name="consent"
+                className="mt-0.5 h-4 w-4 accent-bord"
+              />
+              J&apos;autorise DULEME AND CIE à publier mon témoignage, de façon
+              anonymisée.
+            </label>
+            <input
+              name="attribution"
+              placeholder="Comment vous présenter ? (ex. Dirigeante de PME)"
+              className="w-full rounded border border-line bg-paper2 p-2.5 text-[13.5px] text-ink focus:border-bord focus:outline focus:outline-2 focus:outline-brass"
+            />
+            <button
+              type="submit"
+              className="self-start rounded-md bg-bord px-5 py-2.5 text-[13px] font-semibold text-[#f6efe6] transition-colors hover:bg-bord-deep"
+            >
+              Envoyer mes réponses
+            </button>
+          </form>
+        </section>
+      )}
 
       {/* Rendez-vous */}
       <Section title="Mes rendez-vous">

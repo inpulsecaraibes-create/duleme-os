@@ -9,6 +9,8 @@ import {
   getDb,
   message,
   mission,
+  survey,
+  testimonial,
 } from "@duleme/database";
 import { ensureClientTree, isGoogleConfigured, sendEmail } from "@duleme/connectors";
 
@@ -140,6 +142,59 @@ export async function replyToClient(formData: FormData) {
   revalidatePath(`/clients/${clientId}`);
 }
 
+/** Transforme un questionnaire répondu en témoignage (brouillon, non publié). */
+export async function publishSurveyAsTestimonial(formData: FormData) {
+  const surveyId = s(formData, "surveyId");
+  if (!surveyId) return;
+  const [row] = await getDb()
+    .select()
+    .from(survey)
+    .where(eq(survey.id, surveyId))
+    .limit(1);
+  if (!row || !row.answers) return;
+  let answers: { q: string; a: string }[] = [];
+  try {
+    answers = JSON.parse(row.answers);
+  } catch {
+    return;
+  }
+  const filled = answers.filter((x) => x.a);
+  if (filled.length === 0) return;
+  // La « phrase à garder » (dernière réponse) fait un bon titre ; sinon la 1re.
+  const headline = filled[filled.length - 1].a;
+  const body = filled
+    .slice(0, Math.max(1, filled.length - 1))
+    .map((x) => x.a)
+    .join("\n\n");
+  await getDb().insert(testimonial).values({
+    headline,
+    body: body || headline,
+    attribution: row.attribution || undefined,
+    published: false, // brouillon : Téféry relit avant publication
+  });
+  revalidatePath("/temoignages");
+  revalidatePath(`/clients/${row.clientId}`);
+}
+
+/** Crée les 3 questionnaires de témoignage (t0 / +1 mois / +3 mois) une seule fois. */
+async function ensureSurveys(clientId: string) {
+  const existing = await getDb()
+    .select({ id: survey.id })
+    .from(survey)
+    .where(eq(survey.clientId, clientId))
+    .limit(1);
+  if (existing.length) return;
+  const now = Date.now();
+  const DAY = 86_400_000;
+  await getDb()
+    .insert(survey)
+    .values([
+      { clientId, phase: "t0", dueAt: new Date(now) },
+      { clientId, phase: "m1", dueAt: new Date(now + 30 * DAY) },
+      { clientId, phase: "m3", dueAt: new Date(now + 90 * DAY) },
+    ]);
+}
+
 /** Crée une mission rattachée à un client (depuis la fiche client). */
 export async function createMission(formData: FormData) {
   const clientId = s(formData, "clientId");
@@ -151,6 +206,7 @@ export async function createMission(formData: FormData) {
     .set({ type: "client", status: "actif", updatedAt: new Date() })
     .where(eq(client.id, clientId));
   await getDb().insert(mission).values({ clientId, title });
+  await ensureSurveys(clientId);
   revalidatePath(`/clients/${clientId}`);
   revalidatePath("/missions");
 }

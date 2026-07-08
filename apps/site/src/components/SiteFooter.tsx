@@ -2,6 +2,8 @@ import Link from "next/link";
 import { FooterNewsletter } from "./FooterNewsletter";
 
 const CONTACT_EMAIL = "dulemeandcie@hotmail.com";
+const ESPACE_URL =
+  process.env.NEXT_PUBLIC_CLIENT_APP_URL || "https://duleme-client.vercel.app";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -112,6 +114,12 @@ export function SiteFooter() {
             <Link href="/a-propos" className="transition-colors hover:text-paper">
               À propos
             </Link>
+            <a
+              href={ESPACE_URL}
+              className="transition-colors hover:text-paper"
+            >
+              Espace client
+            </a>
             <span>Mentions légales · Confidentialité</span>
           </span>
         </div>

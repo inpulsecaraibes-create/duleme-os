@@ -1,17 +1,22 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
+  asc,
   desc,
   eq,
   getDb,
   isDbConfigured,
   client,
+  message,
   mission,
 } from "@duleme/database";
+import { createClientToken } from "@duleme/auth";
 import { ConfirmSubmit } from "@/components/ConfirmSubmit";
+import { CopyField } from "@/components/CopyField";
 import {
   createMission,
   deleteClient,
+  replyToClient,
   updateClient,
 } from "../actions";
 
@@ -49,6 +54,20 @@ export default async function ClientDetailPage({
     .from(mission)
     .where(eq(mission.clientId, c.id))
     .orderBy(desc(mission.createdAt));
+
+  const thread = await getDb()
+    .select()
+    .from(message)
+    .where(eq(message.clientId, c.id))
+    .orderBy(asc(message.createdAt));
+
+  const espaceBase = process.env.CLIENT_APP_URL || "http://localhost:3002";
+  const espaceUrl = `${espaceBase}/espace/${createClientToken(c.id)}`;
+  const fmtMsg = (d: Date) =>
+    new Intl.DateTimeFormat("fr-FR", {
+      dateStyle: "short",
+      timeStyle: "short",
+    }).format(new Date(d));
 
   return (
     <div>
@@ -220,6 +239,69 @@ export default async function ClientDetailPage({
             )}
           </div>
         </div>
+      </div>
+
+      {/* ACCÈS ESPACE CLIENT */}
+      <div className="mt-6 rounded-lg border border-line bg-card p-5 shadow-card">
+        <p className="font-serif text-lg font-semibold">Espace client</p>
+        <p className="mt-1 text-[13px] text-mut">
+          Lien personnel et privé à transmettre à {c.name.split(" ")[0]}. Il
+          permet d&apos;accéder à ses rendez-vous, documents, Dossier DULEME™ et
+          à la messagerie. Aucun mot de passe.
+        </p>
+        <div className="mt-3">
+          <CopyField value={espaceUrl} />
+        </div>
+      </div>
+
+      {/* MESSAGERIE */}
+      <div className="mt-6 rounded-lg border border-line bg-card p-5 shadow-card">
+        <p className="font-serif text-lg font-semibold">Messagerie</p>
+        {thread.length > 0 ? (
+          <div className="mt-4 flex flex-col gap-3">
+            {thread.map((m) => {
+              const cabinet = m.sender === "cabinet";
+              return (
+                <div
+                  key={m.id}
+                  className={`max-w-[85%] rounded-lg border px-4 py-2.5 ${
+                    cabinet
+                      ? "self-end border-bord/30 bg-bord/5"
+                      : "self-start border-line bg-paper2"
+                  }`}
+                >
+                  <p className="text-[10.5px] font-semibold uppercase tracking-wide text-mut">
+                    {cabinet ? "Téféry" : c.name.split(" ")[0]}
+                  </p>
+                  <p className="mt-1 whitespace-pre-wrap text-[13.5px] leading-relaxed text-ink">
+                    {m.body}
+                  </p>
+                  <p className="mt-1 text-[11px] text-mut">{fmtMsg(m.createdAt)}</p>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <p className="mt-3 text-[13px] text-mut">
+            Aucun message pour l&apos;instant.
+          </p>
+        )}
+        <form action={replyToClient} className="mt-4">
+          <input type="hidden" name="clientId" value={c.id} />
+          <textarea
+            name="body"
+            required
+            rows={3}
+            placeholder={`Répondre à ${c.name.split(" ")[0]}…`}
+            className="w-full resize-y rounded border border-line bg-paper2 p-3 text-[14px] text-ink focus:border-bord focus:outline focus:outline-2 focus:outline-brass"
+          />
+          <button
+            type="submit"
+            className="mt-3 rounded-md bg-bord px-4 py-2 text-[13px] font-semibold text-paper transition-colors hover:bg-bord-deep"
+          >
+            Envoyer{c.email ? "" : " (⚠ pas d'email client)"}
+          </button>
+        </form>
       </div>
     </div>
   );

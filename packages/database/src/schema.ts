@@ -117,3 +117,26 @@ export const mission = pgTable("mission", {
 
 export type Mission = typeof mission.$inferSelect;
 export type NewMission = typeof mission.$inferInsert;
+
+/**
+ * Message — conversation simple entre le client et le cabinet.
+ * Le client écrit depuis l'espace client → Téféry est notifiée par email
+ * (Brevo) → elle répond depuis le back-office → le client est notifié.
+ * Toute la conversation reste archivée ici. Pas de messagerie complexe.
+ */
+export const message = pgTable("message", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  clientId: uuid("client_id")
+    .notNull()
+    .references(() => client.id, { onDelete: "cascade" }),
+  // "client" | "cabinet"
+  sender: text("sender").notNull(),
+  body: text("body").notNull(),
+  readAt: timestamp("read_at", { withTimezone: true }),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+});
+
+export type Message = typeof message.$inferSelect;
+export type NewMessage = typeof message.$inferInsert;

@@ -2,8 +2,15 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { client, contactRequest, eq, getDb, mission } from "@duleme/database";
-import { ensureClientTree, isGoogleConfigured } from "@duleme/connectors";
+import {
+  client,
+  contactRequest,
+  eq,
+  getDb,
+  message,
+  mission,
+} from "@duleme/database";
+import { ensureClientTree, isGoogleConfigured, sendEmail } from "@duleme/connectors";
 
 function s(fd: FormData, k: string): string {
   return String(fd.get(k) ?? "").trim();
@@ -100,6 +107,37 @@ export async function deleteClient(formData: FormData) {
   await getDb().delete(client).where(eq(client.id, id));
   revalidatePath("/clients");
   redirect("/clients");
+}
+
+/** Téféry répond à un client → message archivé + notification email au client. */
+export async function replyToClient(formData: FormData) {
+  const clientId = s(formData, "clientId");
+  const body = s(formData, "body");
+  if (!clientId || !body) return;
+  await getDb().insert(message).values({ clientId, sender: "cabinet", body });
+  try {
+    const [c] = await getDb()
+      .select({ name: client.name, email: client.email })
+      .from(client)
+      .where(eq(client.id, clientId))
+      .limit(1);
+    if (c?.email) {
+      await sendEmail({
+        to: [{ email: c.email, name: c.name }],
+        subject: "Vous avez un nouveau message de DULEME AND CIE",
+        htmlContent: `
+          <p>Bonjour ${c.name.split(" ")[0]},</p>
+          <p>Vous avez reçu un message dans votre espace DULEME :</p>
+          <blockquote>${body.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/\n/g, "<br/>")}</blockquote>
+          <p>Retrouvez notre conversation dans votre espace personnel.</p>
+          <p>— Téféry, DULEME AND CIE</p>
+        `,
+      });
+    }
+  } catch (e) {
+    console.error("[reply] notification client échouée (ignorée)", e);
+  }
+  revalidatePath(`/clients/${clientId}`);
 }
 
 /** Crée une mission rattachée à un client (depuis la fiche client). */

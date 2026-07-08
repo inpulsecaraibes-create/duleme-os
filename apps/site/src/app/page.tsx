@@ -128,17 +128,10 @@ export default async function Home() {
           style={{ background: "radial-gradient(circle, rgb(var(--glow)), transparent 68%)" }}
           aria-hidden
         />
-        <div className="relative mx-auto max-w-[720px] px-7">
+        <div className="relative mx-auto max-w-[760px] px-7">
           <div className="mb-6 h-0.5 w-11 bg-brass" />
           <p className="text-xs font-light uppercase tracking-[0.22em] text-accent">
-            Parlons-en
-          </p>
-          <h2 className="mt-3 max-w-[20ch] font-serif text-[26px] font-semibold leading-tight sm:text-[40px]">
-            Et si votre prochaine décision vous rendait un peu de liberté&nbsp;?
-          </h2>
-          <p className="mt-3.5 font-serif text-lg italic text-accent sm:text-xl">
-            Une bonne décision, ce n&apos;est pas seulement un problème résolu.
-            C&apos;est de l&apos;élan retrouvé.
+            Commençons
           </p>
           <Contact />
         </div>

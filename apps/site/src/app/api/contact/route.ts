@@ -11,11 +11,15 @@ async function notifyNewRequest(d: {
   email: string;
   callbackRequested: boolean;
 }) {
-  const to = process.env.NOTIFY_EMAIL;
-  if (!to) return;
+  // NOTIFY_EMAIL peut contenir plusieurs adresses séparées par des virgules.
+  const recipients = (process.env.NOTIFY_EMAIL || "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (recipients.length === 0) return;
   try {
     await sendEmail({
-      to: [{ email: to, name: "DULEME AND CIE" }],
+      to: recipients.map((email) => ({ email, name: "DULEME AND CIE" })),
       subject: `Nouvelle demande — ${d.name || d.email || "prospect"}`,
       replyTo: d.email ? { email: d.email, name: d.name || undefined } : undefined,
       htmlContent: `

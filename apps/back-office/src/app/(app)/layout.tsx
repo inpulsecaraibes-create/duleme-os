@@ -22,7 +22,24 @@ export default function AppLayout({
               Back Office
             </span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <a
+              href="https://dulemeandcie.com"
+              target="_blank"
+              rel="noreferrer"
+              className="hidden text-[12.5px] text-mut transition-colors hover:text-accent sm:inline"
+            >
+              Site ↗
+            </a>
+            <a
+              href="https://duleme-client.vercel.app"
+              target="_blank"
+              rel="noreferrer"
+              className="hidden text-[12.5px] text-mut transition-colors hover:text-accent sm:inline"
+            >
+              Espace client ↗
+            </a>
+            <span className="hidden h-4 w-px bg-line sm:inline" />
             <span className="hidden text-[13px] text-mut sm:inline">
               {session.sub}
             </span>

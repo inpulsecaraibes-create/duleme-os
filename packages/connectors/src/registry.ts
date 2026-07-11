@@ -65,8 +65,9 @@ export function getConnectors(): ConnectorInfo[] {
       name: "Sinao",
       role: "Devis, factures et paiements (aucune facturation interne).",
       configured: isSinaoConfigured(),
-      envVars: ["SINAO_API_KEY", "SINAO_API_BASE (optionnel)"],
-      setup: "Régénérer la clé API dans Sinao (l'ancienne a été exposée) puis la coller ici.",
+      envVars: ["SINAO_API_KEY", "SINAO_APP_ID"],
+      setup:
+        "Clé API Sinao + identifiant de l'entreprise (appId, visible dans l'URL de l'app Sinao : /apps/<appId>/…).",
     },
     {
       key: "brevo",

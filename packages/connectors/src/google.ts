@@ -200,6 +200,60 @@ export async function createEventWithMeet(input: {
   return { eventId: res.id, htmlLink: res.htmlLink, meetLink: res.hangoutLink ?? null };
 }
 
+/**
+ * Dépose un document dans le dossier « 01 Documents client » du client
+ * (crée l'arborescence si besoin). Renvoie l'id et le lien du fichier.
+ */
+export async function uploadClientDocument(
+  clientName: string,
+  filename: string,
+  mimeType: string,
+  bytes: Uint8Array,
+): Promise<{ id: string; webViewLink?: string } | null> {
+  if (!isGoogleConfigured()) return null;
+  const token = await getAccessToken();
+  const rootName = process.env.GOOGLE_DRIVE_ROOT || "DULEME";
+  const root = await ensureFolder(token, rootName);
+  const clients = await ensureFolder(token, "Clients", root);
+  const clientFolder = await ensureFolder(token, clientName, clients);
+  const docs = await ensureFolder(token, CLIENT_SUBFOLDERS[0], clientFolder); // "01 Documents client"
+
+  // 1) métadonnées
+  const meta = await httpJson<{ id: string }>("google", `${DRIVE}/files?fields=id`, {
+    method: "POST",
+    headers: await driveAuth(token),
+    body: JSON.stringify({ name: filename, parents: [docs] }),
+  });
+  // 2) contenu (upload média)
+  const up = await fetch(
+    `https://www.googleapis.com/upload/drive/v3/files/${meta.id}?uploadType=media&fields=id,webViewLink`,
+    {
+      method: "PATCH",
+      headers: { authorization: `Bearer ${token}`, "content-type": mimeType || "application/octet-stream" },
+      // fetch accepte un Uint8Array à l'exécution ; cast pour le typage.
+      body: bytes as unknown as BodyInit,
+    },
+  );
+  const j = (await up.json()) as { id: string; webViewLink?: string };
+  return { id: j.id, webViewLink: j.webViewLink };
+}
+
+/** Liste les documents déjà transmis (dossier « 01 Documents client »). */
+export async function listClientDocuments(clientName: string): Promise<DriveFile[]> {
+  if (!isGoogleConfigured()) return [];
+  const token = await getAccessToken();
+  const rootName = process.env.GOOGLE_DRIVE_ROOT || "DULEME";
+  const root = await findFolder(token, rootName);
+  if (!root) return [];
+  const clients = await findFolder(token, "Clients", root);
+  if (!clients) return [];
+  const clientFolder = await findFolder(token, clientName, clients);
+  if (!clientFolder) return [];
+  const docs = await findFolder(token, CLIENT_SUBFOLDERS[0], clientFolder);
+  if (!docs) return [];
+  return listFiles(docs);
+}
+
 export async function googleHealthCheck(): Promise<{ ok: boolean; detail: string }> {
   if (!isGoogleConfigured()) return { ok: false, detail: "OAuth non configuré" };
   try {

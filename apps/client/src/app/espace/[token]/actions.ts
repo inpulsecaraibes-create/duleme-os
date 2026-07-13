@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { verifyClientToken } from "@duleme/auth";
 import { and, client, eq, getDb, message, survey } from "@duleme/database";
-import { sendEmail } from "@duleme/connectors";
+import { sendEmail, uploadClientDocument, isGoogleConfigured } from "@duleme/connectors";
 import { SURVEY_QUESTIONS, isSurveyPhase } from "./surveys";
 
 export async function sendClientMessage(formData: FormData) {
@@ -46,6 +46,49 @@ export async function sendClientMessage(formData: FormData) {
 
 function escapeHtml(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+/** Dépôt d'un document par le client → Google Drive + notification. */
+export async function uploadDocument(formData: FormData): Promise<void> {
+  const token = String(formData.get("token") ?? "");
+  const clientId = verifyClientToken(token);
+  if (!clientId || !isGoogleConfigured()) return;
+  const file = formData.get("file");
+  if (!(file instanceof File) || file.size === 0) return;
+
+  const [c] = await getDb()
+    .select({ name: client.name })
+    .from(client)
+    .where(eq(client.id, clientId))
+    .limit(1);
+  if (!c) return;
+
+  const bytes = new Uint8Array(await file.arrayBuffer());
+  const res = await uploadClientDocument(
+    c.name,
+    file.name,
+    file.type || "application/octet-stream",
+    bytes,
+  );
+  if (!res) return;
+
+  // Notifie Téféry (dégradable).
+  try {
+    const recipients = (process.env.NOTIFY_EMAIL || "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+    if (recipients.length) {
+      await sendEmail({
+        to: recipients.map((email) => ({ email, name: "DULEME AND CIE" })),
+        subject: `Document transmis — ${c.name}`,
+        htmlContent: `<p><strong>${escapeHtml(c.name)}</strong> a déposé un document : <strong>${escapeHtml(file.name)}</strong>.</p>${res.webViewLink ? `<p><a href="${res.webViewLink}">Ouvrir dans Drive</a></p>` : ""}`,
+      });
+    }
+  } catch (e) {
+    console.error("[upload] notification échouée (ignorée)", e);
+  }
+  revalidatePath(`/espace/${token}`);
 }
 
 export async function submitSurvey(formData: FormData) {

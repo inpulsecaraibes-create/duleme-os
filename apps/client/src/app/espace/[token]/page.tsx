@@ -14,7 +14,9 @@ import {
   mission,
   survey,
 } from "@duleme/database";
+import { isGoogleConfigured, listClientDocuments } from "@duleme/connectors";
 import { MessageForm } from "./MessageForm";
+import { DocumentUpload } from "./DocumentUpload";
 import { submitSurvey } from "./actions";
 import { SURVEY_META, SURVEY_QUESTIONS, isSurveyPhase } from "./surveys";
 
@@ -88,6 +90,10 @@ export default async function EspacePage({
   const requested = missions.flatMap((m) => lines(m.documentsRequested));
   const received = missions.flatMap((m) => lines(m.documentsReceived));
   const dossierUrl = missions.find((m) => m.dossierUrl)?.dossierUrl ?? null;
+
+  const driveDocs = isGoogleConfigured()
+    ? await listClientDocuments(c.name).catch(() => [])
+    : [];
 
   const fmt = (d: Date) =>
     new Intl.DateTimeFormat("fr-FR", {
@@ -172,57 +178,86 @@ export default async function EspacePage({
 
       {/* Documents */}
       <Section title="Mes documents">
-        {requested.length === 0 && received.length === 0 ? (
-          <p className="text-[14px] text-mut">
-            Aucun document demandé pour l&apos;instant. Vous serez prévenu·e
-            lorsque nous en aurons besoin.
-          </p>
-        ) : (
-          <div className="grid gap-6 sm:grid-cols-2">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-wide text-mut">
-                À transmettre
-              </p>
-              <ul className="mt-2 space-y-2">
-                {requested.length === 0 && (
-                  <li className="text-[13px] text-mut">— Rien pour l&apos;instant</li>
-                )}
-                {requested.map((d, i) => (
-                  <li
-                    key={i}
-                    className="flex items-center gap-2 rounded border border-line bg-paper2 px-3 py-2 text-[13.5px]"
-                  >
-                    <span className="h-1.5 w-1.5 rounded-full bg-warn" />
-                    {d}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-wide text-mut">
-                Transmis
-              </p>
-              <ul className="mt-2 space-y-2">
-                {received.length === 0 && (
-                  <li className="text-[13px] text-mut">— Rien pour l&apos;instant</li>
-                )}
-                {received.map((d, i) => (
-                  <li
-                    key={i}
-                    className="flex items-center gap-2 rounded border border-line bg-paper2 px-3 py-2 text-[13.5px]"
-                  >
-                    <span className="h-1.5 w-1.5 rounded-full bg-ok" />
-                    {d}
-                  </li>
-                ))}
-              </ul>
-            </div>
+        <div className="grid gap-6 sm:grid-cols-2">
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-wide text-mut">
+              À transmettre
+            </p>
+            <ul className="mt-2 space-y-2">
+              {requested.length === 0 && (
+                <li className="text-[13px] text-mut">— Rien pour l&apos;instant</li>
+              )}
+              {requested.map((d, i) => (
+                <li
+                  key={i}
+                  className="flex items-center gap-2 rounded border border-line bg-paper2 px-3 py-2 text-[13.5px]"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-warn" />
+                  {d}
+                </li>
+              ))}
+            </ul>
           </div>
-        )}
-        <p className="mt-4 text-[12.5px] italic text-mut">
-          Le dépôt de documents en ligne arrive prochainement. En attendant, vous
-          pouvez nous les transmettre par email.
-        </p>
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-wide text-mut">
+              Transmis
+            </p>
+            <ul className="mt-2 space-y-2">
+              {received.length === 0 && driveDocs.length === 0 && (
+                <li className="text-[13px] text-mut">— Rien pour l&apos;instant</li>
+              )}
+              {driveDocs.map((f) => (
+                <li
+                  key={f.id}
+                  className="flex items-center gap-2 rounded border border-line bg-paper2 px-3 py-2 text-[13.5px]"
+                >
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-ok" />
+                  {f.webViewLink ? (
+                    <a
+                      href={f.webViewLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="truncate text-accent underline-offset-2 hover:underline"
+                    >
+                      {f.name}
+                    </a>
+                  ) : (
+                    <span className="truncate">{f.name}</span>
+                  )}
+                </li>
+              ))}
+              {received.map((d, i) => (
+                <li
+                  key={`r${i}`}
+                  className="flex items-center gap-2 rounded border border-line bg-paper2 px-3 py-2 text-[13.5px]"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-ok" />
+                  {d}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Dépôt de document */}
+        <div className="mt-5 border-t border-line pt-4">
+          <p className="text-[13.5px] font-medium text-ink">
+            Déposer un document
+          </p>
+          {isGoogleConfigured() ? (
+            <>
+              <p className="mt-0.5 text-[12.5px] text-mut">
+                Il est enregistré en sécurité et nous sommes prévenus aussitôt.
+              </p>
+              <DocumentUpload token={params.token} />
+            </>
+          ) : (
+            <p className="mt-1 text-[12.5px] italic text-mut">
+              Le dépôt en ligne sera bientôt disponible. En attendant, transmettez
+              vos documents par email.
+            </p>
+          )}
+        </div>
       </Section>
 
       {/* Dossier DULEME */}

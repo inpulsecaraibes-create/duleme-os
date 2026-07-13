@@ -12,6 +12,10 @@ const nextConfig = {
     "@duleme/auth",
     "@duleme/connectors",
   ],
+  experimental: {
+    // Permet le dépôt de documents (PDF, etc.) jusqu'à 15 Mo.
+    serverActions: { bodySizeLimit: "15mb" },
+  },
 };
 
 export default nextConfig;

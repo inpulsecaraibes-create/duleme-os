@@ -40,6 +40,8 @@ export {
   ensureClientTree,
   listFiles,
   createEventWithMeet,
+  uploadClientDocument,
+  listClientDocuments,
   googleHealthCheck,
   CLIENT_SUBFOLDERS,
   type DriveFile,

@@ -36,6 +36,13 @@
       "when": 1783514843481,
       "tag": "0004_silly_mister_fear",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1783808890914,
+      "tag": "0005_simple_thena",
+      "breakpoints": true
     }
   ]
 }

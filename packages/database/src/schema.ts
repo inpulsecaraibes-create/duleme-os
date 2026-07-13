@@ -169,3 +169,30 @@ export const survey = pgTable("survey", {
 
 export type Survey = typeof survey.$inferSelect;
 export type NewSurvey = typeof survey.$inferInsert;
+
+/**
+ * DULEME Content OS — pièce de contenu (projet séparé, réutilise la même base).
+ * Une idée génère plusieurs pièces (article, LinkedIn, Instagram, newsletter).
+ * Cycle : draft → validated → scheduled → published.
+ * Publication automatique sur le SITE uniquement, à cadence fixe (2/mois).
+ */
+export const contentPiece = pgTable("content_piece", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  theme: text("theme").notNull(), // l'idée de départ
+  channel: text("channel").notNull().default("site"), // site|linkedin|instagram|newsletter
+  title: text("title"),
+  body: text("body"),
+  visualBrief: text("visual_brief"), // brief pour le visuel (Canva)
+  status: text("status").notNull().default("draft"), // draft|validated|scheduled|published
+  scheduledFor: timestamp("scheduled_for", { withTimezone: true }),
+  publishedAt: timestamp("published_at", { withTimezone: true }),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+});
+
+export type ContentPiece = typeof contentPiece.$inferSelect;
+export type NewContentPiece = typeof contentPiece.$inferInsert;

@@ -19,6 +19,13 @@ export {
 } from "./fireflies";
 
 export {
+  isAiConfigured,
+  aiProviderLabel,
+  generateText,
+  aiHealthCheck,
+} from "./ai";
+
+export {
   isSinaoConfigured,
   sinaoRequest,
   listInvoices,

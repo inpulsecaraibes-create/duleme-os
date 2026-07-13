@@ -39,6 +39,14 @@ export default function AppLayout({
             >
               Espace client ↗
             </a>
+            <a
+              href="https://duleme-content-os.vercel.app"
+              target="_blank"
+              rel="noreferrer"
+              className="hidden text-[12.5px] text-mut transition-colors hover:text-accent sm:inline"
+            >
+              Content OS ↗
+            </a>
             <span className="hidden h-4 w-px bg-line sm:inline" />
             <span className="hidden text-[13px] text-mut sm:inline">
               {session.sub}

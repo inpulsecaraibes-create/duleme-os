@@ -13,9 +13,12 @@ export function Reserver({
   configured: boolean;
 }) {
   const [busy, setBusy] = useState(false);
-  const [confirmed, setConfirmed] = useState<{ when: string; meet: string | null } | null>(
-    null,
-  );
+  const [confirmed, setConfirmed] = useState<{
+    when: string;
+    startISO: string;
+    email: string;
+  } | null>(null);
+  const [subscribed, setSubscribed] = useState(false);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
 
@@ -43,7 +46,8 @@ export function Reserver({
           dateStyle: "full",
           timeStyle: "short",
         }).format(new Date(res.startISO)),
-        meet: res.meetLink,
+        startISO: res.startISO,
+        email: res.email,
       });
     } finally {
       setBusy(false);
@@ -51,26 +55,72 @@ export function Reserver({
   }
 
   if (confirmed) {
+    const start = new Date(confirmed.startISO);
+    const end = new Date(start.getTime() + 20 * 60000);
+    const g = (d: Date) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+    const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+      "Échange DISCERNER™ (20 min) — Téféry",
+    )}&dates=${g(start)}/${g(end)}&details=${encodeURIComponent(
+      "Votre échange de 20 minutes avec Téféry Duleme.",
+    )}`;
     return (
       <div className="mx-auto max-w-[560px] px-6 py-24 text-center">
         <div className="mx-auto h-0.5 w-11 bg-brass" />
-        <h1 className="mt-6 font-serif text-[28px] font-semibold text-accent">
+        <h1 className="mt-6 font-serif text-[30px] font-semibold text-accent">
           C'est confirmé.
         </h1>
         <p className="mt-4 text-[16px] leading-relaxed text-ink/80">
-          Votre échange de 20 minutes avec Téféry est réservé pour le{" "}
-          <strong>{confirmed.when}</strong>. Vous recevez l'invitation par email et
-          dans votre agenda.
+          Votre échange est réservé pour le <strong>{confirmed.when}</strong>. Vous
+          recevrez dans quelques instants un e-mail de confirmation contenant toutes
+          les informations nécessaires.
         </p>
-        {confirmed.meet && (
+        <div className="mt-5">
           <a
-            href={confirmed.meet}
-            className="mt-6 inline-block rounded-md border border-line px-5 py-2.5 text-[13px] font-medium text-accent hover:border-bord"
+            href={gcalUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-block rounded-md border border-line px-5 py-2.5 text-[13px] font-medium text-accent transition-colors hover:border-bord"
           >
-            Lien Google Meet ↗
+            Ajouter à mon agenda
           </a>
-        )}
-        <p className="mt-8 font-serif text-lg italic text-mut">À très vite. — Téféry</p>
+        </div>
+
+        <p className="mt-10 text-[15px] text-mut">
+          D'ici là, vous pouvez poursuivre la réflexion en découvrant les ressources
+          publiées par Téféry.
+        </p>
+        <div className="mt-5 flex flex-col items-center gap-3">
+          {subscribed ? (
+            <p className="text-[14px] text-ok">
+              Merci — vous recevrez les réflexions de Téféry.
+            </p>
+          ) : (
+            <button
+              type="button"
+              onClick={async () => {
+                try {
+                  await fetch("/api/newsletter", {
+                    method: "POST",
+                    headers: { "content-type": "application/json" },
+                    body: JSON.stringify({ email: confirmed.email }),
+                  });
+                } catch {
+                  /* dégradable */
+                }
+                setSubscribed(true);
+              }}
+              className="rounded-md bg-bord px-6 py-3 text-[14px] font-semibold text-[#f6efe6] transition-colors hover:bg-bord-deep"
+            >
+              Recevoir les réflexions de Téféry
+            </button>
+          )}
+          <a
+            href="https://dulemeandcie.com"
+            className="text-[13.5px] text-mut underline-offset-2 transition-colors hover:text-accent"
+          >
+            Découvrir DULEME AND CIE →
+          </a>
+        </div>
       </div>
     );
   }

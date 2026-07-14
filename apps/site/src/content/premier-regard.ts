@@ -5,7 +5,7 @@
 export const PR_HEADER =
   "Ce document ne contient pas des réponses. Il rassemble les questions qui méritent désormais votre attention.";
 
-export const INTRO_TITLE = "Bienvenue.";
+export const INTRO_TITLE = "Faisons un pas de côté.";
 export const INTRO_TEXT =
   "La plupart des dirigeants que je rencontre s'épuisent à régler les urgences de la semaine en pensant s'attaquer à la source de leurs blocages. Pourtant, un problème de trésorerie, un agenda saturé ou une équipe sous tension ne sont presque jamais des fatalités : ce sont des signaux d'alarme.\n\nPrenons trois minutes pour faire un pas de côté et poser un regard lucide, sans fard, sur votre activité. Pas de grands discours théoriques, juste un échange sincère pour identifier là où votre énergie se perd.";
 
@@ -27,10 +27,10 @@ export const REMUNERATION_RANGES = [
 export const END_EYEBROW = "Vos 3 pistes de réflexion";
 export const END_INTRO =
   "Au vu de vos réponses, votre situation met en lumière trois angles sur lesquels il vaut la peine de vous pencher.";
-export const CTA_HEADLINE = "On regarde cela ensemble ?";
+export const CTA_HEADLINE = "Et maintenant ?";
 export const CTA_TEXT =
-  "Je ne crois pas aux conseils automatisés par des robots. Vos réponses montrent que vous êtes à un carrefour important pour votre trajectoire de dirigeant. Posons-nous 20 minutes, de vive voix : nous ferons le tri entre vos symptômes et votre vrai problème racine, et nous verrons si nous sommes alignés pour travailler ensemble.";
-export const CTA_BUTTON = "Réserver mon échange de 20 minutes avec Téféry";
+  "Le Premier Regard™ a mis en lumière plusieurs points qui méritent votre attention. À ce stade, il serait prématuré d'en tirer des conclusions. C'est précisément l'objet de DISCERNER™ : vérifier si le problème que vous cherchez aujourd'hui à résoudre est bien celui qui mérite votre énergie, votre temps et vos décisions.";
+export const CTA_BUTTON = "Échanger avec Téféry";
 
 export const OPEN_QUESTION =
   "Si nous étions assis ensemble et que vous pouviez me confier votre plus grande frustration actuelle : quel est le vrai problème qui vous empêche de dormir, et qu'est-ce qu'il vous coûte chaque jour, en clarté ou en sérénité ?";
@@ -38,13 +38,31 @@ export const OPEN_QUESTION =
 export const CAPTURE_MESSAGE =
   "Merci pour votre confiance et pour la sincérité de vos réponses. Votre situation ne sera pas traitée par un outil automatisé. Pour poursuivre cet échange et recevoir votre Premier Regard™, indiquez-moi simplement vos coordonnées.";
 
-export const METIERS = [
-  "Consultant / Prestataire de services / Profession libérale",
-  "Artisan / Créateur",
-  "Commerçant / Restaurateur",
-  "Artiste / Auteur",
-  "Dirigeant de TPE / PME",
-  "Autre",
+export const METIERS: { label: string; desc: string }[] = [
+  {
+    label: "Consultant / Prestataire de services / Profession libérale",
+    desc: "Je vends principalement mon expertise, mon conseil ou mon temps.",
+  },
+  {
+    label: "Artisan / Créateur",
+    desc: "Je fabrique, transforme ou réalise un produit grâce à un savoir-faire technique ou manuel.",
+  },
+  {
+    label: "Commerçant / Restaurateur",
+    desc: "Je vends des produits via un point de vente physique, une boutique ou un site e-commerce.",
+  },
+  {
+    label: "Artiste / Auteur",
+    desc: "Mon activité repose sur la création artistique, culturelle ou intellectuelle.",
+  },
+  {
+    label: "Dirigeant de TPE / PME",
+    desc: "Je dirige une entreprise avec une équipe structurée et j'en pilote le développement.",
+  },
+  {
+    label: "Autre profil",
+    desc: "Précisez votre activité en quelques mots.",
+  },
 ];
 
 export type PRQuestion = { q: string; choices: string[] };

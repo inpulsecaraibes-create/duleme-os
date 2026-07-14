@@ -90,7 +90,7 @@ export async function bookSlot(
   startISO: string,
   fallbackEmail?: string,
   fallbackName?: string,
-): Promise<{ ok: boolean; meetLink: string | null; startISO: string }> {
+): Promise<{ ok: boolean; meetLink: string | null; startISO: string; email: string }> {
   const start = new Date(startISO);
   const end = new Date(start.getTime() + SLOT_MIN * 60000);
 
@@ -171,5 +171,5 @@ export async function bookSlot(
     }
   }
 
-  return { ok: true, meetLink, startISO: start.toISOString() };
+  return { ok: true, meetLink, startISO: start.toISOString(), email };
 }

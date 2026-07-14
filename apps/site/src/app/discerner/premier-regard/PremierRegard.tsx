@@ -44,6 +44,8 @@ const inputCls =
 export function PremierRegard({ bookingBase }: { bookingBase: string }) {
   const [step, setStep] = useState(0);
   const [metier, setMetier] = useState("");
+  const [autreSelected, setAutreSelected] = useState(false);
+  const [autreText, setAutreText] = useState("");
   const [situationId, setSituationId] = useState("");
   const [q, setQ] = useState<string[]>(["", "", ""]);
   const [revenue, setRevenue] = useState("");
@@ -153,14 +155,60 @@ export function PremierRegard({ bookingBase }: { bookingBase: string }) {
               Pour mieux situer votre réalité, dans quelle catégorie vous
               reconnaissez-vous le plus ?
             </h2>
-            <ChoiceList
-              value={metier}
-              choices={METIERS}
-              onPick={(c) => {
-                setMetier(c);
-                go(2);
-              }}
-            />
+            <div className="mt-8 flex flex-col gap-2.5">
+              {METIERS.map((m) => {
+                const isAutre = m.label.startsWith("Autre");
+                const selected = isAutre ? autreSelected : metier === m.label;
+                return (
+                  <button
+                    key={m.label}
+                    type="button"
+                    onClick={() => {
+                      if (isAutre) {
+                        setAutreSelected(true);
+                        setMetier("");
+                      } else {
+                        setAutreSelected(false);
+                        setMetier(m.label);
+                        go(2);
+                      }
+                    }}
+                    className={`rounded-lg border px-5 py-4 text-left transition-all hover:-translate-y-0.5 hover:border-bord hover:shadow-soft ${
+                      selected ? "border-bord bg-bord/5" : "border-line bg-paper"
+                    }`}
+                  >
+                    <span className="block text-[15px] font-medium text-ink">
+                      {m.label}
+                    </span>
+                    <span className="mt-0.5 block text-[13px] italic text-mut">
+                      {m.desc}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+            {autreSelected && (
+              <div className="mt-4">
+                <input
+                  value={autreText}
+                  onChange={(e) => setAutreText(e.target.value)}
+                  autoFocus
+                  placeholder="Votre activité, en quelques mots…"
+                  className={inputCls}
+                />
+                <button
+                  type="button"
+                  disabled={autreText.trim().length < 2}
+                  onClick={() => {
+                    setMetier(`Autre : ${autreText.trim()}`);
+                    go(2);
+                  }}
+                  className="mt-3 rounded-md bg-bord px-6 py-3 text-sm font-semibold text-[#f6efe6] transition-colors hover:bg-bord-deep disabled:opacity-50"
+                >
+                  Continuer
+                </button>
+              </div>
+            )}
           </Reveal>
         )}
 
@@ -325,7 +373,7 @@ export function PremierRegard({ bookingBase }: { bookingBase: string }) {
               onClick={submit}
               className="mt-6 rounded-md bg-bord px-7 py-3.5 text-sm font-semibold text-[#f6efe6] transition-colors hover:bg-bord-deep disabled:opacity-50"
             >
-              {busy ? "Un instant…" : "Découvrir mes 3 pistes"}
+              {busy ? "Un instant…" : "Découvrir mon Premier Regard™"}
             </button>
             <p className="mt-3 text-[12px] text-mut">
               Confidentiel. Aucune prospection — un seul regard : le mien.

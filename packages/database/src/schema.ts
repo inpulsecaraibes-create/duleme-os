@@ -218,6 +218,7 @@ export const premierRegard = pgTable("premier_regard", {
   // Réservation (Google Agenda)
   bookedAt: timestamp("booked_at", { withTimezone: true }),
   meetLink: text("meet_link"),
+  reminders: text("reminders").default(""), // rappels envoyés/programmés : "j7","scheduled"
   // Coordonnées
   firstName: text("first_name"),
   lastName: text("last_name"),

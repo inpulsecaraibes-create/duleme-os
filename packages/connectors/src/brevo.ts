@@ -35,6 +35,7 @@ export type EmailInput = {
   htmlContent: string;
   replyTo?: { email: string; name?: string };
   sender?: { name: string; email: string };
+  scheduledAt?: string; // ISO ; programmation (max 72h) — rappels
 };
 
 /** Envoie un email transactionnel. No-op si Brevo n'est pas configuré. */
@@ -57,6 +58,7 @@ export async function sendEmail(input: EmailInput): Promise<{ sent: boolean; mes
       subject: input.subject,
       htmlContent: input.htmlContent,
       replyTo: input.replyTo,
+      scheduledAt: input.scheduledAt,
     }),
   });
   return { sent: true, messageId: res.messageId };

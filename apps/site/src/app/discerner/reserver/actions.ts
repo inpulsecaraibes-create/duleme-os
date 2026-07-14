@@ -7,6 +7,7 @@ import {
   listBusy,
   sendEmail,
 } from "@duleme/connectors";
+import { scheduleVeilleAnd1h } from "@/lib/reminders";
 
 const SLOT_MIN = 20;
 const STEP_MIN = 35; // 20 min d'échange + 15 min de battement
@@ -19,7 +20,7 @@ const HORIZON_DAYS = 21;
 const WINDOWS: Record<number, [number, number][]> = {
   1: [[9, 12]], // lundi 9h-12h
   2: [[13, 15]], // mardi 13h-15h
-  4: [[9, 15]], // jeudi 9h-15h
+  4: [[4, 5], [9, 15]], // jeudi 4h-5h et 9h-15h
   5: [[14, 15]], // vendredi 14h-15h
 };
 
@@ -135,11 +136,25 @@ export async function bookSlot(
     }
   }
 
+  // Rappels : programme veille + 1h si le RDV est dans les 72h (sinon le cron s'en charge).
+  const hoursUntil = (start.getTime() - Date.now()) / 3600000;
+  let remindersTag = "";
+  if (email && hoursUntil <= 72) {
+    await scheduleVeilleAnd1h(email, name.split(" ")[0], start, meetLink);
+    remindersTag = "scheduled";
+  }
+
   if (leadId && isDbConfigured()) {
     try {
       await getDb()
         .update(premierRegard)
-        .set({ bookedAt: start, meetLink, status: "rdv", updatedAt: new Date() })
+        .set({
+          bookedAt: start,
+          meetLink,
+          status: "rdv",
+          reminders: remindersTag,
+          updatedAt: new Date(),
+        })
         .where(eq(premierRegard.id, leadId));
     } catch {
       /* ignore */

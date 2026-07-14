@@ -30,6 +30,7 @@ function defaultSender(): { name: string; email: string } {
 
 export type EmailInput = {
   to: { email: string; name?: string }[];
+  cc?: { email: string; name?: string }[];
   subject: string;
   htmlContent: string;
   replyTo?: { email: string; name?: string };
@@ -52,6 +53,7 @@ export async function sendEmail(input: EmailInput): Promise<{ sent: boolean; mes
     body: JSON.stringify({
       sender: input.sender ?? defaultSender(),
       to: input.to,
+      cc: input.cc,
       subject: input.subject,
       htmlContent: input.htmlContent,
       replyTo: input.replyTo,

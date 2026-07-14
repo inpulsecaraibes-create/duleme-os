@@ -196,3 +196,44 @@ export const contentPiece = pgTable("content_piece", {
 
 export type ContentPiece = typeof contentPiece.$inferSelect;
 export type NewContentPiece = typeof contentPiece.$inferInsert;
+
+/**
+ * Premier Regard™ — expérience de discernement (entrée du produit DISCERNER™).
+ * Ne produit jamais de score : des verbatims (mot pour mot) + des hypothèses.
+ * Alimente l'email personnalisé et le CRM. `fit` est interne (jamais montré).
+ */
+export const premierRegard = pgTable("premier_regard", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  metier: text("metier"), // catégorie d'activité (contexte)
+  situation: text("situation").notNull(), // l'une des 8 situations
+  // Les 3 réponses à choix multiple (libellé choisi)
+  q1: text("q1"),
+  q2: text("q2"),
+  q3: text("q3"),
+  // Santé du système (tranches)
+  revenueRange: text("revenue_range"),
+  remunerationRange: text("remuneration_range"),
+  // La question ouverte — verbatim, mot pour mot
+  openText: text("open_text"),
+  // Réservation (Google Agenda)
+  bookedAt: timestamp("booked_at", { withTimezone: true }),
+  meetLink: text("meet_link"),
+  // Coordonnées
+  firstName: text("first_name"),
+  lastName: text("last_name"),
+  email: text("email"),
+  // Email personnalisé envoyé (« recevoir l'objet »)
+  emailBody: text("email_body"),
+  emailSent: boolean("email_sent").notNull().default(false),
+  // Suivi commercial (CRM)
+  status: text("status").notNull().default("nouveau"), // nouveau|contacte|rdv|converti|clos
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+});
+
+export type PremierRegard = typeof premierRegard.$inferSelect;
+export type NewPremierRegard = typeof premierRegard.$inferInsert;

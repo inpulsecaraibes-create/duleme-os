@@ -254,6 +254,24 @@ export async function listClientDocuments(clientName: string): Promise<DriveFile
   return listFiles(docs);
 }
 
+/** Créneaux occupés de l'agenda entre deux dates (pour proposer les créneaux libres). */
+export async function listBusy(
+  startISO: string,
+  endISO: string,
+): Promise<{ start: string; end: string }[]> {
+  if (!isGoogleConfigured()) return [];
+  const token = await getAccessToken();
+  const calId = process.env.GOOGLE_CALENDAR_ID || "primary";
+  const res = await httpJson<{
+    calendars: Record<string, { busy: { start: string; end: string }[] }>;
+  }>("google", `${CALENDAR}/freeBusy`, {
+    method: "POST",
+    headers: { authorization: `Bearer ${token}`, "content-type": "application/json" },
+    body: JSON.stringify({ timeMin: startISO, timeMax: endISO, items: [{ id: calId }] }),
+  });
+  return res.calendars?.[calId]?.busy ?? [];
+}
+
 export async function googleHealthCheck(): Promise<{ ok: boolean; detail: string }> {
   if (!isGoogleConfigured()) return { ok: false, detail: "OAuth non configuré" };
   try {

@@ -43,6 +43,13 @@
       "when": 1783808890914,
       "tag": "0005_simple_thena",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1783993114338,
+      "tag": "0006_bitter_felicia_hardy",
+      "breakpoints": true
     }
   ]
 }

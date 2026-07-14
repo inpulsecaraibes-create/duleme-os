@@ -17,6 +17,9 @@ export function SiteHeader() {
           <img src="/logo-duleme.png" alt="DULEME AND CIE" className="h-9 w-auto" />
         </Link>
         <nav className="flex items-center gap-6 text-[13px] text-mut">
+          <Link href="/discerner" className="hidden font-medium text-accent hover:text-bord sm:inline">
+            DISCERNER™
+          </Link>
           <Link href="/le-faux-dilemme" className="hidden hover:text-accent sm:inline">
             Le Faux Dilemme™
           </Link>

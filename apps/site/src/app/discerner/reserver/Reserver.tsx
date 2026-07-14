@@ -134,8 +134,9 @@ export function Reserver({
         Choisissez votre créneau
       </h1>
       <p className="mt-3 text-[15px] text-mut">
-        20 minutes, de vive voix, avec Téféry. Nous ferons le tri entre vos symptômes
-        et votre vrai problème racine.
+        Un premier échange confidentiel, de vive voix, avec Téféry. Nous verrons
+        ensemble si le sujet qui vous préoccupe mérite d'être approfondi — et si
+        DISCERNER™ est la bonne étape pour vous.
       </p>
 
       {!leadId && (

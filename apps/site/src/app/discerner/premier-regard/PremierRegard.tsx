@@ -393,16 +393,19 @@ export function PremierRegard({ bookingBase }: { bookingBase: string }) {
             <p className="mt-3 text-[15px] text-mut">{END_INTRO}</p>
 
             <div className="mt-7 flex flex-col gap-4">
-              {(["structure", "posture", "risque"] as const).map((k, i) => (
+              {situation.pistes.map((p, i) => (
                 <div
-                  key={k}
+                  key={p.titre}
                   className="rounded-lg border border-line bg-card p-5 shadow-soft"
                 >
                   <p className="font-serif text-lg font-semibold text-accent">
-                    {i + 1}. {k[0].toUpperCase() + k.slice(1)}
+                    Hypothèse n°{i + 1} — {p.titre}
                   </p>
-                  <p className="mt-1.5 text-[14.5px] leading-relaxed text-ink/85">
-                    {situation.pistes[k]}
+                  <p className="mt-2 text-[14.5px] leading-relaxed text-ink/85">
+                    {p.hypothese}
+                  </p>
+                  <p className="mt-3 border-t border-line pt-3 text-[14.5px] font-medium italic text-accent">
+                    {p.question}
                   </p>
                 </div>
               ))}

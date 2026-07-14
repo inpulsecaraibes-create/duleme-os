@@ -58,28 +58,21 @@ export async function submitPremierRegard(
 
   const bookingUrl = `${SITE}/discerner/reserver${id ? `?id=${id}` : ""}`;
   const prenom = input.firstName || "";
-  const pistesHtml = s
-    ? `<ul>
-        <li><strong>Structure.</strong> ${esc(s.pistes.structure)}</li>
-        <li><strong>Posture.</strong> ${esc(s.pistes.posture)}</li>
-        <li><strong>Risque.</strong> ${esc(s.pistes.risque)}</li>
-      </ul>`
-    : "";
 
-  // 1) Email au dirigeant
+  // 1) Email au dirigeant — ne donne PAS de pistes : il ouvre une réflexion.
   if (input.email) {
     try {
       await sendEmail({
         to: [{ email: input.email, name: `${input.firstName} ${input.lastName}`.trim() }],
-        subject: "Vos réponses au diagnostic + votre session de 20 minutes",
+        subject: "Votre Premier Regard™ — et si c'était un symptôme ?",
         htmlContent: `
           <p>Bonjour ${esc(prenom)},</p>
-          <p>Merci d'avoir pris ces quelques minutes pour poser votre situation et vos frustrations dans mon espace de discernement.</p>
-          <p>Voici les trois pistes de réflexion qui se sont dégagées de vos réponses :</p>
-          ${pistesHtml}
-          <p>Vous avez le nez dans le guidon, et c'est normal. C'est précisément pour cela qu'un regard extérieur, froid et bienveillant, change la donne.</p>
-          <p>Pour aller plus loin, je vous invite à réserver une session de diagnostic de 20 minutes directement avec moi :</p>
-          <p><a href="${bookingUrl}" style="display:inline-block;background:#5a1e2d;color:#f6efe6;padding:12px 20px;border-radius:6px;text-decoration:none;font-weight:600">Réserver mes 20 minutes avec Téféry</a></p>
+          <p>Merci d'avoir pris ces quelques minutes pour poser votre situation et vos mots dans mon espace de discernement.</p>
+          <p>Au regard de vos réponses, il est possible que le problème que vous cherchez aujourd'hui à résoudre ne soit qu'un symptôme.</p>
+          <p>Vous avez le nez dans le guidon, et c'est normal. C'est souvent lorsque l'on est pleinement engagé dans son entreprise que certaines évidences deviennent les plus difficiles à voir.</p>
+          <p>Un regard extérieur, lucide et indépendant, permet parfois de distinguer ce qui relevait jusqu'ici du symptôme… et ce qui mérite réellement d'être travaillé.</p>
+          <p>Si vous souhaitez poursuivre cette réflexion, je vous propose un premier échange confidentiel de 20 minutes. Nous vérifierons ensemble si la décision qui vous préoccupe aujourd'hui est bien celle qui mérite votre attention.</p>
+          <p><a href="${bookingUrl}" style="display:inline-block;background:#5a1e2d;color:#f6efe6;padding:12px 20px;border-radius:6px;text-decoration:none;font-weight:600">Réserver mon échange de 20 minutes</a></p>
           <p>Prenez soin de votre trajectoire,<br/>Téféry Duleme<br/><em>Cabinet DULEME AND CIE</em></p>
         `,
       });

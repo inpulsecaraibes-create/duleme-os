@@ -24,12 +24,12 @@ export const REMUNERATION_RANGES = [
 ];
 
 // Écran de fin
-export const END_EYEBROW = "Vos 3 pistes de réflexion";
+export const END_EYEBROW = "Vos hypothèses de réflexion";
 export const END_INTRO =
-  "Au vu de vos réponses, votre situation met en lumière trois angles sur lesquels il vaut la peine de vous pencher.";
+  "Au regard de vos réponses, trois hypothèses attirent mon attention. Ce ne sont pas des conclusions — mais des angles qu'il vaut la peine d'explorer.";
 export const CTA_HEADLINE = "Et maintenant ?";
 export const CTA_TEXT =
-  "Le Premier Regard™ a mis en lumière plusieurs points qui méritent votre attention. À ce stade, il serait prématuré d'en tirer des conclusions. C'est précisément l'objet de DISCERNER™ : vérifier si le problème que vous cherchez aujourd'hui à résoudre est bien celui qui mérite votre énergie, votre temps et vos décisions.";
+  "Le Premier Regard™ ne donne pas de réponses : il fait émerger de meilleures questions. Si vous souhaitez poursuivre cette réflexion, je vous propose un premier échange confidentiel de 20 minutes. Nous vérifierons ensemble si la décision qui vous préoccupe aujourd'hui est bien celle qui mérite votre attention — et si DISCERNER™ est la bonne étape pour vous.";
 export const CTA_BUTTON = "Échanger avec Téféry";
 
 export const OPEN_QUESTION =
@@ -66,13 +66,14 @@ export const METIERS: { label: string; desc: string }[] = [
 ];
 
 export type PRQuestion = { q: string; choices: string[] };
+export type Piste = { titre: string; hypothese: string; question: string };
 export type Situation = {
   id: string;
   label: string;
   hint: string;
   histoire: string;
   questions: [PRQuestion, PRQuestion, PRQuestion];
-  pistes: { structure: string; posture: string; risque: string };
+  pistes: [Piste, Piste, Piste];
 };
 
 export const SITUATIONS: Situation[] = [
@@ -101,14 +102,29 @@ export const SITUATIONS: Situation[] = [
         choices: ["plus de chiffre", "plus de liberté", "plus d'impact", "vous ne savez plus vraiment"],
       },
     ],
-    pistes: {
-      structure:
-        "Une organisation qui tenait à votre échelle actuelle ne tiendra pas à la suivante. La croissance n'attend pas que le système soit prêt : elle expose l'endroit exact où il ne l'est pas. Où, chez vous, tout repose encore sur une seule personne ou une seule habitude ?",
-      posture:
-        "Grandir demande souvent de cesser de faire ce qui vous a fait réussir. On a bâti par le contrôle ; il faut apprendre à bâtir par la confiance. Quelle part de votre réussite d'aujourd'hui vous empêche de passer à l'échelle ?",
-      risque:
-        "Une croissance mal posée ne se paie pas tout de suite, mais plus tard : en marge érodée, en équipe épuisée, en dirigeant prisonnier d'une machine plus grosse et pas plus libre. Et si la vraie question n'était pas la vitesse de votre croissance, mais sa direction ?",
-    },
+    pistes: [
+      {
+        titre: "La structure",
+        hypothese:
+          "Au regard de vos réponses, il est possible que ce qui vous freine tienne moins à un manque de moyens qu'à une organisation encore construite pour votre échelle actuelle. C'est une hypothèse, pas une conclusion.",
+        question:
+          "Où, dans votre entreprise, tout repose-t-il encore sur une seule personne ou une seule habitude ?",
+      },
+      {
+        titre: "Votre posture",
+        hypothese:
+          "Il est possible que grandir vous demande surtout de cesser de faire ce qui vous a fait réussir jusqu'ici.",
+        question:
+          "Quelle part de votre réussite d'aujourd'hui pourrait vous empêcher de passer à l'échelle ?",
+      },
+      {
+        titre: "Le véritable risque",
+        hypothese:
+          "Ce qui semble urgent — accélérer — n'est peut-être pas le plus important. Une croissance mal posée se paie plus tard.",
+        question:
+          "Si vous ne changiez rien pendant six mois, votre croissance vous rendrait-elle plus libre, ou plus prisonnier ?",
+      },
+    ],
   },
   {
     id: "recruter",
@@ -140,14 +156,29 @@ export const SITUATIONS: Situation[] = [
         choices: ["vos décisions", "vos chiffres", "votre vision", "rien, au fond"],
       },
     ],
-    pistes: {
-      structure:
-        "Un recrutement ne crée pas un rôle : il révèle si le rôle existait vraiment. Beaucoup de « mauvais recrutements » sont de bons profils posés sur un poste jamais défini. Le rôle que vous voulez pourvoir est-il écrit, ou seulement ressenti ?",
-      posture:
-        "Chercher « la » personne-solution, c'est parfois refuser de trancher soi-même. Déléguer une tâche soulage ; déléguer une décision engage. Qu'attendez-vous d'elle que vous pourriez, en réalité, décider vous-même ?",
-      risque:
-        "S'entourer pour ne pas décider crée une dépendance plus coûteuse que le vide qu'elle comble : le jour où la personne part, le problème revient intact. De qui votre entreprise dépend-elle aujourd'hui plus que de vous ?",
-    },
+    pistes: [
+      {
+        titre: "La structure",
+        hypothese:
+          "Au regard de vos réponses, il est possible que le sujet qui vous préoccupe soit moins lié aux personnes qu'à la manière dont votre entreprise est organisée. C'est une hypothèse, pas une conclusion.",
+        question:
+          "Si vous ne recrutiez personne demain, quel problème resterait exactement le même ?",
+      },
+      {
+        titre: "Votre posture",
+        hypothese:
+          "Il est possible que la difficulté ne soit pas uniquement dans la personne à trouver, mais dans une décision que vous préférez confier plutôt que trancher.",
+        question:
+          "Qu'attendez-vous de cette personne que vous pourriez, en réalité, décider vous-même ?",
+      },
+      {
+        titre: "Le véritable risque",
+        hypothese:
+          "Ce qui semble urgent — renforcer l'équipe — cache peut-être un risque plus grand : créer une dépendance de plus.",
+        question:
+          "Si vous ne changiez rien pendant six mois, de qui votre entreprise dépendrait-elle encore plus qu'aujourd'hui ?",
+      },
+    ],
   },
   {
     id: "temps",
@@ -174,14 +205,29 @@ export const SITUATIONS: Situation[] = [
         choices: ["souffler", "penser", "développer", "vivre"],
       },
     ],
-    pistes: {
-      structure:
-        "Quand tout remonte à vous, ce n'est pas un problème d'emploi du temps, mais de droit de décider. Vos équipes ont-elles le droit de se tromper ? Si non, vous trancherez tout — et vous manquerez toujours de temps.",
-      posture:
-        "On confond souvent sa valeur ajoutée avec son volume d'effort. Être indispensable rassure ; cela enferme aussi. Qu'est-ce que vous continuez de porter parce que vous seul savez le faire — et non parce que vous seul devez le faire ?",
-      risque:
-        "À ce rythme, votre prochaine décision importante ne sera pas prise dans la clarté, mais dans la fatigue. Le manque de temps ne casse pas l'entreprise d'un coup : il abîme la qualité de chaque décision. Laquelle avez-vous déjà prise, épuisé, sans y penser vraiment ?",
-    },
+    pistes: [
+      {
+        titre: "La structure",
+        hypothese:
+          "Il est possible que ce que vous vivez ne soit pas un problème d'emploi du temps, mais de droit de décider : tout remonte à vous. C'est une hypothèse, pas une conclusion.",
+        question:
+          "Vos équipes ont-elles le droit de se tromper — ou devez-vous tout valider vous-même ?",
+      },
+      {
+        titre: "Votre posture",
+        hypothese:
+          "Il est possible que vous confondiez votre valeur avec votre volume d'effort, et que rester indispensable vous rassure autant que cela vous enferme.",
+        question:
+          "Qu'est-ce que vous continuez de porter parce que vous seul savez le faire — et non parce que vous seul devez le faire ?",
+      },
+      {
+        titre: "Le véritable risque",
+        hypothese:
+          "Ce qui semble urgent occupe tout ; mais le vrai risque est ailleurs : la qualité de vos décisions s'abîme dans la fatigue.",
+        question:
+          "Si rien ne changeait pendant six mois, quelle décision importante finiriez-vous par prendre, épuisé, sans y penser vraiment ?",
+      },
+    ],
   },
   {
     id: "decider-ensemble",
@@ -208,14 +254,28 @@ export const SITUATIONS: Situation[] = [
         choices: ["l'avenir", "l'équité", "la confiance", "vous préférez ne pas"],
       },
     ],
-    pistes: {
-      structure:
-        "Décider à plusieurs sans règle du jeu, c'est rejouer chaque décision depuis le début. Qui décide quoi, sur quels sujets, en dernier ressort ? Tant que ce n'est pas posé, chaque arbitrage devient un rapport de force.",
-      posture:
-        "Un désaccord se traite ; un non-dit s'infecte. Ce que vous taisez pour « préserver » la relation est souvent ce qui la ronge. Quelle conversation repoussez-vous, et depuis combien de temps ?",
-      risque:
-        "Les entreprises à plusieurs meurent rarement du marché. Elles meurent d'un conflit qu'on a laissé se déguiser en problème d'organisation. Le vrai sujet, entre vous, est-il encore réparable — ou déjà seulement évité ?",
-    },
+    pistes: [
+      {
+        titre: "La structure",
+        hypothese:
+          "Il est possible que ce qui bloque ne soit pas le désaccord, mais l'absence de règle du jeu : qui décide quoi, en dernier ressort. C'est une hypothèse, pas une conclusion.",
+        question:
+          "Sur les décisions qui comptent, savez-vous précisément qui tranche ?",
+      },
+      {
+        titre: "Votre posture",
+        hypothese:
+          "Il est possible que le vrai sujet ne soit pas sur la table : un non-dit se traite bien plus difficilement qu'un désaccord.",
+        question: "Quelle conversation repoussez-vous, et depuis combien de temps ?",
+      },
+      {
+        titre: "Le véritable risque",
+        hypothese:
+          "Ce qui semble être un problème d'organisation cache parfois un conflit qu'on préfère déguiser.",
+        question:
+          "Si rien ne changeait pendant six mois, ce qui vous sépare serait-il encore réparable, ou seulement évité ?",
+      },
+    ],
   },
   {
     id: "financer",
@@ -237,14 +297,28 @@ export const SITUATIONS: Situation[] = [
         choices: ["changer de modèle", "changer d'échelle", "changer de rôle", "vous y pensez sans oser"],
       },
     ],
-    pistes: {
-      structure:
-        "Un financement pose de l'argent sur un système ; il n'en corrige pas la logique. Si la marge fuit ou si le modèle ne tient pas, l'argent ne fait qu'agrandir la fuite. Qu'est-ce que votre trésorerie dit de votre modèle, que vous préférez ne pas regarder ?",
-      posture:
-        "Chercher de l'argent est parfois plus confortable que trancher. On s'active, on pitche, on relance — pour ne pas décider. Le financement est-il votre projet, ou votre manière d'éviter une décision ?",
-      risque:
-        "De l'argent injecté sur une mauvaise question accélère l'erreur au lieu de la corriger. On ne rembourse pas seulement une dette : on rembourse une décision qu'on n'a pas prise à temps. Financez-vous un avenir, ou un report ?",
-    },
+    pistes: [
+      {
+        titre: "La structure",
+        hypothese:
+          "Il est possible que l'argent ne soit pas le problème, mais la conséquence : un financement pose de l'argent sur un système, il n'en corrige pas la logique. C'est une hypothèse, pas une conclusion.",
+        question:
+          "Qu'est-ce que votre trésorerie dit de votre modèle, que vous préférez ne pas regarder ?",
+      },
+      {
+        titre: "Votre posture",
+        hypothese:
+          "Il est possible que chercher un financement soit, en partie, une manière de ne pas trancher une décision plus difficile.",
+        question: "Le financement est-il votre projet — ou votre façon d'éviter une décision ?",
+      },
+      {
+        titre: "Le véritable risque",
+        hypothese:
+          "Ce qui semble urgent — trouver l'argent — peut accélérer une erreur au lieu de la corriger.",
+        question:
+          "Si rien ne changeait pendant six mois, financeriez-vous un avenir, ou un report ?",
+      },
+    ],
   },
   {
     id: "transformer",
@@ -271,14 +345,29 @@ export const SITUATIONS: Situation[] = [
         choices: ["gagner du temps", "perdre le contrôle", "former quelqu'un", "une chose que vous remettez toujours"],
       },
     ],
-    pistes: {
-      structure:
-        "Un process ne tient que s'il repose sur une décision claire : qui décide quoi. Sans cela, chaque règle se contourne — à commencer par vous. Vos process décrivent-ils une organisation réelle, ou une organisation espérée ?",
-      posture:
-        "Déléguer n'est pas un problème d'outil, c'est une décision sur soi : accepter que ce soit fait autrement que par vous. Qu'est-ce que vous refusez de lâcher — non parce que c'est risqué, mais parce que c'est à vous ?",
-      risque:
-        "Une entreprise qui se « structure » sans que son dirigeant change de posture finit plus lourde, pas plus libre : le désordre revient, mieux habillé. Cherchez-vous à structurer votre entreprise, ou à éviter de changer votre place dedans ?",
-    },
+    pistes: [
+      {
+        titre: "La structure",
+        hypothese:
+          "Il est possible que ce que vous appelez « manque de structure » soit d'abord un manque de décisions claires : un process ne tient que s'il repose sur un « qui décide quoi ». C'est une hypothèse, pas une conclusion.",
+        question:
+          "Vos process décrivent-ils une organisation réelle, ou une organisation espérée ?",
+      },
+      {
+        titre: "Votre posture",
+        hypothese:
+          "Il est possible que déléguer ne soit pas un problème d'outil, mais une décision sur vous-même : accepter que ce soit fait autrement que par vous.",
+        question:
+          "Qu'est-ce que vous refusez de lâcher — non parce que c'est risqué, mais parce que c'est à vous ?",
+      },
+      {
+        titre: "Le véritable risque",
+        hypothese:
+          "Ce qui semble structurant peut, sans changement de posture, rendre l'entreprise plus lourde et pas plus libre.",
+        question:
+          "Cherchez-vous à structurer votre entreprise, ou à éviter de changer votre place dedans ?",
+      },
+    ],
   },
   {
     id: "nouveau-chapitre",
@@ -315,14 +404,28 @@ export const SITUATIONS: Situation[] = [
         ],
       },
     ],
-    pistes: {
-      structure:
-        "Un nouveau chapitre s'appuie sur ce qui tient déjà. Une entreprise qui dépend entièrement de son dirigeant ne se transmet pas, ne se diversifie pas sereinement, ne s'acquiert pas sans risque. Ce que vous voulez ouvrir repose-t-il sur des fondations qui vous survivraient ?",
-      posture:
-        "Ouvrir un chapitre, c'est accepter d'en fermer un — et de renoncer à qui l'on était dedans. Beaucoup de pivots échouent parce que le dirigeant change de projet sans changer de posture. Qu'est-ce que ce nouveau chapitre vous demande de laisser derrière vous ?",
-      risque:
-        "Une décision de transmission, de pivot ou d'acquisition prise dans la lassitude engage des années. Le prix d'un mauvais chapitre ne se voit pas à l'ouverture, mais à la fin. Ouvrez-vous une direction, ou fuyez-vous la précédente ?",
-    },
+    pistes: [
+      {
+        titre: "La structure",
+        hypothese:
+          "Il est possible que ce nouveau chapitre s'appuie sur des fondations encore trop dépendantes de vous. C'est une hypothèse, pas une conclusion.",
+        question:
+          "Ce que vous voulez ouvrir reposerait-il sur des bases qui vous survivraient ?",
+      },
+      {
+        titre: "Votre posture",
+        hypothese:
+          "Il est possible que ce chapitre vous demande surtout de renoncer à qui vous étiez dans le précédent.",
+        question: "Qu'est-ce que ce nouveau chapitre vous demande de laisser derrière vous ?",
+      },
+      {
+        titre: "Le véritable risque",
+        hypothese:
+          "Ce qui semble une opportunité peut, prise dans la lassitude, n'être qu'une fuite déguisée.",
+        question:
+          "Si rien ne changeait pendant six mois, ouvririez-vous une direction — ou fuiriez-vous la précédente ?",
+      },
+    ],
   },
   {
     id: "ne-sais-pas",
@@ -349,14 +452,29 @@ export const SITUATIONS: Situation[] = [
         choices: ["souffler", "y voir clair", "parler à quelqu'un qui comprend", "qu'on vous aide à trancher"],
       },
     ],
-    pistes: {
-      structure:
-        "Quand tout semble prioritaire, c'est souvent qu'aucune décision de fond n'a été prise depuis longtemps. Le désordre n'est pas la cause : il en est la conséquence. Et si une seule décision, tranchée, faisait retomber la moitié du reste ?",
-      posture:
-        "Ne pas savoir par où commencer n'est pas une faiblesse : c'est souvent le moment le plus lucide, celui où l'on cesse de faire semblant de tout tenir. Qu'est-ce que vous portez seul et que vous n'avez jamais dit à voix haute ?",
-      risque:
-        "Attendre que « ça se calme » est déjà une décision : celle de laisser la fatigue décider à votre place. Le trop-plein ne se vide pas tout seul. Par quoi, aujourd'hui, accepteriez-vous de commencer ?",
-    },
+    pistes: [
+      {
+        titre: "La structure",
+        hypothese:
+          "Il est possible que le trop-plein ne soit pas la cause, mais la conséquence : aucune décision de fond n'a été tranchée depuis longtemps. C'est une hypothèse, pas une conclusion.",
+        question:
+          "Et si une seule décision, prise pour de bon, faisait retomber la moitié du reste ?",
+      },
+      {
+        titre: "Votre posture",
+        hypothese:
+          "Il est possible que ne pas savoir par où commencer soit, en réalité, le moment le plus lucide : celui où l'on cesse de faire semblant de tout tenir.",
+        question:
+          "Qu'est-ce que vous portez seul et que vous n'avez jamais dit à voix haute ?",
+      },
+      {
+        titre: "Le véritable risque",
+        hypothese:
+          "Ce qui ressemble à « attendre que ça se calme » est déjà une décision : laisser la fatigue décider à votre place.",
+        question:
+          "Si rien ne changeait pendant six mois, qu'est-ce qui vous coûterait le plus cher ?",
+      },
+    ],
   },
 ];
 

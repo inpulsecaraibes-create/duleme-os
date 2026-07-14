@@ -188,6 +188,16 @@ export async function createEventWithMeet(input: {
         start: { dateTime: input.startISO },
         end: { dateTime: input.endISO },
         attendees: input.attendees?.map((email) => ({ email })),
+        // Rappels : 1 semaine avant, la veille, 1 heure avant.
+        reminders: {
+          useDefault: false,
+          overrides: [
+            { method: "email", minutes: 7 * 24 * 60 },
+            { method: "email", minutes: 24 * 60 },
+            { method: "email", minutes: 60 },
+            { method: "popup", minutes: 60 },
+          ],
+        },
         conferenceData: {
           createRequest: {
             requestId: `duleme-${input.startISO}`,
@@ -254,22 +264,34 @@ export async function listClientDocuments(clientName: string): Promise<DriveFile
   return listFiles(docs);
 }
 
-/** Créneaux occupés de l'agenda entre deux dates (pour proposer les créneaux libres). */
+/** Créneaux occupés (fusionnés) sur un ou plusieurs agendas, entre deux dates. */
 export async function listBusy(
   startISO: string,
   endISO: string,
+  calendarIds?: string[],
 ): Promise<{ start: string; end: string }[]> {
   if (!isGoogleConfigured()) return [];
   const token = await getAccessToken();
-  const calId = process.env.GOOGLE_CALENDAR_ID || "primary";
+  const ids =
+    calendarIds && calendarIds.length
+      ? calendarIds
+      : [process.env.GOOGLE_CALENDAR_ID || "primary"];
   const res = await httpJson<{
-    calendars: Record<string, { busy: { start: string; end: string }[] }>;
+    calendars: Record<string, { busy?: { start: string; end: string }[] }>;
   }>("google", `${CALENDAR}/freeBusy`, {
     method: "POST",
     headers: { authorization: `Bearer ${token}`, "content-type": "application/json" },
-    body: JSON.stringify({ timeMin: startISO, timeMax: endISO, items: [{ id: calId }] }),
+    body: JSON.stringify({
+      timeMin: startISO,
+      timeMax: endISO,
+      items: ids.map((id) => ({ id })),
+    }),
   });
-  return res.calendars?.[calId]?.busy ?? [];
+  const out: { start: string; end: string }[] = [];
+  for (const id of ids) {
+    for (const b of res.calendars?.[id]?.busy ?? []) out.push(b);
+  }
+  return out;
 }
 
 export async function googleHealthCheck(): Promise<{ ok: boolean; detail: string }> {

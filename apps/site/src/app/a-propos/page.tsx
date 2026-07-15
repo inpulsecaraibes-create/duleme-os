@@ -59,7 +59,7 @@ export default function AProposPage() {
               </div>
               <div className="relative overflow-hidden rounded-lg border border-line shadow-lift">
                 <img
-                  src="/photos/portrait-72.webp"
+                  src="/photos/tefery-warm.webp"
                   alt="Téféry, fondatrice de DULEME AND CIE"
                   className="aspect-[4/5] w-full object-cover"
                 />
@@ -126,8 +126,8 @@ export default function AProposPage() {
               </div>
               <div className="overflow-hidden rounded-lg border border-line shadow-card">
                 <img
-                  src="/photos/portrait-3.webp"
-                  alt="Téféry au travail, un café à la main"
+                  src="/photos/tefery-reflexion.webp"
+                  alt="Téféry en pleine réflexion"
                   className="aspect-[4/5] w-full object-cover"
                 />
               </div>
@@ -166,7 +166,7 @@ export default function AProposPage() {
             <div className="grid items-center gap-10 md:grid-cols-[0.85fr_1.15fr]">
               <div className="overflow-hidden rounded-lg border border-line shadow-lift">
                 <img
-                  src="/photos/portrait-80.webp"
+                  src="/photos/tefery-bordeaux.webp"
                   alt="Téféry, fondatrice de DULEME AND CIE"
                   className="aspect-[4/5] w-full object-cover"
                 />

@@ -78,9 +78,9 @@ export default async function Home() {
           </div>
           <div className="relative overflow-hidden rounded-lg border border-line shadow-lift">
             <img
-              src="/photos/photo-5.webp"
-              alt="Téféry, fondatrice de DULEME AND CIE, en pleine réflexion"
-              className="aspect-[5/6] w-full object-cover"
+              src="/photos/tefery-noir.webp"
+              alt="Téféry, fondatrice de DULEME AND CIE"
+              className="aspect-[5/6] w-full object-cover object-top"
             />
           </div>
         </div>

@@ -170,9 +170,9 @@ export default async function DiscernerPage() {
         <div className="mx-auto grid max-w-[1000px] grid-cols-1 items-center gap-10 px-7 md:grid-cols-[0.9fr_1.1fr]">
           <div className="overflow-hidden rounded-lg border border-line shadow-lift">
             <img
-              src="/tefery.jpg"
+              src="/photos/tefery-bordeaux.webp"
               alt="Téféry, fondatrice de DULEME AND CIE"
-              className="aspect-[4/5] w-full object-cover"
+              className="aspect-[4/5] w-full object-cover object-top"
             />
           </div>
           <div>

@@ -121,8 +121,8 @@ export default function FauxDilemmePage() {
               </div>
               <div className="relative overflow-hidden rounded-lg border border-line shadow-lift">
                 <img
-                  src="/photos/photo-3.webp"
-                  alt="Téféry en échange avec un dirigeant"
+                  src="/photos/tefery-media.webp"
+                  alt="Téféry, fondatrice de DULEME AND CIE"
                   className="aspect-[4/5] w-full object-cover"
                 />
               </div>

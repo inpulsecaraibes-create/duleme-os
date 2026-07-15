@@ -8,9 +8,9 @@ import { SiteFooter } from "@/components/SiteFooter";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "DISCERNER™ — Résolvez-vous le bon problème ?",
+  title: "DISCERNER™ — Sécurisez vos décisions qui engagent votre entreprise",
   description:
-    "DISCERNER™ aide les dirigeants à identifier le véritable problème qui freine leur entreprise — avant d'investir du temps et de l'argent dans la mauvaise solution.",
+    "Cabinet de décision stratégique pour dirigeants de PME. DISCERNER™ vérifie que vous travaillez sur le bon problème avant d'engager du temps, de l'argent et des années.",
   alternates: { canonical: "/discerner" },
 };
 
@@ -24,12 +24,12 @@ const FALLBACK: Story[] = [
   },
   {
     headline: "Je ne me suis jamais sentie jugée.",
-    body: "Avec Téféry, j'ai eu l'impression, pour la première fois depuis longtemps, de pouvoir réfléchir sans avoir besoin de me justifier.",
+    body: "J'ai eu l'impression, pour la première fois depuis longtemps, de pouvoir réfléchir sans avoir besoin de me justifier.",
     attribution: "Dirigeante de PME — témoignage anonymisé",
   },
   {
     headline: "Elle m'a redonné le droit d'être ambitieuse.",
-    body: "J'ai compris que je n'avais pas un problème de compétences. J'avais un problème d'autorisation : je ne m'autorisais plus à voir plus grand.",
+    body: "J'ai compris que je n'avais pas un problème de compétences. Je ne m'autorisais plus à voir plus grand.",
     attribution: "Dirigeante de PME — témoignage anonymisé",
   },
 ];
@@ -51,27 +51,27 @@ async function getStories(): Promise<Story[]> {
 }
 
 const GRILLE: [string, string][] = [
-  ["Je manque de clients", "Une offre qui ne crée pas assez de valeur"],
-  ["Je manque de temps", "Une organisation qui ne suit plus l'ambition"],
-  ["Je dois recruter", "Une délégation inexistante"],
-  ["Ma communication ne fonctionne pas", "Un positionnement flou"],
-  ["Je stagne", "Une décision importante repoussée depuis trop longtemps"],
+  ["« Je manque de clients »", "Une offre qui ne crée pas assez de valeur"],
+  ["« Je manque de temps »", "Une organisation qui ne suit plus l'ambition"],
+  ["« Je dois recruter »", "Une délégation qui n'existe pas encore"],
+  ["« Ma communication ne marche pas »", "Un positionnement pas assez clair"],
+  ["« Je stagne »", "Une décision importante repoussée depuis trop longtemps"],
 ];
 
-function CtaBlock() {
+function Cta({ center = false }: { center?: boolean }) {
   return (
-    <div className="flex flex-col gap-3">
-      <Link
-        href="/discerner/premier-regard"
-        className="inline-block w-fit rounded-md bg-bord px-7 py-4 text-[15px] font-semibold text-[#f6efe6] transition-colors hover:bg-bord-deep"
-      >
-        Faire mon Premier Regard™
-      </Link>
+    <div className={`flex flex-col gap-2.5 ${center ? "items-center" : "items-start"}`}>
       <Link
         href="/discerner/reserver"
-        className="w-fit text-[13px] text-mut underline-offset-2 transition-colors hover:text-accent"
+        className="inline-block rounded-md bg-bord px-7 py-4 text-[15px] font-semibold text-[#f6efe6] transition-colors hover:bg-bord-deep"
       >
-        Je connais déjà votre travail — échanger directement
+        Réserver un premier échange (20 min)
+      </Link>
+      <Link
+        href="/discerner/premier-regard"
+        className="text-[13px] text-mut underline-offset-2 transition-colors hover:text-accent"
+      >
+        Pas encore sûr que ce soit pour vous ? Faites le Premier Regard™ — 3 min, gratuit
       </Link>
     </div>
   );
@@ -90,87 +90,82 @@ export default async function DiscernerPage() {
           style={{ background: "radial-gradient(circle, rgb(var(--glow)), transparent 68%)" }}
           aria-hidden
         />
-        <div className="relative mx-auto max-w-[900px] px-7 py-20 text-center sm:py-28">
-          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-brass">
-            DISCERNER™ · l'expérience de discernement stratégique
+        <div className="relative mx-auto max-w-[920px] px-7 py-20 text-center sm:py-24">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-brass">
+            Cabinet de décision stratégique · dirigeants de PME
           </p>
-          <h1 className="mx-auto mt-5 max-w-[16ch] font-serif text-4xl font-semibold leading-[1.04] sm:text-[56px]">
+          <h1 className="mx-auto mt-5 max-w-[17ch] font-serif text-4xl font-semibold leading-[1.05] sm:text-[52px]">
             Et si vous étiez en train de résoudre{" "}
             <span className="text-accent">le mauvais problème&nbsp;?</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-[54ch] text-[16px] leading-relaxed text-mut sm:text-[18px]">
-            La plupart des dirigeants investissent du temps et de l'argent dans la
-            mauvaise solution — parce que le bon problème n'a pas encore été posé.
+          <p className="mx-auto mt-6 max-w-[56ch] text-[16px] leading-relaxed text-mut sm:text-[18px]">
+            Nous sécurisons les décisions qui engagent durablement votre entreprise —
+            en vérifiant d'abord que vous travaillez sur le <strong className="text-ink">bon</strong>{" "}
+            problème, avant d'y engager du temps, de l'argent et des années.
           </p>
           <div className="mt-9 flex justify-center">
-            <CtaBlock />
+            <Cta center />
           </div>
         </div>
       </section>
 
-      {/* 1 — LA MAUVAISE SOLUTION */}
+      {/* 1 — LA DOULEUR */}
       <section className="border-b border-line py-16">
         <div className="mx-auto max-w-[820px] px-7">
-          <div className="mb-6 h-0.5 w-11 bg-brass" />
-          <h2 className="max-w-[24ch] font-serif text-[26px] font-semibold leading-tight sm:text-[38px]">
-            On achète une solution avant d'avoir posé le bon problème.
-          </h2>
-          <p className="mt-5 max-w-[60ch] text-[16px] leading-relaxed text-mut">
-            Le problème que vous nommez — le temps, les clients, le recrutement — est
-            souvent une conséquence. Le véritable frein, lui, reste invisible. Et tant
-            qu'il le reste, chaque décision, même juste, s'applique au mauvais endroit.
+          <p className="font-serif text-[24px] font-semibold italic leading-snug text-accent sm:text-[32px]">
+            « Je ne peux plus continuer à porter seul des décisions qui engagent
+            l'avenir de mon entreprise — et de ma vie. »
+          </p>
+          <p className="mt-6 max-w-[60ch] text-[16px] leading-relaxed text-mut">
+            Si cette phrase vous parle, vous n'avez probablement pas un problème de
+            solutions : vous en avez déjà essayé beaucoup. Vous avez un problème de
+            clarté — <strong className="text-ink">savoir lesquelles comptent vraiment</strong>,
+            et laquelle vous coûte le plus aujourd'hui.
           </p>
         </div>
       </section>
 
-      {/* 2 — LE PRIX DU MAUVAIS DIAGNOSTIC */}
+      {/* 2 — LE PRIX DU MAUVAIS PROBLÈME */}
       <section className="border-b border-line bg-paper2 py-16">
         <div className="mx-auto max-w-[820px] px-7">
-          <p className="text-xs font-light uppercase tracking-[0.22em] text-accent">
-            Le prix du mauvais diagnostic
+          <p className="text-xs font-light uppercase tracking-[0.2em] text-accent">
+            Le prix du mauvais problème
           </p>
-          <p className="mt-5 font-serif text-[22px] leading-relaxed text-ink/90 sm:text-[27px]">
-            « Vous pensez avoir un problème de communication. Vous investissez 4 000 €
+          <p className="mt-5 font-serif text-[21px] leading-relaxed text-ink/90 sm:text-[26px]">
+            Vous pensez avoir un problème de communication. Vous investissez 4 000 €
             dans une agence, six mois de travail, des dizaines de publications…
-            <span className="text-accent"> puis vous découvrez que le problème, c'était votre offre. »</span>
+            <span className="text-accent"> puis vous découvrez que le problème, c'était votre offre.</span>
           </p>
           <p className="mt-6 max-w-[58ch] text-[15px] leading-relaxed text-mut">
             Le vrai coût n'est pas l'argent dépensé. Ce sont les mois passés sur le
-            mauvais combat — pendant que le véritable frein, lui, continue d'agir.
+            mauvais combat — et les bonnes décisions repoussées pendant ce temps.
           </p>
         </div>
       </section>
 
-      {/* 3 — CE QU'ILS ONT COMPRIS */}
+      {/* 3 — LA GRILLE */}
       <section className="border-b border-line py-16">
-        <div className="mx-auto max-w-[1000px] px-7">
+        <div className="mx-auto max-w-[820px] px-7">
           <div className="mb-6 h-0.5 w-11 bg-brass" />
-          <h2 className="font-serif text-[26px] font-semibold sm:text-[36px]">
-            Ce qu'ils ont compris.
+          <h2 className="font-serif text-[24px] font-semibold sm:text-[32px]">
+            Ce que les dirigeants croient — et ce qui se cache parfois derrière.
           </h2>
-          <div className="mt-9 grid grid-cols-1 gap-5 md:grid-cols-3">
-            {stories.slice(0, 3).map((s) => (
-              <div
-                key={s.headline}
-                className="flex flex-col rounded-lg border border-line bg-card p-6 shadow-card"
-              >
-                <div className="font-serif text-[40px] leading-[0.6] text-brass" aria-hidden>
-                  &ldquo;
-                </div>
-                <h3 className="mt-3 font-serif text-lg font-semibold leading-snug text-accent">
-                  {s.headline}
-                </h3>
-                <p className="mt-3 flex-1 text-[14px] leading-relaxed text-ink/80">
-                  {s.body}
-                </p>
-                <p className="mt-4 text-[11px] tracking-wide text-mut">{s.attribution}</p>
+          <div className="mt-8 overflow-hidden rounded-lg border border-line">
+            <div className="grid grid-cols-2 bg-card text-[11px] font-semibold uppercase tracking-wide text-mut">
+              <div className="border-b border-r border-line px-4 py-3">Ce qu'il se dit…</div>
+              <div className="border-b border-line px-4 py-3">Ce qui se cache parfois derrière…</div>
+            </div>
+            {GRILLE.map(([a, b], i) => (
+              <div key={a} className={`grid grid-cols-2 ${i % 2 ? "bg-paper2" : "bg-paper"}`}>
+                <div className="border-r border-line px-4 py-3.5 text-[14px] text-mut">{a}</div>
+                <div className="px-4 py-3.5 text-[14px] font-medium text-accent">{b}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 4 — POURQUOI LES DIRIGEANTS VIENNENT ME VOIR */}
+      {/* 4 — POURQUOI TÉFÉRY */}
       <section className="border-b border-line bg-paper2 py-16">
         <div className="mx-auto grid max-w-[1000px] grid-cols-1 items-center gap-10 px-7 md:grid-cols-[0.9fr_1.1fr]">
           <div className="overflow-hidden rounded-lg border border-line shadow-lift">
@@ -191,126 +186,119 @@ export default async function DiscernerPage() {
             <p className="mt-3 text-[15.5px] leading-relaxed text-ink/85">
               En dix ans, j'ai vu des dirigeants investir dans le marketing alors que
               leur offre n'était pas claire. Recruter alors que leur organisation
-              n'était pas prête. Changer de communication alors que leur positionnement
-              était le véritable frein.
+              n'était pas prête. Refaire leur communication alors que le vrai frein
+              était ailleurs.
             </p>
             <p className="mt-3 font-serif text-lg italic text-accent">
-              Mon rôle n'est pas de trouver plus de solutions. Mon rôle est de
-              m'assurer que vous résolvez le bon problème.
+              Mon rôle n'est pas de trouver plus de solutions. C'est de m'assurer que
+              vous résolvez le bon problème.
             </p>
             <p className="mt-5 font-mono text-[12px] uppercase tracking-wide text-mut">
-              10 ans d'expérience · Plus de 1 000 entrepreneurs accompagnés
+              10 ans · plus de 1 000 entrepreneurs accompagnés
             </p>
           </div>
         </div>
       </section>
 
-      {/* 5 — LA GRILLE */}
+      {/* 5 — CE QU'ILS ONT COMPRIS */}
       <section className="border-b border-line py-16">
-        <div className="mx-auto max-w-[820px] px-7">
+        <div className="mx-auto max-w-[1000px] px-7">
           <div className="mb-6 h-0.5 w-11 bg-brass" />
           <h2 className="font-serif text-[24px] font-semibold sm:text-[32px]">
-            Les mauvais problèmes que je rencontre le plus souvent.
+            Ce qu'ils ont compris.
           </h2>
-          <div className="mt-8 overflow-hidden rounded-lg border border-line">
-            <div className="grid grid-cols-2 bg-card text-[11px] font-semibold uppercase tracking-wide text-mut">
-              <div className="border-b border-r border-line px-4 py-3">Le dirigeant pense…</div>
-              <div className="border-b border-line px-4 py-3">Ce qui se cache parfois derrière…</div>
-            </div>
-            {GRILLE.map(([a, b], i) => (
-              <div key={a} className={`grid grid-cols-2 ${i % 2 ? "bg-paper2" : "bg-paper"}`}>
-                <div className="border-r border-line px-4 py-3.5 text-[14px] text-mut">{a}</div>
-                <div className="px-4 py-3.5 text-[14px] font-medium text-accent">{b}</div>
+          <div className="mt-9 grid grid-cols-1 gap-5 md:grid-cols-3">
+            {stories.slice(0, 3).map((s) => (
+              <div
+                key={s.headline}
+                className="flex flex-col rounded-lg border border-line bg-card p-6 shadow-card"
+              >
+                <div className="font-serif text-[40px] leading-[0.6] text-brass" aria-hidden>
+                  &ldquo;
+                </div>
+                <h3 className="mt-3 font-serif text-lg font-semibold leading-snug text-accent">
+                  {s.headline}
+                </h3>
+                <p className="mt-3 flex-1 text-[14px] leading-relaxed text-ink/80">{s.body}</p>
+                <p className="mt-4 text-[11px] tracking-wide text-mut">{s.attribution}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 6 — LE PREMIER REGARD EXPLIQUÉ */}
+      {/* 6 — POUR QUI */}
       <section className="border-b border-line bg-paper2 py-16">
         <div className="mx-auto max-w-[820px] px-7">
-          <p className="text-xs font-light uppercase tracking-[0.22em] text-accent">
-            Par où commencer
-          </p>
-          <h2 className="mt-3 max-w-[22ch] font-serif text-[26px] font-semibold leading-tight sm:text-[36px]">
-            Le Premier Regard™ n'est pas un test.
+          <h2 className="font-serif text-[22px] font-semibold sm:text-[28px]">
+            À qui s'adresse DISCERNER™ ?
           </h2>
-          <p className="mt-5 max-w-[58ch] text-[16px] leading-relaxed text-mut">
-            C'est une première expérience de discernement. Quelques minutes pour poser
-            votre situation avec vos mots — et vérifier si le problème que vous
-            cherchez aujourd'hui à résoudre est bien celui qui mérite votre énergie.
+          <ul className="mt-5 space-y-2.5 text-[15px] text-ink/85">
+            {[
+              "vous dirigez une entreprise qui tourne, mais vous sentez qu'elle pourrait aller beaucoup plus loin",
+              "vous ne voulez plus avancer à l'intuition sur les décisions qui engagent",
+              "vous préférez prendre de meilleures décisions plutôt que travailler encore plus",
+              "vous acceptez de remettre vos certitudes en question",
+            ].map((t) => (
+              <li key={t} className="flex gap-2.5">
+                <span className="text-ok">✓</span>
+                <span>{t}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-5 text-[14px] italic leading-relaxed text-mut">
+            En revanche, ce n'est probablement pas pour vous si vous cherchez des
+            conseils rapides, une recette marketing ou une solution miracle.
           </p>
-          <div className="mt-8">
-            <CtaBlock />
-          </div>
         </div>
       </section>
 
-      {/* 7 — À QUI S'ADRESSE + CE QUE PERMET + PRIX */}
+      {/* 7 — DISCERNER, CONCRÈTEMENT + PRIX */}
       <section className="border-b border-line py-16">
-        <div className="mx-auto max-w-[900px] px-7">
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-            <div>
-              <h2 className="font-serif text-[22px] font-semibold sm:text-[26px]">
-                À qui s'adresse DISCERNER™ ?
-              </h2>
-              <ul className="mt-5 space-y-2.5 text-[15px] text-ink/85">
-                {[
-                  "sentent que leur entreprise pourrait aller beaucoup plus loin",
-                  "ne veulent plus avancer à l'intuition",
-                  "veulent prendre de meilleures décisions plutôt que travailler davantage",
-                  "acceptent de remettre leurs certitudes en question",
-                ].map((t) => (
-                  <li key={t} className="flex gap-2.5">
-                    <span className="text-ok">✓</span>
-                    <span>{t}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-5 text-[14px] italic leading-relaxed text-mut">
-                En revanche, DISCERNER™ n'est probablement pas fait pour vous si vous
-                cherchez uniquement des conseils rapides, une méthode marketing ou une
-                solution miracle.
-              </p>
-            </div>
-            <div>
-              <h2 className="font-serif text-[22px] font-semibold sm:text-[26px]">
-                Ce que permet DISCERNER™.
-              </h2>
-              <p className="mt-5 text-[15px] leading-relaxed text-ink/85">
-                Après DISCERNER™, vous ne verrez probablement plus votre entreprise de
-                la même manière. Vous repartirez avec une compréhension plus claire :
-              </p>
-              <ul className="mt-3 space-y-1.5 text-[14.5px] text-mut">
-                <li>• de ce qui freine réellement votre trajectoire ;</li>
-                <li>• des décisions qui méritent votre attention aujourd'hui ;</li>
-                <li>• de celles qui peuvent attendre ;</li>
-                <li>• des actions qui risquent de vous faire perdre plusieurs mois.</li>
-              </ul>
-            </div>
-          </div>
+        <div className="mx-auto max-w-[820px] px-7">
+          <div className="mb-6 h-0.5 w-11 bg-brass" />
+          <h2 className="font-serif text-[24px] font-semibold sm:text-[32px]">
+            DISCERNER™, concrètement.
+          </h2>
+          <p className="mt-5 text-[16px] leading-relaxed text-mut">
+            Un format <strong className="text-ink">concentré : deux demi-journées, en une seule fois</strong>.
+            Tout est traité d'un bloc, avec Téféry — sans étalement sur des semaines.
+            Vous repartez avec :
+          </p>
+          <ul className="mt-4 space-y-2 text-[15px] text-ink/85">
+            <li>• le <strong>vrai problème</strong> qui freine réellement votre trajectoire ;</li>
+            <li>• les <strong>2 à 3 décisions</strong> qui comptent vraiment maintenant ;</li>
+            <li>• celles qui peuvent attendre ;</li>
+            <li>• une direction claire, cohérente avec ce que vous voulez vraiment construire.</li>
+          </ul>
 
-          <div className="mt-12 rounded-lg border border-line bg-card p-7 text-center shadow-card">
-            <p className="font-serif text-[26px] font-semibold text-accent">DISCERNER™ — 7 600 €</p>
-            <p className="mx-auto mt-3 max-w-[52ch] text-[14px] leading-relaxed text-mut">
-              Le coût d'un mauvais problème se compte souvent en dizaines de milliers
-              d'euros — et en années. DISCERNER™ commence par le Premier Regard™,
-              gratuit.
+          <div className="mt-9 rounded-lg border border-line bg-card p-7 text-center shadow-card">
+            <p className="font-serif text-[28px] font-semibold text-accent">7 600 € HT</p>
+            <p className="mx-auto mt-2 max-w-[50ch] text-[14px] leading-relaxed text-mut">
+              Deux demi-journées, en une fois. Le coût d'un mauvais problème, lui, se
+              compte souvent en dizaines de milliers d'euros — et en années.
             </p>
+            <div className="mt-6 flex justify-center">
+              <Cta center />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CLÔTURE */}
+      {/* 8 — LA MISSION (clôture) */}
       <section className="py-20">
         <div className="mx-auto max-w-[720px] px-7 text-center">
           <div className="mx-auto mb-6 h-0.5 w-11 bg-brass" />
-          <h2 className="font-serif text-[26px] font-semibold leading-tight sm:text-[34px]">
-            Avant de chercher une solution, assurons-nous que c'est le bon problème.
-          </h2>
+          <p className="font-serif text-[24px] font-semibold leading-snug sm:text-[30px]">
+            Redonner aux dirigeants la liberté de choisir leur vie — afin que leur
+            réussite ne se construise plus au détriment de leur famille.
+          </p>
+          <p className="mt-5 text-[14px] text-mut">
+            C'est pour cela que DULEME AND CIE existe. Et cela commence par une seule
+            question : travaillez-vous sur le bon problème ?
+          </p>
           <div className="mt-8 flex justify-center">
-            <CtaBlock />
+            <Cta center />
           </div>
         </div>
       </section>

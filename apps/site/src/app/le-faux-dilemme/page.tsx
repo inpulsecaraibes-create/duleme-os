@@ -102,10 +102,10 @@ export default function FauxDilemmePage() {
             <div className="grid grid-cols-1 items-center gap-11 py-16 md:grid-cols-[1.05fr_0.95fr]">
               <div>
                 <Eyebrow>Le média de DULEME AND CIE</Eyebrow>
-                <h1 className="mt-4 font-serif text-4xl font-semibold leading-[1.03] sm:text-5xl md:text-[58px]">
-                  Le Faux Dilemme<span className="align-super text-[0.4em]"></span>
+                <h1 className="mt-4 font-serif text-[34px] font-semibold leading-[1.12] sm:text-[44px] md:text-[50px]">
+                  Le Faux Dilemme
                 </h1>
-                <p className="mt-5 max-w-[48ch] text-[17px] text-mut">
+                <p className="mt-10 max-w-[48ch] text-[17px] text-mut">
                   Le média des dirigeants qui préfèrent poser la bonne question
                   plutôt que courir après la mauvaise réponse. Pas des recettes —
                   des façons de penser.

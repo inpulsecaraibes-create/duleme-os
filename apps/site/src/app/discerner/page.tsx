@@ -82,11 +82,14 @@ export default function DiscernerPage() {
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-brass">
             Cabinet de conseil stratégique · dirigeants de PME
           </p>
-          <h1 className="mx-auto mt-5 max-w-[19ch] font-serif text-4xl font-semibold leading-[1.05] sm:text-[52px]">
-            Une erreur stratégique ne se voit pas tout de suite.{" "}
+          <h1 className="mx-auto mt-5 max-w-[24ch] text-pretty font-serif text-[30px] font-semibold leading-[1.16] sm:text-[40px] md:text-[46px]">
+            Une erreur stratégique
+            <br />
+            ne se voit pas tout de suite.
+            <br />
             <span className="text-accent">Elle se paie pendant des années.</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-[60ch] text-[16px] leading-relaxed text-mut sm:text-[18px]">
+          <p className="mx-auto mt-11 max-w-[60ch] text-[16px] leading-relaxed text-mut sm:text-[18px]">
             DISCERNER sécurise les décisions qui engageront votre entreprise pour les
             prochaines années. Avant de transformer, de recruter ou d&apos;investir, nous
             nous assurons que vous agissez sur ce qui compte vraiment —{" "}

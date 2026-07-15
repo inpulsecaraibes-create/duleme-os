@@ -48,13 +48,14 @@ export default function Home() {
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-brass">
               Cabinet de conseil stratégique · dirigeants de PME
             </p>
-            <h1 className="mt-5 max-w-[18ch] font-serif text-4xl font-semibold leading-[1.04] sm:text-5xl md:text-[54px]">
-              Votre entreprise, votre patrimoine, dix ans de travail.{" "}
+            <h1 className="mt-5 max-w-[24ch] font-serif text-[30px] font-semibold leading-[1.16] sm:text-[38px] md:text-[44px]">
+              Votre entreprise, votre patrimoine, dix ans de travail.
+              <br />
               <span className="text-accent">
                 Parfois, une seule décision engage tout cela à la fois.
               </span>
             </h1>
-            <p className="mt-6 max-w-[54ch] text-[15px] leading-relaxed text-mut sm:text-[17px]">
+            <p className="mt-11 max-w-[54ch] text-[15px] leading-relaxed text-mut sm:text-[17px]">
               À ce niveau, le risque n&apos;est pas de décider trop tard — c&apos;est de se
               tromper de décision. Une erreur stratégique se paie en centaines de milliers
               d&apos;euros, parfois en années de votre vie. DULEME AND CIE accompagne les

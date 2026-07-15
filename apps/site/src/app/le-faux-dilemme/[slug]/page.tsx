@@ -66,7 +66,7 @@ export default function ArticlePage({
               <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.16em] text-brass">
                 {a.axe}
               </p>
-              <h1 className="mt-3 font-serif text-[clamp(30px,4.6vw,48px)] font-semibold leading-[1.08]">
+              <h1 className="mt-3 max-w-[24ch] text-pretty font-serif text-[clamp(28px,4.2vw,44px)] font-semibold leading-[1.14]">
                 {a.title}
               </h1>
               <p className="mt-4 text-[13px] text-mut">

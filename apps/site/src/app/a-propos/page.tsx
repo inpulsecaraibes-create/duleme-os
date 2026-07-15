@@ -45,10 +45,10 @@ export default function AProposPage() {
             <div className="grid grid-cols-1 items-center gap-11 py-16 md:grid-cols-[1.05fr_0.95fr]">
               <div>
                 <Eyebrow>À propos</Eyebrow>
-                <h1 className="mt-4 max-w-[16ch] font-serif text-4xl font-semibold leading-[1.03] sm:text-5xl md:text-[56px]">
+                <h1 className="mt-4 max-w-[19ch] font-serif text-[32px] font-semibold leading-[1.15] sm:text-[42px] md:text-[48px]">
                   Une entreprise devrait servir la vie de son dirigeant.
                 </h1>
-                <p className="mt-6 max-w-[50ch] text-[17px] text-mut">
+                <p className="mt-11 max-w-[50ch] text-[17px] text-mut">
                   DULEME AND CIE aide les dirigeants à sécuriser les décisions
                   qui engagent durablement leur entreprise. Nous ne décidons
                   jamais à leur place — nous renforçons leur capacité à décider.

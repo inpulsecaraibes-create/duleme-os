@@ -49,17 +49,17 @@ export default function Home() {
               Cabinet de conseil stratégique · dirigeants de PME
             </p>
             <h1 className="mt-5 max-w-[24ch] font-serif text-[30px] font-semibold leading-[1.16] sm:text-[38px] md:text-[44px]">
-              Votre entreprise, votre patrimoine, dix ans de travail.
+              Quatre ans à construire votre entreprise.
               <br />
               <span className="text-accent">
-                Parfois, une seule décision engage tout cela à la fois.
+                Et devant vous, les décisions qui vont décider de la suite.
               </span>
             </h1>
             <p className="mt-11 max-w-[54ch] text-[15px] leading-relaxed text-mut sm:text-[17px]">
-              À ce niveau, le risque n&apos;est pas de décider trop tard — c&apos;est de se
-              tromper de décision. Une erreur stratégique se paie en centaines de milliers
-              d&apos;euros, parfois en années de votre vie. DULEME AND CIE accompagne les
-              dirigeants sur ces décisions-là.
+              Structurer ou rester agile, investir ou consolider, recruter ou tenir encore
+              seul. À ce stade, le risque n&apos;est pas de décider trop tard — c&apos;est de
+              se tromper de décision. DULEME AND CIE accompagne les dirigeants sur ces
+              décisions-là&nbsp;: celles qui engagent les années à venir.
             </p>
             <div className="mt-8 flex flex-col items-start gap-2.5">
               <Link

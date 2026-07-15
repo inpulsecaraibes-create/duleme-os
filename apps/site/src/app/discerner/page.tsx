@@ -321,13 +321,10 @@ export default function DiscernerPage() {
           </p>
 
           <div className="mt-9 rounded-lg border border-line bg-card p-7 shadow-card">
-            <p className="text-center font-serif text-[28px] font-semibold text-accent">
-              7 600 € HT
-            </p>
-            <p className="mx-auto mt-4 max-w-[54ch] text-center text-[10.5px] font-semibold uppercase tracking-[0.16em] text-brass">
+            <p className="mx-auto text-center text-[10.5px] font-semibold uppercase tracking-[0.16em] text-brass">
               Ce que vous achetez
             </p>
-            <p className="mx-auto mt-2 max-w-[56ch] text-center text-[15px] leading-relaxed text-ink/85">
+            <p className="mx-auto mt-3 max-w-[52ch] text-center font-serif text-[19px] leading-snug text-ink sm:text-[22px]">
               Vous n'achetez pas deux demi-journées. Vous achetez la certitude de ne pas
               engager votre entreprise dans la mauvaise direction — et d'éviter les mois,
               parfois les années, passés à transformer la mauvaise chose.

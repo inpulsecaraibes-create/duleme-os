@@ -60,7 +60,7 @@ export default function ArticlePage({
                 href="/le-faux-dilemme"
                 className="text-[13px] text-mut hover:text-accent"
               >
-                ← Le Faux Dilemme™
+                ← Le Faux Dilemme
               </Link>
               <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.16em] text-brass">
                 {a.axe}

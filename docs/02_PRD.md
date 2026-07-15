@@ -28,7 +28,7 @@ Le produit poursuit six objectifs.
 2.1 Développer la notoriété
 Faire connaître DULEME et diffuser son courant de pensée grâce :
 au site internet ;
-au média Le Faux Dilemme™ ;
+au média Le Faux Dilemme ;
 aux conférences ;
 aux contenus.
 
@@ -51,7 +51,7 @@ les conférences.
 Permettre à chaque client de :
 déposer des documents ;
 retrouver ses rendez-vous ;
-consulter son Dossier DULEME™ ;
+consulter son Dossier DULEME ;
 suivre l'avancement de sa mission ;
 recevoir automatiquement les informations importantes.
 
@@ -115,10 +115,10 @@ Une fonctionnalité complexe doit être simplifiée avant d'être développée.
 5. Périmètre fonctionnel
 La première version comprend les modules suivants.
 Site internet
-Le Faux Dilemme™
+Le Faux Dilemme
 Relationship OS
 Gestion des missions
-Dossier DULEME™
+Dossier DULEME
 Bibliothèque DULEME
 Gestion des contenus
 Agenda
@@ -155,7 +155,7 @@ Le système pourra évoluer sans dépendre d'un outil spécifique.
 DULEME OS devra permettre à Téféry de :
 préparer un rendez-vous en moins de 5 minutes ;
 retrouver une information en moins de 30 secondes ;
-produire un Dossier DULEME™ à partir des informations déjà collectées ;
+produire un Dossier DULEME à partir des informations déjà collectées ;
 publier un contenu sans le recréer plusieurs fois ;
 retrouver l'historique complet d'une relation ;
 changer un outil externe (facturation, emailing, agenda…) sans reconstruire le système.
@@ -183,7 +183,7 @@ Module
 Fonction
 Site public
 Faire connaître DULEME AND CIE et générer des rendez-vous
-Le Faux Dilemme™
+Le Faux Dilemme
 Développer le courant de pensée DULEME
 Relationship OS
 Gérer les relations, les entreprises et l'historique du cabinet
@@ -191,7 +191,7 @@ Missions
 Gérer les accompagnements en cours
 Décisions
 Conserver la mémoire des décisions stratégiques
-Dossier DULEME™
+Dossier DULEME
 Produire et versionner les livrables
 Bibliothèque DULEME
 Centraliser le patrimoine intellectuel
@@ -233,7 +233,7 @@ Décisions
 Missions
        │
        ▼
-Dossier DULEME™
+Dossier DULEME
        │
        ▼
 Actions
@@ -270,7 +270,7 @@ Espace Client
 
 ↓
 
-Production du Dossier DULEME™
+Production du Dossier DULEME
 
 ↓
 
@@ -388,7 +388,7 @@ Mission
 Décision
      │
      ▼
-Dossier DULEME™
+Dossier DULEME
      │
      ▼
 Espace Client
@@ -553,7 +553,7 @@ PARCOURS 5 — Vente d'une mission
 Quand une proposition est acceptée.
 Le système crée automatiquement :
 la mission ;
-le Dossier DULEME™ ;
+le Dossier DULEME ;
 l'espace client ;
 le calendrier ;
 le lien Sinao ;
@@ -578,7 +578,7 @@ Validation.
 ↓
 Notification client.
 
-PARCOURS 7 — Production du Dossier DULEME™
+PARCOURS 7 — Production du Dossier DULEME
 ❤️
 Pendant toute la mission.
 Toutes les informations alimentent automatiquement le dossier.
@@ -648,7 +648,7 @@ Aujourd'hui.
 
 09h00
 
-Décision Critique™
+Décision Critique
 
 Entreprise X
 
@@ -658,7 +658,7 @@ Préparer conférence CCI
 
 14h00
 
-Valider Dossier DULEME™
+Valider Dossier DULEME
 
 16h00
 
@@ -703,7 +703,7 @@ Organisateurs de conférences
 Fonctionnalités
 Le site comprend uniquement :
 Accueil
-Le Faux Dilemme™
+Le Faux Dilemme
 Missions
 À propos
 Prendre rendez-vous
@@ -752,10 +752,10 @@ forum
 commentaires
 chatbot
 
-MODULE 2 — Le Faux Dilemme™
+MODULE 2 — Le Faux Dilemme
 Objectif
 Développer le courant de pensée DULEME.
-Le Faux Dilemme™ n'est pas un blog.
+Le Faux Dilemme n'est pas un blog.
 C'est le média officiel de DULEME.
 
 Fonctionnalités
@@ -813,7 +813,7 @@ exportable.
 
 MODULE 3 — Relationship OS
 ❤️
-C'est probablement le module le plus important après le Dossier DULEME™.
+C'est probablement le module le plus important après le Dossier DULEME.
 
 Objectif
 Construire la mémoire relationnelle du cabinet.
@@ -881,7 +881,7 @@ Faire des décisions un objet métier.
 Une décision possède
 un titre ;
 un contexte ;
-un Faux Dilemme™ éventuel ;
+un Faux Dilemme éventuel ;
 les hypothèses ;
 les scénarios ;
 les risques ;
@@ -907,7 +907,7 @@ Réévaluer.
 Critères
 Une décision doit pouvoir être retrouvée plusieurs années plus tard.
 
-MODULE 5 — Dossier DULEME™
+MODULE 5 — Dossier DULEME
 ❤️
 Le cœur du cabinet.
 
@@ -922,7 +922,7 @@ Export officiel (PDF / DOCX)
 Contenu
 Contexte.
 Observations.
-Faux Dilemmes™.
+Faux Dilemmes.
 Décisions.
 Recommandations.
 Plan d'action.
@@ -1176,13 +1176,13 @@ Le module doit permettre de :
 créer une mission ;
 suivre son avancement ;
 centraliser toutes les informations utiles ;
-produire le Dossier DULEME™ ;
+produire le Dossier DULEME ;
 clôturer la mission en conservant son historique.
 
 Types de missions (V1)
-Décision Critique™
-Réalignement™
-Comité de Décision™
+Décision Critique
+Réalignement
+Comité de Décision
 Les types de missions doivent être paramétrables.
 
 États possibles
@@ -1239,7 +1239,7 @@ date prévisionnelle de fin ;
 prix ;
 documents ;
 rendez-vous ;
-Dossier DULEME™ ;
+Dossier DULEME ;
 décisions liées ;
 prochaines actions ;
 historique.
@@ -1384,7 +1384,7 @@ les documents attendus ;
 les documents déposés ;
 les documents validés ;
 les rendez-vous ;
-le Dossier DULEME™ ;
+le Dossier DULEME ;
 les prochaines étapes.
 
 Téléversement
@@ -1561,8 +1561,8 @@ capitaliser les connaissances.
 Contenu
 La bibliothèque comprend notamment :
 Concepts
-Faux Dilemmes™
-Décisions Critiques™
+Faux Dilemmes
+Décisions Critiques
 Questions DULEME
 Analogies
 Schémas
@@ -1589,7 +1589,7 @@ indexation pour la recherche.
 Connecteurs
 Assistant DULEME
 Gestion des contenus
-Dossier DULEME™
+Dossier DULEME
 
 Permissions
 Administrateur.
@@ -1626,7 +1626,7 @@ accélérer la rédaction ;
 accélérer la recherche d'informations ;
 proposer des synthèses ;
 préparer les rendez-vous ;
-préparer les Dossiers DULEME™.
+préparer les Dossiers DULEME.
 
 Fonctionnalités
 Résumé.
@@ -1638,7 +1638,7 @@ Extraction d'actions.
 Extraction de décisions.
 Préparation de contenus.
 Préparation de conférences.
-Préparation des Dossiers DULEME™.
+Préparation des Dossiers DULEME.
 
 Sources utilisées
 Relationship OS.
@@ -1892,7 +1892,7 @@ Sections
 Documents
 Décisions
 Rendez-vous
-Dossier DULEME™
+Dossier DULEME
 Checklist
 Historique
 
@@ -1903,7 +1903,7 @@ Créer un Dossier
 Exporter
 Clôturer
 
-5.8 Dossier DULEME™
+5.8 Dossier DULEME
 Informations
 Version
 Mission
@@ -2001,7 +2001,7 @@ Sauvegardes.
 Accueil.
 Mission.
 Documents.
-Dossier DULEME™.
+Dossier DULEME.
 Agenda.
 Notifications.
 Profil.
@@ -2056,7 +2056,7 @@ Décision
 Que devons-nous décider ?
 Mission
 Où en est cette mission ?
-Dossier DULEME™
+Dossier DULEME
 Que va recevoir le client ?
 Agenda
 Qu'est-ce qui arrive ensuite ?

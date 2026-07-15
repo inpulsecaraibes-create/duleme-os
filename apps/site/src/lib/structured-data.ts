@@ -43,7 +43,7 @@ export const blogLd = {
   "@context": "https://schema.org",
   "@type": "Blog",
   "@id": `${SITE_URL}/le-faux-dilemme/#blog`,
-  name: "Le Faux Dilemme™",
+  name: "Le Faux Dilemme",
   url: `${SITE_URL}/le-faux-dilemme`,
   inLanguage: "fr-FR",
   description:

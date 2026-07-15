@@ -59,7 +59,7 @@ export function Reserver({
     const end = new Date(start.getTime() + 20 * 60000);
     const g = (d: Date) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
     const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-      "Échange DISCERNER™ (20 min) — Téféry",
+      "Échange DISCERNER (20 min) — Téféry",
     )}&dates=${g(start)}/${g(end)}&details=${encodeURIComponent(
       "Votre échange de 20 minutes avec Téféry Duleme.",
     )}`;
@@ -136,7 +136,7 @@ export function Reserver({
       <p className="mt-3 text-[15px] text-mut">
         Un premier échange confidentiel, de vive voix, avec Téféry. Nous verrons
         ensemble si le sujet qui vous préoccupe mérite d'être approfondi — et si
-        DISCERNER™ est la bonne étape pour vous.
+        DISCERNER est la bonne étape pour vous.
       </p>
 
       {!leadId && (

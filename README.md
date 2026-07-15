@@ -9,7 +9,7 @@ Monorepo modulaire (pnpm + Turborepo). Voir la documentation officielle dans `do
 ```
 duleme-os/
 ├─ apps/
-│  └─ site/          # Site public (Next.js) — vitrine, Le Faux Dilemme™, prise de RDV
+│  └─ site/          # Site public (Next.js) — vitrine, Le Faux Dilemme, prise de RDV
 ├─ packages/
 │  ├─ config/        # Design System : preset Tailwind (tokens Palette « Pierre & Bordeaux »)
 │  └─ ui/            # Composants réutilisables (à venir, Sprint 2)

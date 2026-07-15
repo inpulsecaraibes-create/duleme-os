@@ -7,9 +7,9 @@ import { SiteFooter } from "@/components/SiteFooter";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "DISCERNER™ — Sécurisez vos décisions qui engagent votre entreprise",
+  title: "DISCERNER — Sécurisez vos décisions qui engagent votre entreprise",
   description:
-    "Cabinet de décision stratégique pour dirigeants de PME. DISCERNER™ vérifie que vous travaillez sur le bon problème avant d'engager du temps, de l'argent et des années.",
+    "Cabinet de décision stratégique pour dirigeants de PME. DISCERNER vérifie que vous travaillez sur le bon problème avant d'engager du temps, de l'argent et des années.",
   alternates: { canonical: "/discerner" },
 };
 
@@ -63,7 +63,7 @@ function Cta({ center = false }: { center?: boolean }) {
         href="/discerner/premier-regard"
         className="text-[13px] text-mut underline-offset-2 transition-colors hover:text-accent"
       >
-        Pas encore sûr que ce soit pour vous ? Faites le Premier Regard™ — 3 min, gratuit
+        Pas encore sûr que ce soit pour vous ? Faites le Premier Regard — 3 min, gratuit
       </Link>
     </div>
   );
@@ -232,7 +232,7 @@ export default function DiscernerPage() {
       <section className="border-b border-line bg-paper2 py-16">
         <div className="mx-auto max-w-[820px] px-7">
           <h2 className="font-serif text-[22px] font-semibold sm:text-[28px]">
-            À qui s'adresse DISCERNER™ ?
+            À qui s'adresse DISCERNER ?
           </h2>
           <ul className="mt-5 space-y-2.5 text-[15px] text-ink/85">
             {[
@@ -259,7 +259,7 @@ export default function DiscernerPage() {
         <div className="mx-auto max-w-[820px] px-7">
           <div className="mb-6 h-0.5 w-11 bg-brass" />
           <h2 className="font-serif text-[24px] font-semibold sm:text-[32px]">
-            DISCERNER™, concrètement.
+            DISCERNER, concrètement.
           </h2>
           <p className="mt-5 text-[16px] leading-relaxed text-mut">
             Un format <strong className="text-ink">concentré : deux demi-journées, en une seule fois</strong>.

@@ -9,7 +9,7 @@ Il centralise l'ensemble des activités du cabinet :
 - Site internet
 - Relationship OS
 - Gestion des missions
-- Dossier DULEME™
+- Dossier DULEME
 - Bibliothèque DULEME
 - Gestion des contenus
 - Assistant DULEME

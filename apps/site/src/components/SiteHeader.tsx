@@ -18,10 +18,10 @@ export function SiteHeader() {
         </Link>
         <nav className="flex items-center gap-6 text-[13px] text-mut">
           <Link href="/discerner" className="hidden font-medium text-accent hover:text-bord sm:inline">
-            DISCERNER™
+            DISCERNER
           </Link>
           <Link href="/le-faux-dilemme" className="hidden hover:text-accent sm:inline">
-            Le Faux Dilemme™
+            Le Faux Dilemme
           </Link>
           <Link href="/a-propos" className="hidden hover:text-accent sm:inline">
             À propos

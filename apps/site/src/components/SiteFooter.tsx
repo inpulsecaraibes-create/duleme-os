@@ -94,7 +94,7 @@ export function SiteFooter() {
           {/* Newsletter */}
           <div>
             <p className="font-serif text-lg font-semibold text-paper">
-              Le Faux Dilemme™, chaque mois.
+              Le Faux Dilemme, chaque mois.
             </p>
             <p className="mt-1.5 max-w-[42ch] text-[13px] leading-relaxed">
               Un regard sobre sur les décisions qui engagent une entreprise.
@@ -109,7 +109,7 @@ export function SiteFooter() {
           <span>© {year} DULEME AND CIE — Tous droits réservés.</span>
           <span className="flex flex-wrap gap-4">
             <Link href="/le-faux-dilemme" className="transition-colors hover:text-paper">
-              Le Faux Dilemme™
+              Le Faux Dilemme
             </Link>
             <Link href="/a-propos" className="transition-colors hover:text-paper">
               À propos

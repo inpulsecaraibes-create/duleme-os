@@ -11,7 +11,7 @@ export function FooterNewsletter() {
   if (ok) {
     return (
       <p className="mt-4 text-[13.5px] text-paper">
-        Merci — vous recevrez Le Faux Dilemme™ chaque mois.
+        Merci — vous recevrez Le Faux Dilemme chaque mois.
       </p>
     );
   }

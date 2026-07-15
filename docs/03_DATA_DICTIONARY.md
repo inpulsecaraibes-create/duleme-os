@@ -30,7 +30,7 @@ Contact	Une personne connue du cabinet
 Entreprise	Une organisation liée à un ou plusieurs contacts
 Mission	Un accompagnement réalisé par DULEME AND CIE
 Décision	Une décision stratégique suivie par le cabinet
-Dossier DULEME™	Livrable produit pendant une mission
+Dossier DULEME	Livrable produit pendant une mission
 Rendez-vous	Rencontre physique ou visio
 Interaction	Toute interaction avec un contact
 Tâche	Action à réaliser
@@ -110,7 +110,7 @@ Une Mission :
 appartient à une Entreprise ;
 possède plusieurs Rendez-vous ;
 possède plusieurs Décisions ;
-possède un Dossier DULEME™ ;
+possède un Dossier DULEME ;
 possède plusieurs Documents.
 7. Objet Décision
 Champs
@@ -135,7 +135,7 @@ appartient à une Entreprise ;
 possède plusieurs Documents ;
 possède plusieurs Actions ;
 possède plusieurs Rendez-vous.
-8. Objet Dossier DULEME™
+8. Objet Dossier DULEME
 Champs
 id
 numéro
@@ -221,9 +221,9 @@ date_publication
 
 Exemples :
 
-Faux Dilemme™
-Décision Critique™
-Question DULEME™
+Faux Dilemme
+Décision Critique
+Question DULEME
 Champs
 nom
 description
@@ -292,7 +292,7 @@ Entreprise
 │     ├── Rendez-vous
 │     ├── Décisions
 │     ├── Documents
-│     └── Dossier DULEME™
+│     └── Dossier DULEME
 │
 └── Décisions
 20. Règles métier

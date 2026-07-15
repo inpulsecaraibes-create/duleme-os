@@ -132,7 +132,7 @@ export function PremierRegard({ bookingBase }: { bookingBase: string }) {
         {step === 0 && (
           <Reveal k="intro">
             <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-brass">
-              Le Premier Regard™
+              Le Premier Regard
             </p>
             <h1 className="mt-4 font-serif text-4xl font-semibold">{INTRO_TITLE}</h1>
             <p className="mt-5 whitespace-pre-line text-[16px] leading-relaxed text-ink/85">
@@ -373,7 +373,7 @@ export function PremierRegard({ bookingBase }: { bookingBase: string }) {
               onClick={submit}
               className="mt-6 rounded-md bg-bord px-7 py-3.5 text-sm font-semibold text-[#f6efe6] transition-colors hover:bg-bord-deep disabled:opacity-50"
             >
-              {busy ? "Un instant…" : "Découvrir mon Premier Regard™"}
+              {busy ? "Un instant…" : "Découvrir mon Premier Regard"}
             </button>
             <p className="mt-3 text-[12px] text-mut">
               Confidentiel. Aucune prospection — un seul regard : le mien.

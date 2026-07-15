@@ -88,7 +88,7 @@ export type NewClient = typeof client.$inferInsert;
 /**
  * Mission — unité de travail du cabinet, rattachée à un client.
  * Champs alignés sur la vision : documents demandés/reçus, livrables,
- * notes internes, Dossier DULEME™. Les rendez-vous, l'historique et les
+ * notes internes, Dossier DULEME. Les rendez-vous, l'historique et les
  * documents « vivants » viendront des connecteurs (Agenda / Drive / Fireflies).
  */
 export const mission = pgTable("mission", {
@@ -103,7 +103,7 @@ export const mission = pgTable("mission", {
   documentsReceived: text("documents_received"),
   deliverables: text("deliverables"),
   internalNotes: text("internal_notes"),
-  // Lien Google Drive vers le Dossier DULEME™ (02 Dossier DULEME)
+  // Lien Google Drive vers le Dossier DULEME (02 Dossier DULEME)
   dossierUrl: text("dossier_url"),
   startDate: timestamp("start_date", { withTimezone: true }),
   dueDate: timestamp("due_date", { withTimezone: true }),
@@ -198,7 +198,7 @@ export type ContentPiece = typeof contentPiece.$inferSelect;
 export type NewContentPiece = typeof contentPiece.$inferInsert;
 
 /**
- * Premier Regard™ — expérience de discernement (entrée du produit DISCERNER™).
+ * Premier Regard — expérience de discernement (entrée du produit DISCERNER).
  * Ne produit jamais de score : des verbatims (mot pour mot) + des hypothèses.
  * Alimente l'email personnalisé et le CRM. `fit` est interne (jamais montré).
  */

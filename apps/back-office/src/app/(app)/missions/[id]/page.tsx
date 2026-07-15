@@ -162,7 +162,7 @@ export default async function MissionDetailPage({
             </div>
             <div>
               <label className={labelCls}>
-                Dossier DULEME™ — lien Google Drive (02 Dossier DULEME)
+                Dossier DULEME — lien Google Drive (02 Dossier DULEME)
               </label>
               <input
                 name="dossierUrl"
@@ -198,7 +198,7 @@ export default async function MissionDetailPage({
               rel="noreferrer"
               className="rounded-lg border border-line bg-card p-4 text-[13px] font-semibold text-accent shadow-card transition-colors hover:border-bord"
             >
-              Ouvrir le Dossier DULEME™ ↗
+              Ouvrir le Dossier DULEME ↗
             </a>
           ) : null}
           <Pending

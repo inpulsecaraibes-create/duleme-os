@@ -261,7 +261,7 @@ export default async function EspacePage({
       </Section>
 
       {/* Dossier DULEME */}
-      <Section title="Mon Dossier DULEME™">
+      <Section title="Mon Dossier DULEME">
         {dossierUrl ? (
           <a
             href={dossierUrl}
@@ -269,11 +269,11 @@ export default async function EspacePage({
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-md bg-bord px-5 py-2.5 text-[13px] font-semibold text-[#f6efe6] transition-colors hover:bg-bord-deep"
           >
-            Consulter mon Dossier DULEME™ ↗
+            Consulter mon Dossier DULEME ↗
           </a>
         ) : (
           <p className="text-[14px] leading-relaxed text-mut">
-            Votre Dossier DULEME™ est en cours de préparation. C&apos;est le
+            Votre Dossier DULEME est en cours de préparation. C&apos;est le
             livrable central de notre travail — vous pourrez le consulter, le
             télécharger et suivre ses versions ici même.
           </p>

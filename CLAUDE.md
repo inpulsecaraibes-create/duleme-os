@@ -30,4 +30,4 @@ Tu ne développes jamais immédiatement. Tu suis : **Comprendre → Analyser →
 - Un module = une responsabilité ; aucune logique métier dans l'UI.
 - Toute modification de base de données passe par une migration ; suppressions logiques (soft delete).
 - Palette de marque : « Pierre & Bordeaux » (tokens dans `@duleme/config`). Le terracotta n'est pas une couleur identitaire.
-- Le patrimoine intellectuel (Faux Dilemme™, Vrai Problème™, Lois DULEME™…) n'est jamais exposé intégralement sur les pages publiques : il suscite la curiosité.
+- Le patrimoine intellectuel (Faux Dilemme, Vrai Problème, Lois DULEME…) n'est jamais exposé intégralement sur les pages publiques : il suscite la curiosité.

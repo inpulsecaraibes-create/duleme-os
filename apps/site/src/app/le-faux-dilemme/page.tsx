@@ -10,11 +10,11 @@ import { blogLd, faqLd } from "@/lib/structured-data";
 import { publishedArticles } from "@/content/faux-dilemme";
 
 export const metadata: Metadata = {
-  title: "Le Faux Dilemme™ — Le média des décisions",
+  title: "Le Faux Dilemme — Le média des décisions",
   description:
     "Le média des dirigeants qui préfèrent poser la bonne question plutôt que courir après la mauvaise réponse. Apprendre à repérer la fausse alternative pour décider sur le bon terrain.",
   openGraph: {
-    title: "Le Faux Dilemme™ — Le média des décisions",
+    title: "Le Faux Dilemme — Le média des décisions",
     description:
       "Recruter ou attendre ? Grossir ou tenir ? La plupart des décisions difficiles cachent une fausse alternative. Le vrai choix est ailleurs.",
   },
@@ -103,7 +103,7 @@ export default function FauxDilemmePage() {
               <div>
                 <Eyebrow>Le média de DULEME AND CIE</Eyebrow>
                 <h1 className="mt-4 font-serif text-4xl font-semibold leading-[1.03] sm:text-5xl md:text-[58px]">
-                  Le Faux Dilemme<span className="align-super text-[0.4em]">™</span>
+                  Le Faux Dilemme<span className="align-super text-[0.4em]"></span>
                 </h1>
                 <p className="mt-5 max-w-[48ch] text-[17px] text-mut">
                   Le média des dirigeants qui préfèrent poser la bonne question
@@ -143,7 +143,7 @@ export default function FauxDilemmePage() {
               <p className="text-[15.5px] leading-relaxed text-mut">
                 La plupart des décisions difficiles se présentent comme un choix
                 entre deux options. Presque toujours, la vraie question est
-                ailleurs. Le Faux Dilemme™, c'est apprendre à repérer la fausse
+                ailleurs. Le Faux Dilemme, c'est apprendre à repérer la fausse
                 alternative — pour décider sur le bon terrain, plutôt que de bien
                 répondre à la mauvaise question.
               </p>
@@ -256,7 +256,7 @@ export default function FauxDilemmePage() {
                   Une pensée qui se partage en salle, autant que sur le papier.
                 </Heading>
                 <p className="mt-4 max-w-prose text-[15px] text-mut">
-                  Conférences, ateliers, rencontres : Le Faux Dilemme™ se vit
+                  Conférences, ateliers, rencontres : Le Faux Dilemme se vit
                   aussi en public — là où les dirigeants confrontent leurs
                   décisions, rient de leurs certitudes, et repartent avec une
                   question neuve.
@@ -312,7 +312,7 @@ export default function FauxDilemmePage() {
                 Un faux dilemme démonté, chaque mois.
               </Heading>
               <p className="mt-4 text-[15px] text-mut">
-                Recevez Le Faux Dilemme™ : une décision, une idée, une question
+                Recevez Le Faux Dilemme : une décision, une idée, une question
                 qui change la manière de voir. Directement par email.
               </p>
               <Newsletter />

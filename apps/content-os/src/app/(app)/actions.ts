@@ -22,7 +22,7 @@ export async function generateFromTheme(formData: FormData) {
 Produis QUATRE blocs, séparés EXACTEMENT par ces marqueurs sur leur propre ligne :
 
 ===ARTICLE===
-Un article pour le média « Le Faux Dilemme™ ». Première ligne = titre précédé de « # ». Puis le corps en markdown (250-450 mots).
+Un article pour le média « Le Faux Dilemme ». Première ligne = titre précédé de « # ». Puis le corps en markdown (250-450 mots).
 ===LINKEDIN===
 Un post LinkedIn (accroche forte, 120-200 mots, 1 idée, ton posé, pas de hashtags à outrance : 3 max).
 ===INSTAGRAM===

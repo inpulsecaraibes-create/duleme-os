@@ -46,6 +46,6 @@ Fusion Action/Tâche → un seul objet « Tâche ». **Adopté.**
 Ancrée sur l'emblème bordeaux officiel. Pierre chaude + bordeaux + laiton. Le terracotta est écarté comme couleur identitaire.
 Typographies : serif éditorial (Newsreader) + sans (Inter) — à confirmer dans le Design System complet. **Adopté.**
 
-## ADR-014 — Squelette d'analyse : les 4 Piliers DULEME™
-Le raisonnement présenté (site, Dossier) suit : Symptôme → Hypothèse™ → Faux Dilemme™ → Vrai Problème™ → Arbitrage.
-Simplicité assumée (4 Piliers + Lois DULEME™), pas de multiplication de concepts. **Adopté.**
+## ADR-014 — Squelette d'analyse : les 4 Piliers DULEME
+Le raisonnement présenté (site, Dossier) suit : Symptôme → Hypothèse → Faux Dilemme → Vrai Problème → Arbitrage.
+Simplicité assumée (4 Piliers + Lois DULEME), pas de multiplication de concepts. **Adopté.**

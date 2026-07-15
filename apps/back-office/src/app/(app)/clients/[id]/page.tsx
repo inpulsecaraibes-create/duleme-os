@@ -260,7 +260,7 @@ export default async function ClientDetailPage({
         <p className="font-serif text-lg font-semibold">Espace client</p>
         <p className="mt-1 text-[13px] text-mut">
           Lien personnel et privé à transmettre à {c.name.split(" ")[0]}. Il
-          permet d&apos;accéder à ses rendez-vous, documents, Dossier DULEME™ et
+          permet d&apos;accéder à ses rendez-vous, documents, Dossier DULEME et
           à la messagerie. Aucun mot de passe.
         </p>
         <div className="mt-3">

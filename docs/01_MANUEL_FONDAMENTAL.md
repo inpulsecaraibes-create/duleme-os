@@ -15,9 +15,9 @@ Il accompagne les dirigeants, réalise des missions, organise des conférences e
 La pensée
 DULEME est un courant de pensée consacré aux décisions stratégiques des dirigeants.
 Il comprend notamment :
-Le Faux Dilemme™
-Les Décisions Critiques™
-Le Dossier DULEME™
+Le Faux Dilemme
+Les Décisions Critiques
+Le Dossier DULEME
 les concepts
 les schémas
 les conférences
@@ -44,7 +44,7 @@ Les bonnes décisions créent durablement plus de liberté, de valeur et d'impac
 5. Ce que nous faisons
 Nous intervenons uniquement lorsque les conséquences d'une décision peuvent transformer durablement une entreprise.
 Nos interventions portent notamment sur :
-les Décisions Critiques™ ;
+les Décisions Critiques ;
 le fonctionnement de l'entreprise ;
 la gouvernance ;
 l'avantage concurrentiel ;
@@ -120,7 +120,7 @@ Nous préférons dire « nous ne savons pas encore » plutôt que donner une ré
 Nous recherchons toujours la solution la plus simple capable de résoudre durablement le problème.
 
 10. Objectif de l'écosystème DULEME
-Le site, les contenus, les conférences, les missions, le Relationship OS, le Dossier DULEME™ et tous les outils développés par DULEME AND CIE poursuivent le même objectif :
+Le site, les contenus, les conférences, les missions, le Relationship OS, le Dossier DULEME et tous les outils développés par DULEME AND CIE poursuivent le même objectif :
 Créer suffisamment de confiance pour qu'un dirigeant pense naturellement à DULEME AND CIE lorsqu'une décision importante se présente.
 
 11. Décisions fondatrices
@@ -133,13 +133,13 @@ DULEME
 Signature
 Bien diriger est l'art de décider.
 Média
-Le Faux Dilemme™
+Le Faux Dilemme
 Concept fondateur
-Le Faux Dilemme™
+Le Faux Dilemme
 Question fondatrice
 Est-ce que ce que vous construisez est capable de produire ce que vous voulez vraiment obtenir ?
 Livrable principal
-Le Dossier DULEME™
+Le Dossier DULEME
 Mission
 Aider les dirigeants à sécuriser les décisions qui engagent durablement leur entreprise.
 Objectif du site

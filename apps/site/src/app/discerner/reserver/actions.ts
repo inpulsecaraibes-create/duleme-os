@@ -124,8 +124,8 @@ export async function bookSlot(
   if (isGoogleConfigured()) {
     try {
       const ev = await createEventWithMeet({
-        summary: `Échange DISCERNER™ (20 min) — ${name || email}`,
-        description: `Diagnostic Premier Regard™.\n${context}`,
+        summary: `Échange DISCERNER (20 min) — ${name || email}`,
+        description: `Diagnostic Premier Regard.\n${context}`,
         startISO: start.toISOString(),
         endISO: end.toISOString(),
         attendees: [...(email ? [email] : []), ...teferyCalendars],

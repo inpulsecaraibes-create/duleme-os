@@ -1,4 +1,4 @@
-// Contenu éditorial du média « Le Faux Dilemme™ ».
+// Contenu éditorial du média « Le Faux Dilemme ».
 // Chaque article = métadonnées + corps en Markdown.
 
 export type Article = {

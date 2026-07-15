@@ -64,7 +64,7 @@ export async function submitPremierRegard(
     try {
       await sendEmail({
         to: [{ email: input.email, name: `${input.firstName} ${input.lastName}`.trim() }],
-        subject: "Votre Premier Regard™ — et si c'était un symptôme ?",
+        subject: "Votre Premier Regard — et si c'était un symptôme ?",
         htmlContent: `
           <p>Bonjour ${esc(prenom)},</p>
           <p>Merci d'avoir pris ces quelques minutes pour poser votre situation et vos mots dans mon espace de discernement.</p>

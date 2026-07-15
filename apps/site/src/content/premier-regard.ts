@@ -1,4 +1,4 @@
-// Le Premier Regard™ — contenu des 8 situations (pré-écrit, voix de Téféry).
+// Le Premier Regard — contenu des 8 situations (pré-écrit, voix de Téféry).
 // « Ce document ne contient pas des réponses. Il rassemble les questions qui
 //   méritent désormais votre attention. »
 
@@ -29,14 +29,14 @@ export const END_INTRO =
   "Au regard de vos réponses, trois hypothèses attirent mon attention. Ce ne sont pas des conclusions — mais des angles qu'il vaut la peine d'explorer.";
 export const CTA_HEADLINE = "Et maintenant ?";
 export const CTA_TEXT =
-  "Le Premier Regard™ ne donne pas de réponses : il fait émerger de meilleures questions. Si vous souhaitez poursuivre cette réflexion, je vous propose un premier échange confidentiel de 20 minutes. Nous vérifierons ensemble si la décision qui vous préoccupe aujourd'hui est bien celle qui mérite votre attention — et si DISCERNER™ est la bonne étape pour vous.";
+  "Le Premier Regard ne donne pas de réponses : il fait émerger de meilleures questions. Si vous souhaitez poursuivre cette réflexion, je vous propose un premier échange confidentiel de 20 minutes. Nous vérifierons ensemble si la décision qui vous préoccupe aujourd'hui est bien celle qui mérite votre attention — et si DISCERNER est la bonne étape pour vous.";
 export const CTA_BUTTON = "Échanger avec Téféry";
 
 export const OPEN_QUESTION =
   "Si nous étions assis ensemble et que vous pouviez me confier votre plus grande frustration actuelle : quel est le vrai problème qui vous empêche de dormir, et qu'est-ce qu'il vous coûte chaque jour, en clarté ou en sérénité ?";
 
 export const CAPTURE_MESSAGE =
-  "Merci pour votre confiance et pour la sincérité de vos réponses. Votre situation ne sera pas traitée par un outil automatisé. Pour poursuivre cet échange et recevoir votre Premier Regard™, indiquez-moi simplement vos coordonnées.";
+  "Merci pour votre confiance et pour la sincérité de vos réponses. Votre situation ne sera pas traitée par un outil automatisé. Pour poursuivre cet échange et recevoir votre Premier Regard, indiquez-moi simplement vos coordonnées.";
 
 export const METIERS: { label: string; desc: string }[] = [
   {

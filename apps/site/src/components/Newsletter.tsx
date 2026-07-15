@@ -28,7 +28,7 @@ export function Newsletter() {
     >
       {ok ? (
         <p className="font-serif text-lg text-accent">
-          Merci — vous recevrez Le Faux Dilemme™ chaque mois.
+          Merci — vous recevrez Le Faux Dilemme chaque mois.
         </p>
       ) : (
         <div className="flex max-w-md flex-col gap-3 sm:flex-row">
@@ -46,7 +46,7 @@ export function Newsletter() {
             disabled={busy}
             className="shrink-0 rounded-md bg-bord px-5 py-3 text-sm font-semibold text-paper transition-colors hover:bg-bord-deep disabled:opacity-60"
           >
-            {busy ? "Un instant…" : "Recevoir Le Faux Dilemme™"}
+            {busy ? "Un instant…" : "Recevoir Le Faux Dilemme"}
           </button>
         </div>
       )}

@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import Link from "next/link";
-import { asc, eq, getDb, isDbConfigured, testimonial } from "@duleme/database";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -14,41 +13,34 @@ export const metadata: Metadata = {
   alternates: { canonical: "/discerner" },
 };
 
-type Story = { headline: string; body: string; attribution: string };
+type Case = { metier: string; croyait: string; realite: string; resultat: string };
 
-const FALLBACK: Story[] = [
+const CASES: Case[] = [
   {
-    headline: "Elle a vu quelque chose que je ne voyais plus.",
-    body: "J'étais persuadé que mon problème était commercial. En quelques échanges, elle m'a montré que je passais complètement à côté du vrai sujet.",
-    attribution: "Dirigeant de PME — témoignage anonymisé",
+    metier: "Dirigeant d'une salle de sport",
+    croyait: "« J'ai un problème de marketing — je dois surtout réduire mes coûts. »",
+    realite:
+      "Le vrai sujet n'était pas le marketing. Il faisait le travail de son équipe et n'occupait plus sa place de dirigeant. Une seule question a tout changé : « Tu es l'ami de ton équipe, ou leur dirigeant ? »",
+    resultat:
+      "Il a repris sa place, posé des limites, retrouvé du temps pour sa famille — et porte aujourd'hui un projet à 1 à 2 millions d'euros.",
   },
   {
-    headline: "Je ne me suis jamais sentie jugée.",
-    body: "J'ai eu l'impression, pour la première fois depuis longtemps, de pouvoir réfléchir sans avoir besoin de me justifier.",
-    attribution: "Dirigeante de PME — témoignage anonymisé",
+    metier: "Consultante indépendante",
+    croyait: "« Je manque de clients, il faut que j'en trouve plus. »",
+    realite:
+      "En une heure, elle a compris que le problème n'était pas le nombre de clients, mais la valeur qu'elle accordait à son propre travail.",
+    resultat:
+      "Elle a doublé ses tarifs et attiré des clients qui reconnaissaient enfin la valeur de son expertise.",
   },
   {
-    headline: "Elle m'a redonné le droit d'être ambitieuse.",
-    body: "J'ai compris que je n'avais pas un problème de compétences. Je ne m'autorisais plus à voir plus grand.",
-    attribution: "Dirigeante de PME — témoignage anonymisé",
+    metier: "Fondatrice d'une application",
+    croyait: "« J'ai un problème de communication : je n'arrive pas à expliquer mon activité. »",
+    realite:
+      "En quelques heures, le vrai sujet est apparu : elle ne savait pas réellement quel problème son produit résolvait.",
+    resultat:
+      "Business model repensé, proposition de valeur clarifiée — elle présente enfin son activité avec simplicité et confiance.",
   },
 ];
-
-async function getStories(): Promise<Story[]> {
-  if (!isDbConfigured()) return FALLBACK;
-  try {
-    const rows = await getDb()
-      .select()
-      .from(testimonial)
-      .where(eq(testimonial.published, true))
-      .orderBy(asc(testimonial.position), asc(testimonial.createdAt));
-    return rows.length
-      ? rows.map((r) => ({ headline: r.headline, body: r.body, attribution: r.attribution }))
-      : FALLBACK;
-  } catch {
-    return FALLBACK;
-  }
-}
 
 const GRILLE: [string, string][] = [
   ["« Je manque de clients »", "Une offre qui ne crée pas assez de valeur"],
@@ -77,8 +69,7 @@ function Cta({ center = false }: { center?: boolean }) {
   );
 }
 
-export default async function DiscernerPage() {
-  const stories = await getStories();
+export default function DiscernerPage() {
   return (
     <>
       <SiteHeader />
@@ -207,20 +198,30 @@ export default async function DiscernerPage() {
           <h2 className="font-serif text-[24px] font-semibold sm:text-[32px]">
             Ce qu'ils ont compris.
           </h2>
-          <div className="mt-9 grid grid-cols-1 gap-5 md:grid-cols-3">
-            {stories.slice(0, 3).map((s) => (
+          <p className="mt-3 max-w-[60ch] text-[15px] text-mut">
+            Des cas réels (anonymisés). À chaque fois, le problème annoncé n'était pas
+            le vrai.
+          </p>
+          <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
+            {CASES.map((c) => (
               <div
-                key={s.headline}
+                key={c.metier}
                 className="flex flex-col rounded-lg border border-line bg-card p-6 shadow-card"
               >
-                <div className="font-serif text-[40px] leading-[0.6] text-brass" aria-hidden>
-                  &ldquo;
-                </div>
-                <h3 className="mt-3 font-serif text-lg font-semibold leading-snug text-accent">
-                  {s.headline}
-                </h3>
-                <p className="mt-3 flex-1 text-[14px] leading-relaxed text-ink/80">{s.body}</p>
-                <p className="mt-4 text-[11px] tracking-wide text-mut">{s.attribution}</p>
+                <p className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-brass">
+                  {c.metier}
+                </p>
+                <p className="mt-3 font-serif text-[15px] font-semibold italic leading-snug text-ink">
+                  {c.croyait}
+                </p>
+                <p className="mt-3 text-[13.5px] leading-relaxed text-mut">
+                  <span className="font-semibold text-accent">En réalité — </span>
+                  {c.realite}
+                </p>
+                <p className="mt-3 border-t border-line pt-3 text-[13.5px] leading-relaxed text-ink/85">
+                  <span className="font-semibold text-ok">Résultat — </span>
+                  {c.resultat}
+                </p>
               </div>
             ))}
           </div>

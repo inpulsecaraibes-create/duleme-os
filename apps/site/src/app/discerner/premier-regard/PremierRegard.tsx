@@ -18,6 +18,7 @@ import {
   SITUATIONS,
   situationById,
 } from "@/content/premier-regard";
+import { track } from "@vercel/analytics";
 import { submitPremierRegard } from "./actions";
 
 function Reveal({ k, children }: { k: string | number; children: React.ReactNode }) {
@@ -84,6 +85,7 @@ export function PremierRegard({ bookingBase }: { bookingBase: string }) {
         email,
       });
       setLeadId(res.id);
+      track("premier_regard_termine");
     } catch {
       /* dégradable */
     } finally {

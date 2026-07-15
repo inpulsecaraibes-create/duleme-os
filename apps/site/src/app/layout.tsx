@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Newsreader, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationLd, websiteLd, SITE_URL } from "@/lib/structured-data";
@@ -23,43 +24,43 @@ const sans = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "DULEME AND CIE — Cabinet de la décision stratégique",
+    default: "DULEME AND CIE — Cabinet de conseil stratégique pour dirigeants de PME",
     template: "%s — DULEME AND CIE",
   },
   description:
-    "DULEME AND CIE aide les dirigeants à sécuriser les décisions qui engagent durablement leur entreprise. Vous prenez peut-être les bonnes décisions — à partir du mauvais problème.",
+    "DULEME AND CIE accompagne les dirigeants de PME sur les décisions qui engagent durablement leur entreprise — celles où une erreur stratégique se paie en centaines de milliers d'euros, ou en années.",
   applicationName: "DULEME AND CIE",
   authors: [{ name: "DULEME AND CIE" }],
   keywords: [
+    "conseil stratégique",
     "décision stratégique",
     "dirigeant",
     "PME",
     "gouvernance",
     "arbitrage",
-    "Faux Dilemme",
   ],
   openGraph: {
     type: "website",
     locale: "fr_FR",
     siteName: "DULEME AND CIE",
     url: "/",
-    title: "DULEME AND CIE — Cabinet de la décision stratégique",
+    title: "DULEME AND CIE — Cabinet de conseil stratégique pour dirigeants de PME",
     description:
-      "Nous aidons les dirigeants à sécuriser les décisions qui engagent durablement leur entreprise. Un autre regard, jamais un jugement.",
+      "Nous accompagnons les dirigeants sur les décisions qui engagent durablement leur entreprise. Éviter l'erreur stratégique, décider juste, sur ce qui compte vraiment.",
     images: [
       {
         url: "/og.jpg",
         width: 1200,
         height: 630,
-        alt: "DULEME AND CIE — Bien diriger est l'art de décider.",
+        alt: "DULEME AND CIE — Cabinet de conseil stratégique.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DULEME AND CIE — Cabinet de la décision stratégique",
+    title: "DULEME AND CIE — Cabinet de conseil stratégique",
     description:
-      "Vous prenez peut-être les bonnes décisions — à partir du mauvais problème.",
+      "Les décisions qui engagent votre entreprise, votre patrimoine, dix ans de travail. Nous aidons les dirigeants à décider juste.",
     images: ["/og.jpg"],
   },
   alternates: { canonical: "/" },
@@ -81,7 +82,10 @@ export default function RootLayout({
         <JsonLd data={organizationLd} />
         <JsonLd data={websiteLd} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

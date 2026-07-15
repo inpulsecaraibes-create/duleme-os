@@ -13,7 +13,7 @@ export const organizationLd = {
   name: "DULEME AND CIE",
   alternateName: "DULEME",
   description:
-    "Cabinet de la décision stratégique. DULEME AND CIE aide les dirigeants à sécuriser les décisions qui engagent durablement leur entreprise.",
+    "Cabinet de conseil stratégique pour dirigeants de PME. DULEME AND CIE accompagne les dirigeants sur les décisions qui engagent durablement leur entreprise.",
   url: SITE_URL,
   logo: `${SITE_URL}/logo-duleme.png`,
   slogan: "Bien diriger est l'art de décider.",

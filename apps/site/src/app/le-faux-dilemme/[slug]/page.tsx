@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 import { ButtonLink, Container } from "@duleme/ui";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { Newsletter } from "@/components/Newsletter";
 import { JsonLd } from "@/components/JsonLd";
 import { articleLd } from "@/lib/structured-data";
 import { getArticle, publishedArticles } from "@/content/faux-dilemme";
@@ -104,12 +105,31 @@ export default function ArticlePage({
 
         <section className="mt-4 bg-bord py-16 text-center text-[#f0e5da]">
           <Container>
-            <p className="mx-auto max-w-[24ch] font-serif text-[clamp(22px,3vw,32px)] font-medium leading-snug">
-              Une décision importante approche&nbsp;?
+            <p className="mx-auto max-w-[30ch] font-serif text-[clamp(22px,3vw,32px)] font-medium leading-snug">
+              Une décision importante approche&nbsp;? Un premier échange de 20 minutes
+              suffit souvent à déplacer la question.
             </p>
-            <ButtonLink href="/#contact" variant="inverse" className="mt-6">
-              Parlons de votre décision →
+            <ButtonLink href="/discerner/reserver" variant="inverse" className="mt-6">
+              Réserver 20 minutes →
             </ButtonLink>
+          </Container>
+        </section>
+
+        <section className="border-t border-line bg-paper2 py-14">
+          <Container>
+            <div className="max-w-2xl">
+              <p className="text-xs font-light uppercase tracking-[0.22em] text-accent">
+                Ou restez au contact
+              </p>
+              <h2 className="mt-3 font-serif text-[22px] font-semibold sm:text-[26px]">
+                Un faux dilemme démonté, chaque mois.
+              </h2>
+              <p className="mt-3 text-[15px] text-mut">
+                Une décision, une idée, une question qui change la manière de voir.
+                Directement par email.
+              </p>
+              <Newsletter />
+            </div>
           </Container>
         </section>
       </main>

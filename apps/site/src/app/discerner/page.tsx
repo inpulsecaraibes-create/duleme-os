@@ -3,44 +3,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { CASES } from "@/content/cases";
 
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "DISCERNER — Sécurisez vos décisions qui engagent votre entreprise",
+  title: "DISCERNER — Clarifier ce qui mérite vraiment d'être transformé",
   description:
-    "Cabinet de décision stratégique pour dirigeants de PME. DISCERNER vérifie que vous travaillez sur le bon problème avant d'engager du temps, de l'argent et des années.",
+    "Cabinet de conseil stratégique pour dirigeants de PME. DISCERNER est une mission de clarification : identifier le vrai problème et les décisions qui comptent, avant d'engager des changements lourds.",
   alternates: { canonical: "/discerner" },
 };
-
-type Case = { metier: string; croyait: string; realite: string; resultat: string };
-
-const CASES: Case[] = [
-  {
-    metier: "Dirigeant d'une salle de sport",
-    croyait: "« J'ai un problème de marketing — je dois surtout réduire mes coûts. »",
-    realite:
-      "Le vrai sujet n'était pas le marketing. Il faisait le travail de son équipe et n'occupait plus sa place de dirigeant. Une seule question a tout changé : « Tu es l'ami de ton équipe, ou leur dirigeant ? »",
-    resultat:
-      "Il a repris sa place, posé des limites, retrouvé du temps pour sa famille — et porte aujourd'hui un projet à 1 à 2 millions d'euros.",
-  },
-  {
-    metier: "Consultante indépendante",
-    croyait: "« Je manque de clients, il faut que j'en trouve plus. »",
-    realite:
-      "En une heure, elle a compris que le problème n'était pas le nombre de clients, mais la valeur qu'elle accordait à son propre travail.",
-    resultat:
-      "Elle a doublé ses tarifs et attiré des clients qui reconnaissaient enfin la valeur de son expertise.",
-  },
-  {
-    metier: "Fondatrice d'une application",
-    croyait: "« J'ai un problème de communication : je n'arrive pas à expliquer mon activité. »",
-    realite:
-      "En quelques heures, le vrai sujet est apparu : elle ne savait pas réellement quel problème son produit résolvait.",
-    resultat:
-      "Business model repensé, proposition de valeur clarifiée — elle présente enfin son activité avec simplicité et confiance.",
-  },
-];
 
 const GRILLE: [string, string][] = [
   ["« Je manque de clients »", "Une offre qui ne crée pas assez de valeur"],
@@ -89,10 +61,11 @@ export default function DiscernerPage() {
             Et si vous étiez en train de résoudre{" "}
             <span className="text-accent">le mauvais problème&nbsp;?</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-[56ch] text-[16px] leading-relaxed text-mut sm:text-[18px]">
-            Nous sécurisons les décisions qui engagent durablement votre entreprise —
-            en vérifiant d'abord que vous travaillez sur le <strong className="text-ink">bon</strong>{" "}
-            problème, avant d'y engager du temps, de l'argent et des années.
+          <p className="mx-auto mt-6 max-w-[58ch] text-[16px] leading-relaxed text-mut sm:text-[18px]">
+            DISCERNER est une mission de <strong className="text-ink">clarification stratégique</strong> :
+            identifier le vrai problème et les 2 à 3 décisions qui comptent vraiment — avant
+            d&apos;engager du temps, de l&apos;argent et des années. DISCERNER ne promet pas
+            de tout résoudre. Il vous dit <strong className="text-ink">sur quoi agir</strong>.
           </p>
           <div className="mt-9 flex justify-center">
             <Cta center />
@@ -262,7 +235,7 @@ export default function DiscernerPage() {
             DISCERNER, concrètement.
           </h2>
           <p className="mt-5 text-[16px] leading-relaxed text-mut">
-            Un format <strong className="text-ink">concentré : deux demi-journées, en une seule fois</strong>.
+            Un format <strong className="text-ink">concentré : deux demi-journées</strong>.
             Tout est traité d'un bloc, avec Téféry — sans étalement sur des semaines.
             Vous repartez avec :
           </p>
@@ -272,6 +245,14 @@ export default function DiscernerPage() {
             <li>• celles qui peuvent attendre ;</li>
             <li>• une direction claire, cohérente avec ce que vous voulez vraiment construire.</li>
           </ul>
+
+          <p className="mt-7 max-w-[62ch] text-[14.5px] leading-relaxed text-mut">
+            Et si un chantier de transformation s&apos;impose ensuite — repenser
+            l&apos;organisation, les rôles, le modèle — c&apos;est l&apos;objet d&apos;une
+            mission dédiée, <strong className="text-ink">Reconfiguration</strong>. DISCERNER
+            vient avant : il vous dit d&apos;abord ce qui mérite vraiment d&apos;être
+            transformé.
+          </p>
 
           <div className="mt-9 rounded-lg border border-line bg-card p-7 text-center shadow-card">
             <p className="font-serif text-[28px] font-semibold text-accent">7 600 € HT</p>

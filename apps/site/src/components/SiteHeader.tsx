@@ -21,13 +21,10 @@ export function SiteHeader() {
             DISCERNER
           </Link>
           <Link href="/le-faux-dilemme" className="hidden hover:text-accent sm:inline">
-            Le Faux Dilemme
+            Le média
           </Link>
           <Link href="/a-propos" className="hidden hover:text-accent sm:inline">
             À propos
-          </Link>
-          <Link href="/#stories" className="hidden hover:text-accent sm:inline">
-            Témoignages
           </Link>
           <a
             href={ESPACE_URL}
@@ -47,10 +44,10 @@ export function SiteHeader() {
             <span className="hidden sm:inline">Espace client</span>
           </a>
           <Link
-            href="/#contact"
+            href="/discerner/reserver"
             className="rounded-md bg-bord px-5 py-3 text-sm font-semibold text-paper transition-colors hover:bg-bord-deep"
           >
-            Parlons de votre décision
+            Réserver 20 min
           </Link>
           <ThemeToggle />
         </nav>

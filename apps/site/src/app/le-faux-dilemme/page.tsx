@@ -80,7 +80,7 @@ const FAQ = [
   },
   {
     q: "Comment se déroule un premier échange ?",
-    a: "Un échange d'une heure pour poser la vraie question de votre situation. Vous en repartez avec une lecture plus claire, que nous travaillions ensemble ensuite ou non.",
+    a: "Un échange de 20 minutes pour poser la vraie question de votre situation. Vous en repartez avec une lecture plus claire, que nous travaillions ensemble ensuite ou non.",
   },
 ];
 
@@ -344,11 +344,11 @@ export default function FauxDilemmePage() {
               Vous vivez peut-être un faux dilemme en ce moment.
             </h2>
             <p className="mx-auto mt-4 max-w-[48ch] text-[#d8c6bb]">
-              Un premier échange d'une heure suffit souvent à déplacer la
+              Un premier échange de 20 minutes suffit souvent à déplacer la
               question.
             </p>
-            <ButtonLink href="/#contact" variant="inverse" className="mt-7">
-              Parlons de votre décision →
+            <ButtonLink href="/discerner/reserver" variant="inverse" className="mt-7">
+              Réserver 20 minutes →
             </ButtonLink>
           </Container>
         </section>

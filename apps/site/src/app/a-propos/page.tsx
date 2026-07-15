@@ -54,7 +54,7 @@ export default function AProposPage() {
                   jamais à leur place — nous renforçons leur capacité à décider.
                 </p>
                 <div className="mt-7">
-                  <ButtonLink href="/#contact">Parlons de votre décision →</ButtonLink>
+                  <ButtonLink href="/discerner/reserver">Réserver 20 minutes →</ButtonLink>
                 </div>
               </div>
               <div className="relative overflow-hidden rounded-lg border border-line shadow-lift">
@@ -200,11 +200,11 @@ export default function AProposPage() {
               Une décision importante mérite un autre regard.
             </h2>
             <p className="mx-auto mt-4 max-w-[48ch] text-[#d8c6bb]">
-              Un premier échange d'une heure. Vous en repartez avec une lecture
+              Un premier échange de 20 minutes. Vous en repartez avec une lecture
               plus claire de votre situation.
             </p>
-            <ButtonLink href="/#contact" variant="inverse" className="mt-7">
-              Parlons de votre décision →
+            <ButtonLink href="/discerner/reserver" variant="inverse" className="mt-7">
+              Réserver 20 minutes →
             </ButtonLink>
           </Container>
         </section>

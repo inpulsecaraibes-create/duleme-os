@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@vercel/analytics";
 import { bookSlot } from "./actions";
 
 export function Reserver({
@@ -41,6 +42,7 @@ export function Reserver({
     setBusy(true);
     try {
       const res = await bookSlot(leadId, iso, email || undefined, name || undefined);
+      track("rdv_reserve");
       setConfirmed({
         when: new Intl.DateTimeFormat("fr-FR", {
           dateStyle: "full",

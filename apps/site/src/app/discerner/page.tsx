@@ -276,8 +276,8 @@ export default function DiscernerPage() {
           <div className="mt-9 rounded-lg border border-line bg-card p-7 text-center shadow-card">
             <p className="font-serif text-[28px] font-semibold text-accent">7 600 € HT</p>
             <p className="mx-auto mt-2 max-w-[50ch] text-[14px] leading-relaxed text-mut">
-              Deux demi-journées, en une fois. Le coût d'un mauvais problème, lui, se
-              compte souvent en dizaines de milliers d'euros — et en années.
+              Deux demi-journées. Le coût d'un mauvais problème, lui, se compte
+              souvent en dizaines de milliers d'euros — et en années.
             </p>
             <div className="mt-6 flex justify-center">
               <Cta center />

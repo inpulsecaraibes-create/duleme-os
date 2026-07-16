@@ -7,7 +7,6 @@ import { Contact } from "./components/Contact";
 
 const STATS = [
   { n: "1 000+", l: "entrepreneurs accompagnés" },
-  { n: "30+", l: "ateliers animés en Martinique" },
   { n: "60+", l: "dirigeants suivis en 2026" },
   { n: "10 ans", l: "d'expérience" },
 ];
@@ -48,37 +47,29 @@ export default function Home() {
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-brass">
               Cabinet de conseil stratégique · dirigeants de PME
             </p>
-            <h1 className="mt-5 max-w-[24ch] font-serif text-[30px] font-semibold leading-[1.16] sm:text-[38px] md:text-[44px]">
-              Les premières années,
-              <br />
-              il fallait tenir.
+            <h1 className="mt-5 max-w-[24ch] text-pretty font-serif text-[30px] font-semibold leading-[1.16] sm:text-[38px] md:text-[44px]">
+              Libérez-vous du doute&nbsp;:
               <br />
               <span className="text-accent">
-                Maintenant, chaque décision engage la suite.
+                je cible les problèmes
+                <br />
+                des dirigeants à la racine.
               </span>
             </h1>
             <p className="mt-11 max-w-[54ch] text-[15px] leading-relaxed text-mut sm:text-[17px]">
-              Structurer ou rester agile&nbsp;? Investir ou consolider&nbsp;? Recruter ou
-              tenir encore seul&nbsp;? À ce stade, le risque n&apos;est pas de décider trop
-              tard — c&apos;est de se tromper de décision. DULEME AND CIE accompagne les
-              dirigeants de PME sur ces décisions-là.
+              Il est grand temps de passer d&apos;une posture de fondateur — seul et sous
+              pression — à une posture de dirigeant. L&apos;esclavage, c&apos;est fini.
             </p>
             <div className="mt-8 flex flex-col items-start gap-2.5">
               <Link
                 href="/discerner/reserver"
                 className="rounded-md bg-bord px-7 py-4 text-[15px] font-semibold text-[#f6efe6] transition-colors hover:bg-bord-deep"
               >
-                Réserver 20 minutes →
+                Réserver 20 min
               </Link>
-              <div className="flex items-center gap-4">
-                <span className="text-[13px] text-mut">Confidentiel, sans engagement.</span>
-                <Link
-                  href="/discerner"
-                  className="border-b border-brass pb-0.5 text-[13px] font-medium text-ink"
-                >
-                  Découvrir DISCERNER →
-                </Link>
-              </div>
+              <span className="text-[13px] text-mut">
+                Votre bilan offert, sans engagement.
+              </span>
             </div>
           </div>
           <div className="relative overflow-hidden rounded-lg border border-line shadow-lift">
@@ -91,36 +82,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2 — PREUVE : VERBATIM + CHIFFRES */}
+      {/* 2 — PREUVE : CHIFFRES */}
       <section className="border-t border-line bg-paper2 py-14">
         <div className="mx-auto max-w-[1160px] px-7">
-          <div className="grid items-center gap-10 md:grid-cols-[1.1fr_0.9fr]">
-            <div>
-              <div className="font-serif text-[52px] leading-[0.6] text-brass" aria-hidden>
-                &ldquo;
-              </div>
-              <p className="mt-2 font-serif text-[22px] font-medium leading-snug text-accent sm:text-[28px]">
-                Elle a vu quelque chose que je ne voyais plus.
-              </p>
-              <p className="mt-4 max-w-[52ch] text-[14.5px] leading-relaxed text-mut">
-                « J&apos;étais persuadé que mon problème était commercial. En quelques
-                échanges, elle m&apos;a montré que je passais complètement à côté du vrai
-                sujet. »
-              </p>
-              <p className="mt-4 font-sans text-[11px] uppercase tracking-wide text-mut">
-                Dirigeant de PME — témoignage anonymisé
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-6">
-              {STATS.map((s) => (
-                <div key={s.l} className="border-t border-line pt-4">
-                  <div className="font-serif text-[28px] font-semibold leading-none text-accent tabular-nums sm:text-[38px]">
-                    {s.n}
-                  </div>
-                  <div className="mt-2 text-[12.5px] leading-snug text-mut">{s.l}</div>
+          <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-3">
+            {STATS.map((s) => (
+              <div key={s.l} className="border-t border-line pt-4">
+                <div className="font-serif text-[28px] font-semibold leading-none text-accent tabular-nums sm:text-[38px]">
+                  {s.n}
                 </div>
-              ))}
-            </div>
+                <div className="mt-2 text-[12.5px] leading-snug text-mut">{s.l}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

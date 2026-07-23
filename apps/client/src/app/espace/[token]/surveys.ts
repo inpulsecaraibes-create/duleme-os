@@ -29,6 +29,10 @@ export const SURVEY_QUESTIONS: Record<SurveyPhase, string[]> = {
     "Qu'est-ce qui vous a amené à nous solliciter aujourd'hui ?",
     "Qu'est-ce qui, dans votre situation, vous pèse le plus en ce moment ?",
     "Qu'attendez-vous de cette collaboration ?",
+    "Quels outils utilisez-vous pour votre comptabilité et votre facturation ? (logiciel, expert-comptable, tableur…)",
+    "Utilisez-vous un CRM pour suivre vos clients et prospects ? Si oui, lequel ?",
+    "Quel(s) logiciel(s) métier utilisez-vous au quotidien pour votre activité ?",
+    "D'autres outils essentiels à votre gestion (RH, projet, stock, caisse, paie…) ?",
   ],
   m1: [
     "Un mois après notre démarrage, qu'est-ce qui a changé dans votre façon de voir votre décision ?",
